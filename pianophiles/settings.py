@@ -31,6 +31,8 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['8000-sonetto104-cipp4pregan-f7zpi5tmdlz.ws-eu100.gitpod.io', 'localhost', 'pianophiles.herokuapp.com', 'pianophiles-cbf072093775.herokuapp.com']
 
+CSRF_TRUSTED_ORIGINS = ['https://8000-sonetto104-cipp4pregan-f7zpi5tmdlz.ws-eu100.gitpod.io']
+
 
 # Application definition
 
@@ -43,6 +45,7 @@ INSTALLED_APPS = [
     'cloudinary_storage',
     'django.contrib.staticfiles',
     'cloudinary',
+    'django_summernote',
     'pianoblog',
 ]
 
