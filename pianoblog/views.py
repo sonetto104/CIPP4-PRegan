@@ -1,3 +1,13 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404, reverse
+from .models import TextPost, TextComment
+from django.http import HttpResponseRedirect
+from django.views.generic import View, TemplateView
+from django.views import generic
 
-# Create your views here.
+
+class HomePageView(TemplateView):
+    """About page view"""
+    
+    # COULD BE CHANGED LATER FOR MORE SPECIFIC HOME HTML
+
+    template_name = "base.html"
