@@ -15,6 +15,9 @@ import os
 import dj_database_url
 if os.path.isfile('env.py'):
     import env
+from pianoblog.models import ImagePost
+from pianoblog.handlers import cloudinary_handler
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates')
@@ -136,8 +139,22 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 MEDIA_URL = '/media/'
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+CLOUDINARY_URL = os.environ.get('CLOUDINARY_URL')
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+SUMMERNOTE_CONFIG = {
+
+    'summernote': {
+        'attachment_model': 'pianoblog.models.ImagePost',
+        'attachment_upload_to': 'media/images',
+        'attachment_filesize_limit': 1024 * 1024 * 10,  # 10 MB
+        'attachment_require_authentication': True,
+        'attachment_handler': 'pianoblog.handlers.cloudinary_handler',
+    },
+}

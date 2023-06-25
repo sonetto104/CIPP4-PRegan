@@ -18,7 +18,7 @@ class TextPostAdmin(SummernoteModelAdmin):
 
 @admin.register(TextComment)
 class TextCommentAdmin(admin.ModelAdmin):
-    list_display = ('name', 'body', 'post', 'created_on', 'approved')
+    list_display = ('author', 'content', 'textpost', 'created_on', 'approved')
     list_filter = ('approved', 'created_on')
     search_fields = ('name', 'email', 'body')
     actions = ['approve_comments']
