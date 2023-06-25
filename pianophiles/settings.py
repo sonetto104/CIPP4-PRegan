@@ -15,8 +15,6 @@ import os
 import dj_database_url
 if os.path.isfile('env.py'):
     import env
-from pianoblog.models import ImagePost
-from pianoblog.handlers import cloudinary_handler
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -148,7 +146,9 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+
 SUMMERNOTE_CONFIG = {
+
 
     'summernote': {
         'attachment_model': 'pianoblog.models.ImagePost',
