@@ -14,6 +14,30 @@ class TextPostAdmin(SummernoteModelAdmin):
     search_fields = ['title', 'content']
     summernote_fields = ('content')
 
+
+# class ImagePostContentFormField(SummernoteTextFormField):
+#     def __init__(self, *args, **kwargs):
+#         super().__init__(*args, **kwargs)
+#         self.widget = SummernoteInplaceWidget(attrs=self.widget_attrs)
+
+#         # Remove toolbar buttons that are not needed for image posts
+#         toolbar = self.widget_attrs.get('summernote')['toolbar']
+#         toolbar.remove(['style', ['style']])
+#         toolbar.remove(['font', ['bold', 'italic', 'underline', 'clear']])
+#         toolbar.remove(['para', ['ul', 'ol', 'paragraph']])
+#         toolbar.remove(['insert', ['link', 'video']])
+#         toolbar.remove(['view', ['fullscreen', 'codeview']])
+
+
+@admin.register(ImagePost)
+class ImagePostAdmin(SummernoteModelAdmin):
+
+    list_display = ('title', 'slug', 'status', 'created_on')
+    prepopulated_fields = {"slug": ("title",)}
+    list_filter = ("status", "created_on")
+    search_fields = ['title', 'content']
+    summernote_fields = ('image')
+
 # admin.register block taken from Code Institute's Codestar Walkthrough Project
 
 @admin.register(TextComment)
