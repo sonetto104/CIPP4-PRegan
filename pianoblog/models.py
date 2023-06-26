@@ -1,10 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from cloudinary.models import CloudinaryField
-from django_summernote.widgets import SummernoteInplaceWidget
-from django_summernote.fields import SummernoteTextFormField
-from django.core.validators import FileExtensionValidator 
-from .image_validator import validate_image_size
+
 
 STATUS = ((0, "Draft"), (1, "Published"))
 
@@ -33,8 +30,35 @@ class TextPost(models.Model):
         return self.likes.count()
 
 
-class TextComment(models.Model):
+class ImagePost(models.Model):
+    title = models.CharField(max_length=200)
+    slug = models.SlugField(max_length=200, unique=True)
+    author = models.ForeignKey(User, on_delete=models.CASCADE, related_name='image_posts')
+    image = CloudinaryField(
+        'image',
+        format='jpg',
+        transformation=[
+            {'dpr': "auto", 'responsive': True, 'width': "auto", 'crop': "fill", 'max_width': "1080", 'max_height': "566"}
+        ]
+    )
+    # content = ImagePostContentFormField()  # Use the custom form field
+    created_on = models.DateTimeField(auto_now_add=True)
+    updated_on = models.DateTimeField(auto_now=True)
+    # featured_image = models.BooleanField(default=False)
+    # image_width = models.PositiveIntegerField(null=True)
+    # image_height = models.PositiveIntegerField(null=True)
+    status = models.IntegerField(choices=STATUS, default=0)
+
+    class Meta:
+        ordering = ['-created_on']
+
+    def __str__(self):
+        return self.title
+
+
+class Comment(models.Model):
     textpost = models.ForeignKey(TextPost, on_delete=models.CASCADE, related_name="textpost_comments")
+    imagepost = models.ForeignKey(ImagePost, on_delete=models.CASCADE, related_name="imagepost_comments")
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     content = models.TextField()
     created_on = models.DateTimeField(auto_now_add=True)
@@ -62,27 +86,4 @@ class TextComment(models.Model):
 #         toolbar.remove(['view', ['fullscreen', 'codeview']])
 
 
-class ImagePost(models.Model):
-    title = models.CharField(max_length=200)
-    slug = models.SlugField(max_length=200, unique=True)
-    author = models.ForeignKey(User, on_delete=models.CASCADE, related_name='image_posts')
-    image = CloudinaryField(
-        'image',
-        format='jpg',
-        transformation=[
-            {'dpr': "auto", 'responsive': True, 'width': "auto", 'crop': "fill", 'max_width': "1080", 'max_height': "566"}
-        ]
-    )
-    # content = ImagePostContentFormField()  # Use the custom form field
-    created_on = models.DateTimeField(auto_now_add=True)
-    updated_on = models.DateTimeField(auto_now=True)
-    # featured_image = models.BooleanField(default=False)
-    # image_width = models.PositiveIntegerField(null=True)
-    # image_height = models.PositiveIntegerField(null=True)
-    status = models.IntegerField(choices=STATUS, default=0)
 
-    class Meta:
-        ordering = ['-created_on']
-
-    def __str__(self):
-        return self.title

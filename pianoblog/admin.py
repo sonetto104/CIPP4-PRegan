@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import TextPost, TextComment, ImagePost
+from .models import TextPost, Comment, ImagePost
 from django_summernote.admin import SummernoteModelAdmin
 
 # admin.register block taken from Code Institute's Codestar Walkthrough Project
@@ -36,12 +36,11 @@ class ImagePostAdmin(SummernoteModelAdmin):
     prepopulated_fields = {"slug": ("title",)}
     list_filter = ("status", "created_on")
     search_fields = ['title', 'content']
-    summernote_fields = ('image')
 
 # admin.register block taken from Code Institute's Codestar Walkthrough Project
 
-@admin.register(TextComment)
-class TextCommentAdmin(admin.ModelAdmin):
+@admin.register(Comment)
+class CommentAdmin(admin.ModelAdmin):
     list_display = ('author', 'content', 'textpost', 'created_on', 'approved')
     list_filter = ('approved', 'created_on')
     search_fields = ('name', 'email', 'body')
