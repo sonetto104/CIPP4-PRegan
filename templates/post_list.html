@@ -8,9 +8,11 @@
     <ul>
         {% for post in posts %}
             <li>
+                <a href="{% url 'post_detail' post.slug %}">
                 <h2>{{ post.title }}</h2>
                 <p>Author: {{ post.author }}</p>
                 <p>Created on: {{ post.created_on }}</p>
+                </a>
                 {% if post.imagepost %}
                     <img src="{{ post.imagepost.image.url }}" alt="Image Post">
                 {% endif %}
