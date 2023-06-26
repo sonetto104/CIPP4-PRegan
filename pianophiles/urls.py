@@ -17,9 +17,11 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from pianoblog import views
+from pianoblog.views import PostListView
 
 urlpatterns = [
     path('', views.HomePageView.as_view(), name='home'),
     path('admin/', admin.site.urls),
     path('summernote/', include('django_summernote.urls')),
+    path('pianoblog/', include('pianoblog.urls'))
 ]

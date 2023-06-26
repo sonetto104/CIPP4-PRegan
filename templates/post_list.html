@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Post List</title>
+</head>
+<body>
+    <h1>Post List</h1>
+    <ul>
+        {% for post in posts %}
+            <li>
+                <h2>{{ post.title }}</h2>
+                <p>Author: {{ post.author }}</p>
+                <p>Created on: {{ post.created_on }}</p>
+                {% if post.imagepost %}
+                    <img src="{{ post.imagepost.image.url }}" alt="Image Post">
+                {% endif %}
+                {% if post.videopost %}
+                    <video controls>
+                        <source src="{{ post.videopost.video.url }}" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                {% endif %}
+                <!-- Render additional post details as needed -->
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
