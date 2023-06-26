@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import TextPost, TextPostComment, ImagePostComment, ImagePost, VideoPostComment, VideoPost
+from .models import TextPost, ImagePost, VideoPost, PostComment
 from django_summernote.admin import SummernoteModelAdmin
 from django import forms
 
@@ -36,9 +36,9 @@ class VideoPostAdmin(SummernoteModelAdmin):
 
 # admin.register block taken from Code Institute's Codestar Walkthrough Project
 
-@admin.register(TextPostComment)
-class TextCommentAdmin(admin.ModelAdmin):
-    list_display = ('author', 'content', 'textpost', 'created_on', 'approved')
+@admin.register(PostComment)
+class PostCommentAdmin(admin.ModelAdmin):
+    list_display = ('author', 'content_type', 'content', 'created_on', 'approved')
     list_filter = ('approved', 'created_on')
     search_fields = ('author__username', 'content')
     actions = ['approve_comments']
@@ -47,23 +47,23 @@ class TextCommentAdmin(admin.ModelAdmin):
         queryset.update(approved=True)
 
 
-@admin.register(ImagePostComment)
-class ImageCommentAdmin(admin.ModelAdmin):
-    list_display = ('author', 'content', 'imagepost', 'created_on', 'approved')
-    list_filter = ('approved', 'created_on')
-    search_fields = ('author__username', 'content')
-    actions = ['approve_comments']
+# @admin.register(ImagePostComment)
+# class ImageCommentAdmin(admin.ModelAdmin):
+#     list_display = ('author', 'content', 'imagepost', 'created_on', 'approved')
+#     list_filter = ('approved', 'created_on')
+#     search_fields = ('author__username', 'content')
+#     actions = ['approve_comments']
 
-    def approve_comments(self, request, queryset):
-        queryset.update(approved=True)
+#     def approve_comments(self, request, queryset):
+#         queryset.update(approved=True)
 
 
-@admin.register(VideoPostComment)
-class VideoCommentAdmin(admin.ModelAdmin):
-    list_display = ('author', 'content', 'videopost', 'created_on', 'approved')
-    list_filter = ('approved', 'created_on')
-    search_fields = ('author__username', 'content')
-    actions = ['approve_comments']
+# @admin.register(VideoPostComment)
+# class VideoCommentAdmin(admin.ModelAdmin):
+#     list_display = ('author', 'content', 'videopost', 'created_on', 'approved')
+#     list_filter = ('approved', 'created_on')
+#     search_fields = ('author__username', 'content')
+#     actions = ['approve_comments']
 
-    def approve_comments(self, request, queryset):
-        queryset.update(approved=True)
+#     def approve_comments(self, request, queryset):
+#         queryset.update(approved=True)
