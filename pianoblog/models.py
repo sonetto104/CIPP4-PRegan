@@ -5,8 +5,6 @@ from cloudinary.models import CloudinaryField
 
 STATUS = ((0, "Draft"), (1, "Published"))
 
-# Create your models here.
-
 
 class TextPost(models.Model):
     title = models.CharField(max_length=200, unique=True)
@@ -38,15 +36,35 @@ class ImagePost(models.Model):
         'image',
         format='jpg',
         transformation=[
-            {'dpr': "auto", 'responsive': True, 'width': "auto", 'crop': "fill", 'max_width': "1080", 'max_height': "566"}
+            {'dpr': "auto", 'responsive': True, 'width': "auto", 'crop': "fill", 'max_width': 1080, 'max_height': 566}
         ]
     )
-    # content = ImagePostContentFormField()  # Use the custom form field
     created_on = models.DateTimeField(auto_now_add=True)
     updated_on = models.DateTimeField(auto_now=True)
-    # featured_image = models.BooleanField(default=False)
-    # image_width = models.PositiveIntegerField(null=True)
-    # image_height = models.PositiveIntegerField(null=True)
+    status = models.IntegerField(choices=STATUS, default=0)
+
+    class Meta:
+        ordering = ['-created_on']
+
+    def __str__(self):
+        return self.title
+
+
+class VideoPost(models.Model):
+    title = models.CharField(max_length=200)
+    slug = models.SlugField(max_length=200, unique=True)
+    author = models.ForeignKey(User, on_delete=models.CASCADE, related_name='video_posts')
+    video = CloudinaryField(
+        'video',
+        resource_type="video",
+        max_length=524288000,
+        eager=[
+            {'max_width': 1080, 'max_height': 566, 'crop': "fill", 'audio_codec': "wav"}
+        ],
+        eager_async=True
+        )
+    created_on = models.DateTimeField(auto_now_add=True)
+    updated_on = models.DateTimeField(auto_now=True)
     status = models.IntegerField(choices=STATUS, default=0)
 
     class Meta:
@@ -72,18 +90,7 @@ class Comment(models.Model):
         return f"Comment {self.content} by {self.author.username}"
 
 
-# class ImagePostContentFormField(SummernoteTextFormField):
-#     def __init__(self, *args, **kwargs):
-#         super().__init__(*args, **kwargs)
-#         self.widget = SummernoteInplaceWidget(attrs=self.widget_attrs)
 
-#         # Remove toolbar buttons that are not needed for image posts
-#         toolbar = self.widget_attrs.get('summernote')['toolbar']
-#         toolbar.remove(['style', ['style']])
-#         toolbar.remove(['font', ['bold', 'italic', 'underline', 'clear']])
-#         toolbar.remove(['para', ['ul', 'ol', 'paragraph']])
-#         toolbar.remove(['insert', ['link', 'video']])
-#         toolbar.remove(['view', ['fullscreen', 'codeview']])
 
 
 
