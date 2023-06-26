@@ -79,6 +79,7 @@ class VideoPost(models.Model):
 class Comment(models.Model):
     textpost = models.ForeignKey(TextPost, on_delete=models.CASCADE, related_name="textpost_comments")
     imagepost = models.ForeignKey(ImagePost, on_delete=models.CASCADE, related_name="imagepost_comments")
+    videopost = models.ForeignKey(VideoPost, on_delete=models.CASCADE, related_name="videopost_comments")
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     content = models.TextField()
     created_on = models.DateTimeField(auto_now_add=True)
@@ -90,9 +91,4 @@ class Comment(models.Model):
 
     def __str__(self):
         return f"Comment {self.content} by {self.author.username}"
-
-
-
-
-
 
