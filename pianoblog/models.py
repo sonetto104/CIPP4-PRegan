@@ -57,7 +57,6 @@ class VideoPost(models.Model):
     video = CloudinaryField(
         'video',
         resource_type="video",
-        max_length=524288000,
         eager=[
             {'max_width': 1080, 'max_height': 566, 'crop': "fill", 'audio_codec': "wav"}
         ],
