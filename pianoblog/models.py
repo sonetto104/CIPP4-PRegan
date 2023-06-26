@@ -1,6 +1,9 @@
 from django.db import models
 from django.contrib.auth.models import User
 from cloudinary.models import CloudinaryField
+import cloudinary.uploader
+from cloudinary.uploader import upload_large
+from pianophiles.settings import CLOUDINARY_UNSIGNED_UPLOAD_PRESET
 
 
 STATUS = ((0, "Draft"), (1, "Published"))
