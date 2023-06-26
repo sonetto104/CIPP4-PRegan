@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'cloudinary_storage',
     'django.contrib.staticfiles',
     'cloudinary',
+    'cloudinary.uploader',
     'django_summernote',
     'pianoblog',
 ]
@@ -147,14 +148,14 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
-SUMMERNOTE_CONFIG = {
+# SUMMERNOTE_CONFIG = {
 
 
-    'summernote': {
-        'attachment_model': 'pianoblog.models.ImagePost',
-        'attachment_upload_to': 'media/images',
-        'attachment_filesize_limit': 1024 * 1024 * 10,  # 10 MB
-        'attachment_require_authentication': True,
-        'attachment_handler': 'pianoblog.handlers.cloudinary_handler',
-    },
-}
+#     'summernote': {
+#         'attachment_model': 'pianoblog.models.ImagePost',
+#         'attachment_upload_to': 'media/images',
+#         'attachment_filesize_limit': 1024 * 1024 * 10,  # 10 MB
+#         'attachment_require_authentication': True,
+#         'attachment_handler': 'pianoblog.handlers.cloudinary_handler',
+#     },
+# }

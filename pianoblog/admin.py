@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import TextPost, TextComment
+from .models import TextPost, TextComment, ImagePost
 from django_summernote.admin import SummernoteModelAdmin
 
 # admin.register block taken from Code Institute's Codestar Walkthrough Project
