@@ -1,25 +1,21 @@
 from django.db import models
 from django.contrib.auth.models import User
 from cloudinary.models import CloudinaryField
-import cloudinary.uploader
-from cloudinary.uploader import upload_large
-from pianophiles.settings import CLOUDINARY_UNSIGNED_UPLOAD_PRESET
+from django.contrib.contenttypes.fields import GenericForeignKey
+from django.contrib.contenttypes.models import ContentType
 
 
 STATUS = ((0, "Draft"), (1, "Published"))
 
 
 class TextPost(models.Model):
-    title = models.CharField(max_length=200, unique=True)
+    title = models.CharField(max_length=200)
     slug = models.SlugField(max_length=200, unique=True)
-    author = models.ForeignKey(
-        User, on_delete=models.CASCADE, related_name="text_posts"
-    )
+    author = models.ForeignKey(User, on_delete=models.CASCADE, related_name='text_posts')
     content = models.TextField(default='')
     created_on = models.DateTimeField(auto_now_add=True)
     updated_on = models.DateTimeField(auto_now=True)
     status = models.IntegerField(choices=STATUS, default=0)
-    likes = models.ManyToManyField(User, related_name='textpost_likes', blank=True)
 
     class Meta:
         ordering = ["-created_on"]
@@ -52,6 +48,9 @@ class ImagePost(models.Model):
     def __str__(self):
         return self.title
 
+    def number_of_likes(self):
+        return self.likes.count()
+
 
 class VideoPost(models.Model):
     title = models.CharField(max_length=200)
@@ -75,10 +74,41 @@ class VideoPost(models.Model):
     def __str__(self):
         return self.title
 
+    def number_of_likes(self):
+        return self.likes.count()
 
-class Comment(models.Model):
+
+class TextPostComment(models.Model):
     textpost = models.ForeignKey(TextPost, on_delete=models.CASCADE, related_name="textpost_comments")
+    author = models.ForeignKey(User, on_delete=models.CASCADE)
+    content = models.TextField()
+    created_on = models.DateTimeField(auto_now_add=True)
+    updated_on = models.DateTimeField(auto_now=True)
+    approved = models.BooleanField(default=False)
+
+    class Meta:
+        ordering = ["created_on"]
+
+    def __str__(self):
+        return f"Comment {self.content} by {self.author.username}"
+
+
+class ImagePostComment(models.Model):
     imagepost = models.ForeignKey(ImagePost, on_delete=models.CASCADE, related_name="imagepost_comments")
+    author = models.ForeignKey(User, on_delete=models.CASCADE)
+    content = models.TextField()
+    created_on = models.DateTimeField(auto_now_add=True)
+    updated_on = models.DateTimeField(auto_now=True)
+    approved = models.BooleanField(default=False)
+
+    class Meta:
+        ordering = ["created_on"]
+
+    def __str__(self):
+        return f"Comment {self.content} by {self.author.username}"
+
+
+class VideoPostComment(models.Model):
     videopost = models.ForeignKey(VideoPost, on_delete=models.CASCADE, related_name="videopost_comments")
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     content = models.TextField()

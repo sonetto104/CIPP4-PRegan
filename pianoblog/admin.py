@@ -1,6 +1,7 @@
 from django.contrib import admin
-from .models import TextPost, Comment, ImagePost, VideoPost
+from .models import TextPost, TextPostComment, ImagePostComment, ImagePost, VideoPostComment, VideoPost
 from django_summernote.admin import SummernoteModelAdmin
+from django import forms
 
 # admin.register block taken from Code Institute's Codestar Walkthrough Project
 
@@ -13,20 +14,6 @@ class TextPostAdmin(SummernoteModelAdmin):
     list_filter = ("status", "created_on")
     search_fields = ['title', 'content']
     summernote_fields = ('content')
-
-
-# class ImagePostContentFormField(SummernoteTextFormField):
-#     def __init__(self, *args, **kwargs):
-#         super().__init__(*args, **kwargs)
-#         self.widget = SummernoteInplaceWidget(attrs=self.widget_attrs)
-
-#         # Remove toolbar buttons that are not needed for image posts
-#         toolbar = self.widget_attrs.get('summernote')['toolbar']
-#         toolbar.remove(['style', ['style']])
-#         toolbar.remove(['font', ['bold', 'italic', 'underline', 'clear']])
-#         toolbar.remove(['para', ['ul', 'ol', 'paragraph']])
-#         toolbar.remove(['insert', ['link', 'video']])
-#         toolbar.remove(['view', ['fullscreen', 'codeview']])
 
 
 @admin.register(ImagePost)
@@ -49,11 +36,33 @@ class VideoPostAdmin(SummernoteModelAdmin):
 
 # admin.register block taken from Code Institute's Codestar Walkthrough Project
 
-@admin.register(Comment)
-class CommentAdmin(admin.ModelAdmin):
-    list_display = ('author', 'content', 'textpost', 'imagepost', 'videopost', 'created_on', 'approved')
+@admin.register(TextPostComment)
+class TextCommentAdmin(admin.ModelAdmin):
+    list_display = ('author', 'content', 'textpost', 'created_on', 'approved')
     list_filter = ('approved', 'created_on')
-    search_fields = ('name', 'email', 'body')
+    search_fields = ('author__username', 'content')
+    actions = ['approve_comments']
+
+    def approve_comments(self, request, queryset):
+        queryset.update(approved=True)
+
+
+@admin.register(ImagePostComment)
+class ImageCommentAdmin(admin.ModelAdmin):
+    list_display = ('author', 'content', 'imagepost', 'created_on', 'approved')
+    list_filter = ('approved', 'created_on')
+    search_fields = ('author__username', 'content')
+    actions = ['approve_comments']
+
+    def approve_comments(self, request, queryset):
+        queryset.update(approved=True)
+
+
+@admin.register(VideoPostComment)
+class VideoCommentAdmin(admin.ModelAdmin):
+    list_display = ('author', 'content', 'videopost', 'created_on', 'approved')
+    list_filter = ('approved', 'created_on')
+    search_fields = ('author__username', 'content')
     actions = ['approve_comments']
 
     def approve_comments(self, request, queryset):
