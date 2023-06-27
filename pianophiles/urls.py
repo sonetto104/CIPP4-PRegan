@@ -20,8 +20,9 @@ from pianoblog import views
 from pianoblog.views import PostListView
 
 urlpatterns = [
-    path('', views.HomePageView.as_view(), name='home'),
+    # path('', views.HomePageView.as_view(), name='home'),
     path('admin/', admin.site.urls),
     path('summernote/', include('django_summernote.urls')),
-    path('pianoblog/', include('pianoblog.urls'))
+    path('', include('pianoblog.urls'), name='pianoblog_urls'),
+    path('accounts/', include('allauth.urls')),
 ]

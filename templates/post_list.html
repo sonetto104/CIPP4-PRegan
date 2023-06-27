@@ -4,6 +4,8 @@
     <title>Post List</title>
 </head>
 <body>
+    {% extends 'base.html' %} 
+    {% block content %}
     <h1>Post List</h1>
     <ul>
         {% for post in posts %}
@@ -26,5 +28,7 @@
             </li>
         {% endfor %}
     </ul>
+    {% endblock content %}
 </body>
+
 </html>

@@ -6,18 +6,17 @@ from django.views import generic
 from .forms import CommentForm
 
 
-class HomePageView(TemplateView):
-    """About page view"""
+# class HomePageView(TemplateView):
+#     """About page view"""
     
-    # COULD BE CHANGED LATER FOR MORE SPECIFIC HOME HTML
+#     # COULD BE CHANGED LATER FOR MORE SPECIFIC HOME HTML
 
-    template_name = "base.html"
+#     template_name = "base.html"
 
 
 class PostListView(generic.ListView):
     model = Post
     template_name = 'post_list.html'
-    name = 'post-list'
     context_object_name = 'posts'
     queryset = Post.objects.filter(status=1) 
 

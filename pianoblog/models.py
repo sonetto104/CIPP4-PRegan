@@ -44,15 +44,8 @@ class PostComment(models.Model):
         return f"Comment {self.content} by {self.author.username}"
 
 
-
-    
-
 class TextPost(Post):
     content = models.TextField(default='')
-
-
-# class TextPostComment(Comment):
-#     textpost = models.ForeignKey(TextPost, on_delete=models.CASCADE, related_name="textpost_comments")
 
 
 class ImagePost(Post):
@@ -65,10 +58,6 @@ class ImagePost(Post):
     )
 
 
-# class ImagePostComment(Comment):
-#     imagepost = models.ForeignKey(ImagePost, on_delete=models.CASCADE, related_name="imagepost_comments")
-
-
 class VideoPost(Post):
     video = CloudinaryField(
         'video',
@@ -78,7 +67,3 @@ class VideoPost(Post):
         ],
         eager_async=True
     )
-
-
-# class VideoPostComment(Comment):
-#     videopost = models.ForeignKey(VideoPost, on_delete=models.CASCADE, related_name="videopost_comments")

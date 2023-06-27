@@ -4,6 +4,6 @@ from .views import PostListView, PostDetail
 
 urlpatterns = [
     # Other URL patterns...
-    path('', views.PostListView.as_view(), name='post_list'),
+    path('', views.PostListView.as_view(), name='home'),
     path('<slug:slug>/', views.PostDetail.as_view(), name='post_detail'),
 ]
