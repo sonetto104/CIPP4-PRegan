@@ -38,7 +38,7 @@ class VideoPostAdmin(SummernoteModelAdmin):
 
 @admin.register(PostComment)
 class PostCommentAdmin(admin.ModelAdmin):
-    list_display = ('author', 'content_type', 'content', 'created_on', 'approved')
+    list_display = ('author', 'content', 'created_on', 'approved')
     list_filter = ('approved', 'created_on')
     search_fields = ('author__username', 'content')
     actions = ['approve_comments']

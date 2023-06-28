@@ -1,8 +1,13 @@
 <!DOCTYPE html>
 <html>
+    {% extends 'base.html' %}
 <head>
+    
     <title>{{ post.title }}</title>
 </head>
+
+{% block content %}
+{% load crispy_forms_tags %}
 <body>
     <h1>{{ post.title }}</h1>
     <p>Author: {{ post.author }}</p>
@@ -22,6 +27,22 @@
     <p>{{ post.content }}</p>
 
     <h2>Comments</h2>
+    {% if commented %}
+                <div class="alert alert-success" role="alert">
+                    Your comment is awaiting approval
+                </div>
+    {% else %}
+    {% if user.is_authenticated %}
+
+                <h3>Leave a comment:</h3>
+                <p>Posting as: {{ user.username }}</p>
+                <form method="post" style="margin-top: 1.3em;">
+                    {{ comment_form | crispy }}
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-signup btn-lg">Submit</button>
+                </form>
+    {% endif %}           
+    {% endif %}
     <ul>
         {% for comment in post_comments %}
             <li>
@@ -45,4 +66,5 @@
 
    
 </body>
+{% endblock content %}
 </html>
