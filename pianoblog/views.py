@@ -8,6 +8,7 @@ from django.contrib.auth.models import User
 from allauth.account.views import SignupView
 from .forms import CustomSignupForm
 from django.shortcuts import redirect
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 # class HomePageView(TemplateView):
 #     """About page view"""
@@ -108,3 +109,14 @@ class ProfileView(View):
             "comments": comments,
         }
         return render(request, 'profile.html', context)
+
+
+class UserCommentsView(LoginRequiredMixin, View):
+    def get(self, request, username):
+        user = get_object_or_404(User, username=username)
+        comments = PostComment.objects.filter(author=user)
+        context = {
+            'user': user,
+            'comments': comments
+        }
+        return render(request, 'user_comments.html', context)
