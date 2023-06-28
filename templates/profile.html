@@ -6,8 +6,22 @@
 <p>Bio: {{ profile.bio }}</p>
 <p>Date of Joining: {{ profile.created_on }}</p>
 
+<!-- Display user's most recent 5 posts -->
 
-<h2>Posts:</h2>
+
+<!-- Button to display all user's comments -->
+{% if own_profile %}
+  <a href="{% url 'user-comments' user.username %}">View All Comments</a>
+{% endif %}
+
+
+
+
+
+
+
+
+<!-- <h2>Posts:</h2>
 <ul>
   {% for post in user.posts.all %}
     <li>{{ post.title }}</li>
@@ -16,7 +30,7 @@
   {% endfor %}
 </ul>
 
-<!-- Display user's comments -->
+ Display user's comments
 <h2>Comments:</h2>
 <ul>
   {% for comment in comments %}
@@ -24,4 +38,4 @@
   {% empty %}
     <li>No comments found.</li>
   {% endfor %}
-</ul>
+</ul> -->

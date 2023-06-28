@@ -120,3 +120,14 @@ class UserCommentsView(LoginRequiredMixin, View):
             'comments': comments
         }
         return render(request, 'user_comments.html', context)
+
+
+class UserPostsView(LoginRequiredMixin, View):
+    def get(self, request, username):
+        user = get_object_or_404(User, username=username)
+        posts = Post.objects.filter(author=user)
+        context = {
+            'user': user,
+            'posts': posts
+        }
+        return render(request, 'user_posts.html', context)
