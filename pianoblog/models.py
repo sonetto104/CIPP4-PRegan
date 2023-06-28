@@ -75,6 +75,11 @@ class Profile(models.Model):
     updated_on = models.DateTimeField(auto_now=True)
     bio = models.TextField(blank=True, max_length=280)
     status = models.IntegerField(choices=STATUS, default=0)
+    profile_photo = CloudinaryField(
+        'image',
+        format='jpg',
+        default="https://res.cloudinary.com/dayngkoud/image/upload/v1687988552/piano_icon_pijapc.png"
+    )
 
     class Meta:
         ordering = ["-created_on"]
