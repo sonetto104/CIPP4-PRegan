@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404, reverse
-from .models import TextPost, ImagePost, VideoPost, Post, Profile
+from .models import TextPost, ImagePost, VideoPost, Post, Profile, PostComment
 from django.http import HttpResponseRedirect
 from django.views.generic import View, TemplateView
 from django.views import generic
@@ -94,32 +94,17 @@ class CustomSignupView(SignupView):
         return redirect('home')
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-# class ProfileView(generic.View):
-#     def get(self, request, id, *args, **kwargs):
-#         loggedin_user = get_object_or_404(User.objects, id=id)
-#         posts = loggedin_user.author.order_by("-created_on")
-
-#         return render(
-#             request,
-#             "profile.html",
-#             {
-#                 "loggedin_user": loggedin_user,
-#                 "posts": posts,
-#             },
-#         )
+class ProfileView(View):
+    def get(self, request, username):
+        user = get_object_or_404(User, username=username)
+        profile = get_object_or_404(Profile, owner=user)
+        posts = Post.objects.filter(author=user).order_by('-created_on')[:5]
+        comments = PostComment.objects.filter(author=user)
+        context = {
+            'profile': profile,
+            'posts': posts,
+            'own_profile': user == request.user,
+            "user": user,
+            "comments": comments,
+        }
+        return render(request, 'profile.html', context)
