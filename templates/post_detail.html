@@ -44,8 +44,9 @@
     {% endif %}           
     {% endif %}
     <ul>
-        {% for comment in post_comments %}
+        
         <div class="comments" style="padding: 10px;">
+            {% for comment in comments %}
             <p class="font-weight-bold">
                 <!-- The commenter's name goes here. Check the model if you're not sure what that is -->
                 {{ comment.author }}
