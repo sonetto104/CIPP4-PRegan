@@ -1,8 +1,12 @@
-<!-- profile.html -->
 
 <h1>{{ user.username }}'s Profile</h1>
 
-<!-- Display user's posts -->
+<!-- Display user's profile picture, bio, and date of joining -->
+<img src="{{ profile.profile_photo.url }}" alt="Profile Photo">
+<p>Bio: {{ profile.bio }}</p>
+<p>Date of Joining: {{ profile.created_on }}</p>
+
+
 <h2>Posts:</h2>
 <ul>
   {% for post in user.posts.all %}
