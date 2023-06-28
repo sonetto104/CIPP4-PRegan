@@ -38,16 +38,7 @@ class PostDetail(View):
                 "post": post,
                 "comments": comments,
                 "liked": liked,
-                "commented": False,
+                # "commented": False,
                 "comment_form": CommentForm()
             }
         )
-
-
-# class MultiplePostListView(generic.ListView):
-#     template_name = 'post_list.html'  # Your template for displaying the posts
-
-#     def get_queryset(self):
-#         # Retrieve all the posts and their respective types
-#         queryset = Post.objects.all().select_related('content_type')
-#         return queryset

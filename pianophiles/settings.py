@@ -30,10 +30,9 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['8000-sonetto104-cipp4pregan-f7zpi5tmdlz.ws-eu100.gitpod.io', 'localhost', 'pianophiles.herokuapp.com', 'pianophiles-cbf072093775.herokuapp.com']
+ALLOWED_HOSTS = ['8000-sonetto104-cipp4pregan-f7zpi5tmdlz.ws-eu100.gitpod.io', 'localhost', 'pianophiles.herokuapp.com', 'pianophiles-cbf072093775.herokuapp.com', '8000-sonetto104-cipp4pregan-f7zpi5tmdlz.ws-eu101.gitpod.io']
 
-CSRF_TRUSTED_ORIGINS = ['https://8000-sonetto104-cipp4pregan-f7zpi5tmdlz.ws-eu100.gitpod.io']
-
+CSRF_TRUSTED_ORIGINS = ['https://8000-sonetto104-cipp4pregan-f7zpi5tmdlz.ws-eu101.gitpod.io']
 
 # Application definition
 
@@ -52,13 +51,20 @@ INSTALLED_APPS = [
     'cloudinary',
     'cloudinary.uploader',
     'django_summernote',
+    'crispy_forms',
+    "crispy_bootstrap5",
     'pianoblog',
 ]
+
+CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
+
+CRISPY_TEMPLATE_PACK = "bootstrap5"
 
 SITE_ID = 1
 
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
