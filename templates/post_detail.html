@@ -45,23 +45,21 @@
     {% endif %}
     <ul>
         {% for comment in post_comments %}
-            <li>
-                {% if comment.textpostcomment %}
-                    <p>{{ comment.textpostcomment.content }}</p>
-                {% elif comment.imagepostcomment %}
-                    <img src="{{ comment.imagepostcomment.image.url }}" alt="Image Comment">
-                {% elif comment.videopostcomment %}
-                    <video controls>
-                        <source src="{{ comment.videopostcomment.video.url }}" type="video/mp4">
-                        Your browser does not support the video tag.
-                    </video>
-                {% endif %}
-                <p>Author: {{ comment.author }}</p>
-                <p>Created on: {{ comment.created_on }}</p>
-            </li>
-        {% empty %}
-            <li>No comments yet.</li>
+        <div class="comments" style="padding: 10px;">
+            <p class="font-weight-bold">
+                <!-- The commenter's name goes here. Check the model if you're not sure what that is -->
+                {{ comment.author }}
+                <span class=" text-muted font-weight-normal">
+                    <!-- The comment's created date goes here -->
+                    {{ comment.created_on }}
+                </span> wrote:
+            </p>
+            <!-- The body of the comment goes before the | -->
+            {{ comment.content | linebreaks }}
+        </div>
+        <!-- Our for loop ends here -->
         {% endfor %}
+    </div>
     </ul>
 
    
