@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import TextPost, ImagePost, VideoPost, PostComment
+from .models import TextPost, ImagePost, VideoPost, PostComment, Profile
 from django_summernote.admin import SummernoteModelAdmin
 from django import forms
 
@@ -38,11 +38,7 @@ class VideoPostAdmin(SummernoteModelAdmin):
 
 @admin.register(PostComment)
 class PostCommentAdmin(admin.ModelAdmin):
-    # list_display = ('author', 'content', 'created_on', 'approved')
-    # list_filter = ('approved', 'created_on')
-    # search_fields = ('author__username', 'content')
-    # actions = ['approve_comments']
-
+    
     list_display = ('author', 'content', 'post', 'created_on', 'approved')
     list_filter = ('approved', 'created_on')
     search_fields = ('author_username', 'email', 'content')
@@ -51,6 +47,18 @@ class PostCommentAdmin(admin.ModelAdmin):
     def approve_comments(self, request, queryset):
         queryset.update(approved=True)
 
+
+@admin.register(Profile)
+class ProfileAdmin(admin.ModelAdmin):
+
+    list_display = ('owner', 'created_on', 'status')
+    list_filter = ('status', 'created_on')
+    search_fields = ('owner', 'content')
+
+    actions = ['approve_profile']
+
+    def approve_profile(self, request, queryset):
+        queryset.update(approved=True)
 
 # @admin.register(ImagePostComment)
 # class ImageCommentAdmin(admin.ModelAdmin):

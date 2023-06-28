@@ -67,3 +67,17 @@ class VideoPost(Post):
         ],
         eager_async=True
     )
+
+
+class Profile(models.Model):
+    owner = models.OneToOneField(User, on_delete=models.CASCADE)
+    created_on = models.DateTimeField(auto_now_add=True)
+    updated_on = models.DateTimeField(auto_now=True)
+    bio = models.TextField(blank=True, max_length=280)
+    status = models.IntegerField(choices=STATUS, default=0)
+
+    class Meta:
+        ordering = ["-created_on"]
+
+    def __str__(self):
+        return str(self.owner)

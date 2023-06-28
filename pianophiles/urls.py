@@ -18,11 +18,14 @@ from django.contrib import admin
 from django.urls import path, include
 from pianoblog import views
 from pianoblog.views import PostListView
+from pianoblog.models import Profile
+from allauth.account.views import SignupView
+
 
 urlpatterns = [
     # path('', views.HomePageView.as_view(), name='home'),
     path('admin/', admin.site.urls),
     path('summernote/', include('django_summernote.urls')),
-    path('', include('pianoblog.urls'), name='pianoblog_urls'),
+    path('', include('pianoblog.urls')),
     path('accounts/', include('allauth.urls')),
 ]
