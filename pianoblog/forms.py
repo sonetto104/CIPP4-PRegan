@@ -22,3 +22,9 @@ class CustomSignupForm(SignupForm):
 
         Profile.objects.create(owner=user)
         return user
+
+
+class ProfileForm(forms.ModelForm):
+    class Meta:
+        model = Profile
+        fields = ['bio', 'profile_photo']

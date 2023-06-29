@@ -29,7 +29,10 @@
   <a href="{% url 'user-comments' user.username %}">View All Comments</a>
 {% endif %}
 
-
+<!-- Edit profile button for own profile -->
+{% if own_profile %}
+  <a href="{% url 'edit_profile' username=user.username %}">Edit Profile</a>
+{% endif %}
 
 
 
