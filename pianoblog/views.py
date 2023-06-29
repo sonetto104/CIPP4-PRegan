@@ -10,6 +10,7 @@ from .forms import CustomSignupForm, ProfileForm
 from django.shortcuts import redirect
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy
+from django.contrib.auth import logout
 
 # class HomePageView(TemplateView):
 #     """About page view"""
@@ -150,7 +151,6 @@ class EditProfileView(UpdateView):
 class DeleteCommentView(LoginRequiredMixin, DeleteView):
     model = PostComment
     template_name = 'delete_comment.html'
-
     
     def get_success_url(self):
         return reverse('profile', kwargs={'username': self.request.user.username})
@@ -165,3 +165,17 @@ class DeleteCommentView(LoginRequiredMixin, DeleteView):
         success_url = self.get_success_url()
         self.object.delete()
         return redirect(success_url)
+
+
+class DeleteProfileView(LoginRequiredMixin, TemplateView):
+    template_name = 'delete_profile.html'
+    success_url = reverse_lazy('home')
+
+    def get(self, request, *args, **kwargs):
+        return render(request, self.template_name)
+
+    def post(self, request, *args, **kwargs):
+        user = self.request.user
+        logout(request)  # Log out the user
+        user.delete()  # Delete the user profile
+        return redirect(self.success_url)
