@@ -150,11 +150,18 @@ class EditProfileView(UpdateView):
 class DeleteCommentView(LoginRequiredMixin, DeleteView):
     model = PostComment
     template_name = 'delete_comment.html'
-    success_url = reverse_lazy('profile')
 
+    
     def get_success_url(self):
         return reverse('profile', kwargs={'username': self.request.user.username})
 
-    def get_queryset(self):
-        queryset = super().get_queryset()
-        return queryset.filter(user=self.request.user)
+    def get_object(self, queryset=None):
+        comment_id = self.kwargs.get('comment_id')
+        queryset = self.get_queryset()
+        return get_object_or_404(queryset, id=comment_id)
+
+    def delete(self, request, *args, **kwargs):
+        self.object = self.get_object()
+        success_url = self.get_success_url()
+        self.object.delete()
+        return redirect(success_url)

@@ -24,15 +24,19 @@
   <a href="{% url 'user-posts' user.username %}">View All Posts</a>
 {% endif %}
 
-
-{% for comment in comments %}
-  <li>{{ comment.content }}</li>
-  {% if own_profile and comment.user == user %}
-    <a href="{% url 'delete-comment' comment.id %}">Delete</a>
-  {% endif %}
-{% empty %}
-  <li>No comments found.</li>
-{% endfor %}
+<!-- Display user's comments -->
+<h2>Comments:</h2>
+<ul>
+  {% for comment in comments %}
+    <li>{{ comment.content }}
+      {% if own_profile and comment.author == request.user %}
+        <a href="{% url 'delete_comment' comment.id %}">Delete Comment?</a>
+      {% endif %}
+    </li>
+  {% empty %}
+    <li>No comments found.</li>
+  {% endfor %}
+</ul>
 
 <!-- Button to display all user's comments -->
 {% if own_profile %}
@@ -43,27 +47,3 @@
 {% if own_profile %}
   <a href="{% url 'edit_profile' username=user.username %}">Edit Profile</a>
 {% endif %}
-
-
-
-
-
-
-<!-- <h2>Posts:</h2>
-<ul>
-  {% for post in user.posts.all %}
-    <li>{{ post.title }}</li>
-  {% empty %}
-    <li>No posts found.</li>
-  {% endfor %}
-</ul>
-
- Display user's comments
-<h2>Comments:</h2>
-<ul>
-  {% for comment in comments %}
-    <li>{{ comment.content }}</li>
-  {% empty %}
-    <li>No comments found.</li>
-  {% endfor %}
-</ul> -->
