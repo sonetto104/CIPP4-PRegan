@@ -131,3 +131,24 @@ class UserPostsView(LoginRequiredMixin, View):
             'posts': posts
         }
         return render(request, 'user_posts.html', context)
+
+
+class EditProfileView(LoginRequiredMixin, View):
+    def get(self, request):
+        profile = get_object_or_404(Profile, owner=request.user)
+        form = ProfileForm(instance=profile)
+        context = {
+            'form': form
+        }
+        return render(request, 'edit_profile.html', context)
+
+    def post(self, request):
+        profile = get_object_or_404(Profile, owner=request.user)
+        form = ProfileForm(request.POST, request.FILES, instance=profile)
+        if form.is_valid():
+            form.save()
+            return redirect('profile', username=request.user.username)
+        context = {
+            'form': form
+        }
+        return render(request, 'edit_profile.html', context)

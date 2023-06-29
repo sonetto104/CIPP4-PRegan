@@ -8,6 +8,21 @@
 
 <!-- Display user's most recent 5 posts -->
 
+<h2>Recent Posts:</h2>
+<ul>
+  {% for post in posts %}
+    <li>{{ post.title }}</li>
+  {% empty %}
+    <li>No posts found.</li>
+  {% endfor %}
+</ul>
+
+<!-- Button to display all user's posts -->
+{% if own_profile %}
+  <a href="{% url 'post-list' %}">View All Posts</a>
+{% else %}
+  <a href="{% url 'user-posts' user.username %}">View All Posts</a>
+{% endif %}
 
 <!-- Button to display all user's comments -->
 {% if own_profile %}

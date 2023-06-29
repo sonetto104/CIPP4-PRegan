@@ -10,4 +10,5 @@ urlpatterns = [
     path('profile/<str:username>/', views.ProfileView.as_view(), name='profile'),
     path('profile/<str:username>/comments/', views.UserCommentsView.as_view(), name='user-comments'),
     path('profile/<str:username>/posts/', views.UserPostsView.as_view(), name='user-posts'),
+    path('posts/', PostListView.as_view(), name='post-list'),
 ]
