@@ -1,0 +1,7 @@
+<h1>Delete Post</h1>
+<p>Are you sure you want to delete this post?</p>
+<form method="post">
+  {% csrf_token %}
+  <input type="submit" value="Delete">
+  <a href="{% url 'profile' username=request.user.username %}">Cancel</a>
+</form>

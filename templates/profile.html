@@ -12,6 +12,10 @@
 <ul>
   {% for post in posts %}
     <li>{{ post.title }}</li>
+    <p>{{ post.content }}</p>
+    {% if own_profile %}
+      <a href="{% url 'delete_post' post.pk %}">Delete</a>
+    {% endif %}
   {% empty %}
     <li>No posts found.</li>
   {% endfor %}
