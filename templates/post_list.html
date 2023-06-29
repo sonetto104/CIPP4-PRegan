@@ -4,31 +4,57 @@
     
 </head>
 <body>
-    {% extends 'base.html' %} 
-    {% block content %}
-    <div class="container-fluid">
-        <div class="row">
-          {% for post in posts %}
-            <div class="col-lg-4 col-md-6 col-sm-12">
-              <div class="card">
-                <!-- Card content -->
-                <a href="{% url 'post_detail' post.slug %}">
-                  <h2>{{ post.title }}</h2>
-                  <p>Author: {{ post.author }}</p>
-                  <p>Created on: {{ post.created_on }}</p>
-                </a>
-                {% if post.imagepost %}
-                  <img src="{{ post.imagepost.image.url }}" alt="Image Post">
+    {% extends 'base.html' %}
+
+{% block content %}
+  <div class="container">
+    <div class="row">
+      {% for post in posts %}
+        <div class="col-lg-4 col-md-6 col-sm-12">
+          <div class="card mb-4">
+            <div class="card-body">
+              <a href="{% url 'post_detail' post.slug %}">
+                <h2 class="card-title">{{ post.title }}</h2>
+              </a>
+                <p class="card-text">Author: {{ post.author }}</p>
+                <p class="card-text">Created on: {{ post.created_on|date:"F d, Y" }}</p>
+
+                {% if post.post_comments.exists %}
+                  {% with first_comment=post.post_comments.first %}
+                    <p>Comments: <br>
+                      {{ first_comment.author }}: {{ first_comment.content|slice:":20" }}{% if first_comment.content|length > 20 %}...{% endif %}
+                    </p>
+                  {% endwith %}
+
+                  {% if post.post_comments.count > 1 %}
+                    {% with second_comment=post.post_comments.all.1 %}
+                      <p>{{ second_comment.author }}: {{ second_comment.content|slice:":20" }}{% if second_comment.content|length > 20 %}...{% endif %}</p>
+                    {% endwith %}
+                  {% endif %}
+
+                  <p>Number of Comments: {{ post.post_comments.count }}</p>
+                  <a href="{% url 'post_detail' post.slug %}">View all comments</a>
+
+                {% else %}
+                  <p>No comments yet.</p>
                 {% endif %}
-                {% if post.videopost %}
-                  <video controls>
-                    <source src="{{ post.videopost.video.url }}" type="video/mp4">
-                    Your browser does not support the video tag.
-                  </video>
-                {% endif %}
-              </div>
+
+                <p>Likes: {{ post.number_of_likes }}</p>
+              
+
+              {% if post.imagepost %}
+                <img class="card-img-top" src="{{ post.imagepost.image.url }}" alt="Image Post">
+              {% endif %}
+              {% if post.videopost %}
+                <video class="card-video" controls>
+                  <source src="{{ post.videopost.video.url }}" type="video/mp4">
+                  Your browser does not support the video tag.
+                </video>
+              {% endif %}
             </div>
-          {% endfor %}
+          </div>
         </div>
-      </div>
-    {% endblock content %}
+      {% endfor %}
+    </div>
+  </div>
+{% endblock content %}
