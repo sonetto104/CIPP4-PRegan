@@ -1,3 +1,71 @@
 .bg-red-pianophiles {
     background-color: #ff313c;
   }
+
+  .floating-button {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 50px;
+    height: 50px;
+    background-color: red;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    text-decoration: none;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .floating-button:hover {
+    transform: scale(1.05);
+  }
+  
+  .message {
+    position: absolute;
+    top: -40px;
+    right: 0;
+    transform: translate(-170%, -100%);
+    background-color: #343a40;
+    color: #fff;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: bold;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+    white-space: nowrap;
+  }
+  
+  .floating-button:hover .message {
+    opacity: 1;
+  }
+  
+  .plus-icon {
+    position: relative;
+    width: 16px;
+    height: 16px;
+  }
+  
+  .plus-icon::before,
+  .plus-icon::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background-color: white;
+    transform: translateY(-50%);
+  }
+  
+  .plus-icon::before {
+    transform: translateY(-50%) rotate(90deg);
+  }
+
+  .floating-button .message {
+    left: -200px;
+  }

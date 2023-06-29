@@ -57,4 +57,21 @@
       {% endfor %}
     </div>
   </div>
+
+  <a href="{% url 'account_login' %}">
+    <div class="floating-button">
+      <div class="message">
+        {% if user.is_authenticated %}
+          Add a post
+        {% else %}
+          Login or sign up to add a post
+        {% endif %}
+      </div>
+      <span class="plus-icon"></span>
+    </div>
+  </a>
+  
+  
+</body>
+</html>
 {% endblock content %}
