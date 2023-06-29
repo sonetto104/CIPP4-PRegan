@@ -1,7 +1,7 @@
 from django.shortcuts import render, get_object_or_404, reverse
 from .models import TextPost, ImagePost, VideoPost, Post, Profile, PostComment
 from django.http import HttpResponseRedirect
-from django.views.generic import View, TemplateView, UpdateView
+from django.views.generic import View, TemplateView, UpdateView, DeleteView
 from django.views import generic
 from .forms import CommentForm
 from django.contrib.auth.models import User
@@ -147,37 +147,14 @@ class EditProfileView(UpdateView):
         return reverse('profile', kwargs={'username': self.object.owner.username})
 
 
-# class EditProfileView(LoginRequiredMixin, UpdateView):
-#     model = Profile
-#     form_class = ProfileForm
-#     template_name = 'edit_profile.html'
-#     success_url = '/profile/'  # Redirect to profile page after successful update
+class DeleteCommentView(LoginRequiredMixin, DeleteView):
+    model = PostComment
+    template_name = 'delete_comment.html'
+    success_url = reverse_lazy('profile')
 
-#     def get_object(self, queryset=None):
-#         return self.request.user.profile
+    def get_success_url(self):
+        return reverse('profile', kwargs={'username': self.request.user.username})
 
-#     def get(self, request, *args, **kwargs):
-#         self.object = self.get_object()
-#         return super().get(request, *args, **kwargs)
-
-
-
-# class EditProfileView(LoginRequiredMixin, View):
-#     def get(self, request, username):
-#         profile = get_object_or_404(Profile, owner=request.user)
-#         form = ProfileForm(instance=profile)
-#         context = {
-#             'form': form
-#         }
-#         return render(request, 'edit_profile.html', context)
-
-#     def post(self, request):
-#         profile = get_object_or_404(Profile, owner=request.user)
-#         form = ProfileForm(request.POST, request.FILES, instance=profile)
-#         if form.is_valid():
-#             form.save()
-#             return redirect('profile', username=request.user.username)
-#         context = {
-#             'form': form
-#         }
-#         return render(request, 'edit_profile.html', context)
+    def get_queryset(self):
+        queryset = super().get_queryset()
+        return queryset.filter(user=self.request.user)
