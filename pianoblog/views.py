@@ -6,7 +6,7 @@ from django.views import generic
 from .forms import CommentForm
 from django.contrib.auth.models import User
 from allauth.account.views import SignupView
-from .forms import CustomSignupForm, ProfileForm
+from .forms import CustomSignupForm, ProfileForm, CreatePostForm
 from django.shortcuts import redirect
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy
@@ -197,3 +197,18 @@ class DeletePostView(LoginRequiredMixin, DeleteView):
         self.object = self.get_object()
         self.object.delete()
         return redirect(self.get_success_url())
+
+
+class CreatePostView(LoginRequiredMixin, View):
+    def get(self, request):
+        form = CreatePostForm()
+        return render(request, 'create_post.html', {'form': form})
+
+    def post(self, request):
+        form = CreatePostForm(request.POST)
+        if form.is_valid():
+            post = form.save(commit=False)
+            post.author = request.user
+            post.save()
+            return HttpResponseRedirect(reverse('post_detail', kwargs={'slug': post.slug}))
+        return render(request, 'create_post.html', {'form': form})
