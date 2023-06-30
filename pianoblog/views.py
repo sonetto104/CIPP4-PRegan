@@ -258,3 +258,5 @@ class CreateVideoPostView(LoginRequiredMixin, View):
             post.save()
             return redirect('home')
         return render(request, 'create_video_post.html', {'form': form})
+
+

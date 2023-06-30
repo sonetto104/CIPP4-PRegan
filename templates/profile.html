@@ -1,54 +1,129 @@
+<!-- profile_template.html -->
 
-<h1>{{ user.username }}'s Profile</h1>
+<!DOCTYPE html>
+<html>
+<head>
+  <title>{{ user.username }}'s Profile</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
 
-<!-- Display user's profile picture, bio, and date of joining -->
-<img src="{{ profile.profile_photo.url }}" alt="Profile Photo">
-<p>Bio: {{ profile.bio }}</p>
-<p>Date of Joining: {{ profile.created_on }}</p>
+    h1 {
+      color: #333;
+    }
 
-<!-- Display user's most recent 5 posts -->
+    h2 {
+      color: #666;
+    }
 
-<h2>Recent Posts:</h2>
-<ul>
-  {% for post in posts %}
-    <li>{{ post.title }}</li>
-    <p>{{ post.content }}</p>
+    ul {
+      list-style-type: none;
+      padding: 0;
+    }
+
+    li {
+      margin-bottom: 10px;
+    }
+
+    img {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+    }
+
+    p, a {
+      color: #777;
+    }
+
+    .card {
+      margin-bottom: 20px;
+    }
+
+    .btn-red {
+      color: #fff;
+      background-color: #dc3545;
+      border-color: #dc3545;
+    }
+
+    .btn-red:hover {
+      background-color: #c82333;
+      border-color: #bd2130;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>{{ user.username }}'s Profile</h1>
+
+    <!-- Display user's profile picture, bio, and date of joining -->
+    <div class="row mb-4">
+      <div class="col-md-3">
+        <img src="{{ profile.profile_photo.url }}" alt="Profile Photo" class="img-fluid">
+      </div>
+      <div class="col-md-9">
+        <p class="lead">Bio: {{ profile.bio }}</p>
+        <p class="text-muted">Date of Joining: {{ profile.created_on }}</p>
+      </div>
+    </div>
+
+    <!-- Display user's most recent 5 posts -->
+    <h2>Recent Posts:</h2>
+    <div class="row">
+      {% for post in posts %}
+        <div class="col-md-6">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">{{ post.title }}</h5>
+              <p class="card-text">{{ post.content }}</p>
+              {% if own_profile %}
+                <a href="{% url 'delete_post' post.slug %}" class="btn btn-red btn-sm">Delete</a>
+              {% endif %}
+              <a href="{% url 'post_detail' post.slug %}" class="btn btn-primary btn-sm">Read More</a>
+            </div>
+          </div>
+        </div>
+      {% empty %}
+        <div class="col">
+          <p>No posts found.</p>
+        </div>
+      {% endfor %}
+    </div>
+
+    <!-- Button to display all user's posts -->
     {% if own_profile %}
-      <a href="{% url 'delete_post' post.pk %}">Delete</a>
+      <a href="{% url 'post-list' %}" class="btn btn-primary">View All Posts</a>
+    {% else %}
+      <a href="{% url 'user-posts' user.username %}" class="btn btn-primary">View All Posts</a>
     {% endif %}
-  {% empty %}
-    <li>No posts found.</li>
-  {% endfor %}
-</ul>
 
-<!-- Button to display all user's posts -->
-{% if own_profile %}
-  <a href="{% url 'post-list' %}">View All Posts</a>
-{% else %}
-  <a href="{% url 'user-posts' user.username %}">View All Posts</a>
-{% endif %}
+    <!-- Display user's comments -->
+    <h2>Comments:</h2>
+    <ul>
+      {% for comment in comments %}
+        <li>
+          <p>{{ comment.content }}</p>
+          {% if own_profile and comment.author == request.user %}
+            <a href="{% url 'delete_comment' comment.id %}" class="btn btn-red btn-sm">Delete Comment?</a>
+          {% endif %}
+        </li>
+      {% empty %}
+        <li>No comments found.</li>
+      {% endfor %}
+    </ul>
 
-<!-- Display user's comments -->
-<h2>Comments:</h2>
-<ul>
-  {% for comment in comments %}
-    <li>{{ comment.content }}
-      {% if own_profile and comment.author == request.user %}
-        <a href="{% url 'delete_comment' comment.id %}">Delete Comment?</a>
-      {% endif %}
-    </li>
-  {% empty %}
-    <li>No comments found.</li>
-  {% endfor %}
-</ul>
+    <!-- Button to display all user's comments -->
+    {% if own_profile %}
+      <a href="{% url 'user-comments' user.username %}" class="btn btn-primary">View All Comments</a>
+    {% endif %}
 
-<!-- Button to display all user's comments -->
-{% if own_profile %}
-  <a href="{% url 'user-comments' user.username %}">View All Comments</a>
-{% endif %}
-
-<!-- Edit profile button for own profile -->
-{% if own_profile %}
-  <a href="{% url 'edit_profile' username=user.username %}">Edit Profile</a>
-  <a href="{% url 'delete_profile' %}">Delete Profile</a>
-{% endif %}
+    <!-- Edit profile button for own profile -->
+    {% if own_profile %}
+      <a href="{% url 'edit_profile' username=user.username %}" class="btn btn-primary">Edit Profile</a>
+      <a href="{% url 'delete_profile' %}" class="btn btn-red">Delete Profile</a>
+    {% endif %}
+  </div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
