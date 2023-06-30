@@ -1,69 +1,58 @@
-<!DOCTYPE html>
-<html>
-    {% extends 'base.html' %}
-<head>
-    
-    <title>{{ post.title }}</title>
-</head>
-
+{% extends 'base.html' %}
 {% block content %}
-{% load crispy_forms_tags %}
-<body>
+  <body>
     <h1>{{ post.title }}</h1>
     <p>Author: {{ post.author }}</p>
     <p>Created on: {{ post.created_on }}</p>
 
     {% if post.imagepost %}
-        <img src="{{ post.imagepost.image.url }}" alt="Image Post">
+      <img src="{{ post.imagepost.image.url }}" alt="Image Post">
     {% endif %}
 
     {% if post.videopost %}
-        <video controls>
-            <source src="{{ post.videopost.video.url }}" type="video/mp4">
-            Your browser does not support the video tag.
-        </video>
+      <video controls>
+        <source src="{{ post.videopost.video.url }}" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
     {% endif %}
 
     <p>{{ post.content }}</p>
 
     <h2>Comments</h2>
     {% if commented %}
-                <div class="alert alert-success" role="alert">
-                    Your comment is awaiting approval
-                </div>
+      <div class="alert alert-success" role="alert">
+        Your comment is awaiting approval
+      </div>
     {% else %}
-    {% if user.is_authenticated %}
-
-                <h3>Leave a comment:</h3>
-                <p>Posting as: {{ user.username }}</p>
-                <form method="post" style="margin-top: 1.3em;">
-                    {{ comment_form | crispy }}
-                    {% csrf_token %}
-                    <button type="submit" class="btn btn-signup btn-lg">Submit</button>
-                </form>
-    {% endif %}           
+      {% if user.is_authenticated %}
+        <h3>Leave a comment:</h3>
+        <p>Posting as: {{ user.username }}</p>
+        <form method="post" class="mt-3">
+          {% csrf_token %}
+          <div class="form-group">
+            <h4>Content</h4>
+            {{ comment_form.content }}
+          </div>
+          <button type="submit" class="btn btn-primary mt-3">Submit</button>
+        </form>
+      {% endif %}
     {% endif %}
-    <ul>
-        
-        <div class="comments" style="padding: 10px;">
-            {% for comment in comments %}
-            <p class="font-weight-bold">
-                <!-- The commenter's name goes here. Check the model if you're not sure what that is -->
-                {{ comment.author }}
-                <span class=" text-muted font-weight-normal">
-                    <!-- The comment's created date goes here -->
-                    {{ comment.created_on }}
-                </span> wrote:
-            </p>
-            <!-- The body of the comment goes before the | -->
-            {{ comment.content | linebreaks }}
-        </div>
-        <!-- Our for loop ends here -->
-        {% endfor %}
-    </div>
-    </ul>
 
-   
-</body>
+    <h2 class="comments-heading">Comments</h2>
+    {% if comments %}
+      <div class="comments">
+        {% for comment in comments %}
+          <div class="comment">
+            <p class="author">{{ comment.author }} on {{ comment.created_on|date }} wrote: {{ comment.content}} </p>
+            
+           
+          </div>
+        {% endfor %}
+      </div>
+      {% else %}
+      <p>No comments yet.</p>
+    {% endif %}
+  </body>
 {% endblock content %}
 </html>
+
