@@ -3,7 +3,7 @@ from django import forms
 from .models import Profile
 from allauth.account.forms import SignupForm
 from django.contrib.auth.models import User
-
+from django.utils.text import slugify
 
 class CommentForm(forms.ModelForm):
     class Meta:
@@ -35,10 +35,11 @@ class CreatePostForm(forms.ModelForm):
     image = forms.ImageField(required=False)
     video = forms.FileField(required=False)
     post_type = forms.ChoiceField(choices=[('text', 'Text'), ('image', 'Image'), ('video', 'Video')])
+    author = forms.ModelChoiceField(queryset=User.objects.all())
 
     class Meta:
         model = Post
-        fields = ['title', 'post_type']
+        fields = ['title', 'post_type', 'author']
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -68,17 +69,31 @@ class CreatePostForm(forms.ModelForm):
         return cleaned_data
 
     def save(self, commit=True):
+        print("Inside save method")  # Debugging statement
         post = super().save(commit=False)
-        post.status = Post.STATUS[0][0]  # Set default status as draft
+        post.status = 0
+
+        if not post.slug:  # Check if the slug field is empty
+            # Generate slug based on the post's title
+            slug = slugify(self.cleaned_data['title'])
+            post.slug = slug
 
         if commit:
             post.save()
+            print("Post saved in save method:", post)  # Debugging statement
 
         if self.cleaned_data['post_type'] == 'text':
             post.content = self.cleaned_data['content']
-        elif self.cleaned_data['post_type'] == 'image':
-            ImagePost.objects.create(post=post, image=self.cleaned_data['image'])
-        elif self.cleaned_data['post_type'] == 'video':
-            VideoPost.objects.create(post=post, video=self.cleaned_data['video'])
+            post.save()  # Save the post after assigning the content
 
+        elif self.cleaned_data['post_type'] == 'image':
+            image = self.cleaned_data['image']
+            ImagePost.objects.create(post=post, image=image)
+
+        elif self.cleaned_data['post_type'] == 'video':
+            video = self.cleaned_data['video']
+            VideoPost.objects.create(post=post, video=video)
+    
+        print("Post objects count after save:", Post.objects.count())  # Debugging statement
+    
         return post

@@ -1,10 +1,17 @@
 from django.contrib import admin
-from .models import TextPost, ImagePost, VideoPost, PostComment, Profile
+from .models import TextPost, ImagePost, VideoPost, PostComment, Profile, Post
 from django_summernote.admin import SummernoteModelAdmin
 from django import forms
 
 # admin.register block taken from Code Institute's Codestar Walkthrough Project
 
+@admin.register(Post)
+class PostAdmin(admin.ModelAdmin):
+ 
+    list_display = ('title', 'slug', 'status', 'created_on')
+    list_filter = ("status", "created_on")
+    search_fields = ['title']
+    
 
 @admin.register(TextPost)
 class TextPostAdmin(SummernoteModelAdmin):

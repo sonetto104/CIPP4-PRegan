@@ -201,14 +201,23 @@ class DeletePostView(LoginRequiredMixin, DeleteView):
 
 class CreatePostView(LoginRequiredMixin, View):
     def get(self, request):
-        form = CreatePostForm()
+        form = CreatePostForm(initial={'author': request.user})  # Pass the initial data for the author field
         return render(request, 'create_post.html', {'form': form})
 
     def post(self, request):
+        print(request.user)  # Debugging statement
+        print(request.user.is_authenticated)  # Debugging statement
+
         form = CreatePostForm(request.POST)
         if form.is_valid():
+            print("Form is valid")  # Debugging statement
             post = form.save(commit=False)
             post.author = request.user
             post.save()
-            return HttpResponseRedirect(reverse('post_detail', kwargs={'slug': post.slug}))
+            print("Post saved in post method:", post)  # Debugging statement
+            return HttpResponseRedirect(reverse_lazy('home'))  # Redirect to post list view
+        else:
+            print("Form is not valid")  # Debugging statement
+
+        print("Form errors:", form.errors)  # Debugging statement
         return render(request, 'create_post.html', {'form': form})

@@ -4,6 +4,7 @@ from cloudinary.models import CloudinaryField
 from django.contrib.contenttypes.fields import GenericForeignKey
 from django.contrib.contenttypes.models import ContentType
 from django.contrib.contenttypes.fields import GenericRelation
+from django.utils.text import slugify
 
 STATUS = ((0, "Draft"), (1, "Published"))
 
