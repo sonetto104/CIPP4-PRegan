@@ -1,80 +1,72 @@
-<!DOCTYPE html>
-<html>
-<head>
-    
-</head>
-<body>
-    {% extends 'base.html' %}
+{% extends 'base.html' %}
 
 {% block content %}
-  <div class="container">
-    <div class="row">
-      {% for post in posts %}
-        <div class="col-lg-4 col-md-6 col-sm-12">
-          <div class="card mb-4 rounded">
-            <div class="card-body">
-              <a href="{% url 'post_detail' post.slug %}" class="text-decoration-none text-dark">
-                <h4 class="card-title">{{ post.title }}</h4>
-              </a>
-              <p class="card-text mb-2 small text-muted">Author: {{ post.author }}</p>
-              <p class="card-text mb-2 small text-muted">Created on: {{ post.created_on|date:"F d, Y" }}</p>
+<div class="container">
+  <div class="row">
+    {% for post in posts %}
+      <div class="col-lg-4 col-md-6 col-sm-12">
+        <div class="card mb-4 rounded">
+          <div class="card-body">
+            <a href="{% url 'post_detail' post.slug %}" class="text-decoration-none text-dark">
+              <h4 class="card-title">{{ post.title }}</h4>
+            </a>
+            <p class="card-text mb-2 small text-muted">Author: {{ post.author }}</p>
+            <p class="card-text mb-2 small text-muted">Created on: {{ post.created_on|date:"F d, Y" }}</p>
 
-              {% if post.post_comments.exists %}
-                {% with first_comment=post.post_comments.first %}
-                  <p class="mb-2 small text-muted">Comments: <br>
-                    {{ first_comment.author }}: {{ first_comment.content|slice:":20" }}{% if first_comment.content|length > 20 %}...{% endif %}
-                  </p>
+            {% if post.post_comments.exists %}
+              {% with first_comment=post.post_comments.first %}
+                <p class="mb-2 small text-muted">Comments: <br>
+                  {{ first_comment.author }}: {{ first_comment.content|slice:":20" }}{% if first_comment.content|length > 20 %}...{% endif %}
+                </p>
+              {% endwith %}
+
+              {% if post.post_comments.count > 1 %}
+                {% with second_comment=post.post_comments.all.1 %}
+                  <p class="mb-2 small text-muted">{{ second_comment.author }}: {{ second_comment.content|slice:":20" }}{% if second_comment.content|length > 20 %}...{% endif %}</p>
                 {% endwith %}
-
-                {% if post.post_comments.count > 1 %}
-                  {% with second_comment=post.post_comments.all.1 %}
-                    <p class="mb-2 small text-muted">{{ second_comment.author }}: {{ second_comment.content|slice:":20" }}{% if second_comment.content|length > 20 %}...{% endif %}</p>
-                  {% endwith %}
-                {% endif %}
-
-                <p class="mb-2 small text-muted">Number of Comments: {{ post.post_comments.count }}</p>
-                <a href="{% url 'post_detail' post.slug %}" class="text-decoration-none text-dark underline">View all comments</a>
-
-              {% else %}
-                <p class="mb-2 small text-muted">No comments yet.</p>
               {% endif %}
 
-              <p class="mb-2 text-muted">Likes: {{ post.number_of_likes }}</p>
+              <p class="mb-2 small text-muted">Number of Comments: {{ post.post_comments.count }}</p>
+              <a href="{% url 'post_detail' post.slug %}" class="text-decoration-none text-dark underline">View all comments</a>
+
+            {% else %}
+              <p class="mb-2 small text-muted">No comments yet.</p>
+            {% endif %}
+
+            <p class="mb-2 text-muted">Likes: {{ post.number_of_likes }}</p>
               
-              {% if post.author.profile.profile_photo %}
-                <img class="profile-picture" src="{{ post.author.profile.profile_photo.url }}" alt="Profile Picture">
-              {% endif %}
+            {% if post.author.profile.profile_photo %}
+              <img class="profile-picture" src="{{ post.author.profile.profile_photo.url }}" alt="Profile Picture">
+            {% endif %}
 
-              {% if post.imagepost %}
-                <img class="card-img-top" src="{{ post.imagepost.image.url }}" alt="Image Post">
-              {% endif %}
-              {% if post.videopost %}
+            {% if post.imagepost %}
+              <img class="card-img-top" src="{{ post.imagepost.image.url }}" alt="Image Post">
+            {% endif %}
+            {% if post.videopost %}
+              <div class="card-video-wrapper">
                 <video class="card-video" controls>
                   <source src="{{ post.videopost.video.url }}" type="video/mp4">
                   Your browser does not support the video tag.
                 </video>
-              {% endif %}
-            </div>
+              </div>
+            {% endif %}
           </div>
         </div>
-      {% endfor %}
-    </div>
-  </div>
-
-  <a href="{% if user.is_authenticated %}{% url 'create_post' %}{% else %}{% url 'account_login' %}{% endif %}">
-    <div class="floating-button">
-      <div class="message">
-        {% if user.is_authenticated %}
-          Add a post
-        {% else %}
-          Login or sign up to add a post
-        {% endif %}
       </div>
-      <span class="plus-icon"></span>
+    {% endfor %}
+  </div>
+</div>
+
+<a href="{% if user.is_authenticated %}{% url 'create_post' %}{% else %}{% url 'account_login' %}{% endif %}">
+  <div class="floating-button">
+    <div class="message">
+      {% if user.is_authenticated %}
+        Add a post
+      {% else %}
+        Login or sign up to add a post
+      {% endif %}
     </div>
-  </a>
-  
-  
-</body>
-</html>
+    <span class="plus-icon"></span>
+  </div>
+</a>
 {% endblock content %}
