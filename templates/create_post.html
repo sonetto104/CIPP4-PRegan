@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+  <div class="row justify-content-center align-items-center" style="min-height: 80vh;">
+    <div class="col-lg-6">
+      <div class="card">
+        <div class="card-body">
+          <h2 class="card-title text-center mb-4">Create a Post</h2>
+          <div class="text-center">
+            <a class="btn btn-danger" href="{% url 'create_image_post' %}">Create Image Post</a>
+            <a class="btn btn-danger" href="{% url 'create_text_post' %}">Create Text Post</a>
+            <a class="btn btn-danger" href="{% url 'create_video_post' %}">Create Video Post</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

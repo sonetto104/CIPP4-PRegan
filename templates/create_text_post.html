@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container-fluid">
+  <div class="row d-flex justify-content-center align-items-center vh-100">
+    <div class="col-lg-6 d-flex align-items-center">
+      <div class="card mx-auto" style="width: 400px;">
+        <div class="card-body">
+          <h2 class="card-title text-center mb-4">Create a Text Post</h2>
+          <form method="post">
+            {% csrf_token %}
+            <div class="form-group">
+              <h4>Title:</h4>
+              {{ form.title }}
+              {% if form.title.errors %}
+                <div class="text-danger">
+                  {% for error in form.title.errors %}
+                    <span>{{ error }}</span>
+                  {% endfor %}
+                </div>
+              {% endif %}
+            </div>
+            <div class="form-group">
+              <h4>Content:</h4>
+              {{ form.content }}
+              {% if form.content.errors %}
+                <div class="text-danger">
+                  {% for error in form.content.errors %}
+                    <span>{{ error }}</span>
+                  {% endfor %}
+                </div>
+              {% endif %}
+            </div>
+            <div class="text-center">
+              <button class="btn btn-danger" type="submit">Create Post</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

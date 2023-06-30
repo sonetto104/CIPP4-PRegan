@@ -6,7 +6,7 @@ from django.views import generic
 from .forms import CommentForm
 from django.contrib.auth.models import User
 from allauth.account.views import SignupView
-from .forms import CustomSignupForm, ProfileForm, CreatePostForm
+from .forms import CustomSignupForm, ProfileForm, TextPostForm, ImagePostForm, VideoPostForm
 from django.shortcuts import redirect
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy
@@ -199,21 +199,62 @@ class DeletePostView(LoginRequiredMixin, DeleteView):
         return redirect(self.get_success_url())
 
 
-class CreatePostView(LoginRequiredMixin, View):
+class CreatePostView(View):
     def get(self, request):
-        form = CreatePostForm()
-        return render(request, 'create_post.html', {'form': form})
+        return render(request, 'create_post.html')
+
+
+class CreateTextPostView(LoginRequiredMixin, View):
+    login_url = '/account_login/'
+    redirect_field_name = 'next'
+
+    def get(self, request):
+        form = TextPostForm()
+        return render(request, 'create_text_post.html', {'form': form})
 
     def post(self, request):
-        form = CreatePostForm(request.POST, request.FILES)
+        form = TextPostForm(request.POST)
         if form.is_valid():
             post = form.save(commit=False)
-            post.author_id = request.user.id
+            post.author = request.user
             post.save()
-            return HttpResponseRedirect(reverse_lazy('home'))
-        else:
-            print("Form is not valid")
-            print("Form cleaned data:", form.cleaned_data)
-            print("Form errors:", form.errors)
+            return redirect('home')
+        return render(request, 'create_text_post.html', {'form': form})
 
-        return render(request, 'create_post.html', {'form': form})
+
+class CreateImagePostView(LoginRequiredMixin, View):
+    login_url = '/account_login/'
+    redirect_field_name = 'next'
+
+    def get(self, request):
+        form = ImagePostForm()
+        return render(request, 'create_image_post.html', {'form': form})
+
+    def post(self, request):
+        form = ImagePostForm(request.POST, request.FILES)
+        if form.is_valid():
+            post = form.save(commit=False)
+            post.author = request.user
+            post.slug = form.cleaned_data['title']  # Assign slug manually
+            post.save()
+            return redirect('home')
+        return render(request, 'create_image_post.html', {'form': form})
+
+
+class CreateVideoPostView(LoginRequiredMixin, View):
+    login_url = '/account_login/'
+    redirect_field_name = 'next'
+
+    def get(self, request):
+        form = VideoPostForm()
+        return render(request, 'create_video_post.html', {'form': form})
+
+    def post(self, request):
+        form = VideoPostForm(request.POST, request.FILES)
+        if form.is_valid():
+            post = form.save(commit=False)
+            post.author = request.user
+            post.slug = form.cleaned_data['title']  # Assign slug manually
+            post.save()
+            return redirect('home')
+        return render(request, 'create_video_post.html', {'form': form})
