@@ -8,7 +8,7 @@
     right: 30px;
     width: 50px;
     height: 50px;
-    background-color: red;
+    background-color: #ff313c;
     border-radius: 8px;
     display: flex;
     align-items: center;
@@ -68,4 +68,47 @@
 
   .floating-button .message {
     left: -200px;
+  }
+
+  .form-group {
+    margin-bottom: 80px; /* Increased vertical margin */
+    text-align: center;
+  }
+  
+  
+  input[type="text"],
+  input[type="file"],
+  textarea {
+    width: 80%; /* Adjusted width to be less than full viewport */
+    margin: 0 auto; /* Center-align form fields */
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+  .errorlist {
+    color: #ff313c;
+    list-style: none;
+    padding: 0;
+  }
+  .file-size-warning {
+    color: #ff313c;
+    margin-top: 5px;
+  }
+  input[type="submit"] {
+    background-color: #ff313c;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  input[type="submit"]:hover {
+    background-color: 
+  }
+  .form-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 50px;
   }
