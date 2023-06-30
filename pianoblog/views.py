@@ -1,7 +1,7 @@
 from django.shortcuts import render, get_object_or_404, reverse
 from .models import TextPost, ImagePost, VideoPost, Post, Profile, PostComment
 from django.http import HttpResponseRedirect
-from django.views.generic import View, TemplateView, UpdateView, DeleteView
+from django.views.generic import View, TemplateView, UpdateView, DeleteView, CreateView
 from django.views import generic
 from .forms import CommentForm
 from django.contrib.auth.models import User
@@ -201,23 +201,19 @@ class DeletePostView(LoginRequiredMixin, DeleteView):
 
 class CreatePostView(LoginRequiredMixin, View):
     def get(self, request):
-        form = CreatePostForm(initial={'author': request.user})  # Pass the initial data for the author field
+        form = CreatePostForm()
         return render(request, 'create_post.html', {'form': form})
 
     def post(self, request):
-        print(request.user)  # Debugging statement
-        print(request.user.is_authenticated)  # Debugging statement
-
-        form = CreatePostForm(request.POST)
+        form = CreatePostForm(request.POST, request.FILES)
         if form.is_valid():
-            print("Form is valid")  # Debugging statement
             post = form.save(commit=False)
-            post.author = request.user
+            post.author_id = request.user.id
             post.save()
-            print("Post saved in post method:", post)  # Debugging statement
-            return HttpResponseRedirect(reverse_lazy('home'))  # Redirect to post list view
+            return HttpResponseRedirect(reverse_lazy('home'))
         else:
-            print("Form is not valid")  # Debugging statement
+            print("Form is not valid")
+            print("Form cleaned data:", form.cleaned_data)
+            print("Form errors:", form.errors)
 
-        print("Form errors:", form.errors)  # Debugging statement
         return render(request, 'create_post.html', {'form': form})
