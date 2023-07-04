@@ -1,3 +1,5 @@
+{% extends 'base.html' %}
+{% block content %}
 <!-- profile_template.html -->
 
 <!DOCTYPE html>
@@ -115,11 +117,9 @@
 </div>
 
     <!-- Button to display all user's posts -->
-    {% if own_profile %}
-      <a href="{% url 'post-list' %}" class="btn btn-primary">View All Posts</a>
-    {% else %}
+    
       <a href="{% url 'user-posts' user.username %}" class="btn btn-primary">View All Posts</a>
-    {% endif %}
+    
 
     <!-- Display user's comments -->
     <h2>Comments:</h2>
@@ -149,4 +149,5 @@
   </div>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
 </body>
+{% endblock content %}
 </html>
