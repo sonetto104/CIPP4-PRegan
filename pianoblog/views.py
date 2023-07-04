@@ -187,7 +187,11 @@ class DeleteProfileView(LoginRequiredMixin, TemplateView):
 class DeletePostView(LoginRequiredMixin, DeleteView):
     model = Post
     template_name = 'delete_post.html'
-    success_url = reverse_lazy('profile')
+    # success_url = reverse_lazy('profile')
+
+    def get(self, request, *args, **kwargs):
+        self.object = self.get_object()
+        return render(request, self.template_name, {'post': self.object})
 
     def get_success_url(self):
         return reverse('profile', kwargs={'username': self.request.user.username})
@@ -196,10 +200,10 @@ class DeletePostView(LoginRequiredMixin, DeleteView):
         queryset = super().get_queryset()
         return queryset.filter(author=self.request.user)
 
-    def post(self, request, *args, **kwargs):
-        self.object = self.get_object()
-        self.object.delete()
-        return redirect(self.get_success_url())
+    # def post(self, request, *args, **kwargs):
+    #     self.object = self.get_object()
+    #     self.object.delete()
+    #     return redirect(self.get_success_url())
 
 
 class CreatePostView(View):
