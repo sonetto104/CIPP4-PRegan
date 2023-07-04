@@ -68,28 +68,30 @@
       </div>
     </div>
 
-    <!-- Display user's most recent 5 posts -->
+    
     <h2>Recent Posts:</h2>
-    <div class="row">
-      {% for post in posts %}
-        <div class="col-md-6">
-          <div class="card">
-            <div class="card-body">
-              <h5 class="card-title">{{ post.title }}</h5>
-              <p class="card-text">{{ post.content }}</p>
-              {% if own_profile %}
-                <a href="{% url 'delete_post' post.slug %}" class="btn btn-red btn-sm">Delete</a>
-              {% endif %}
-              <a href="{% url 'post_detail' post.slug %}" class="btn btn-primary btn-sm">Read More</a>
-            </div>
-          </div>
+<div class="row">
+  {% for post in posts %}
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">{{ post.title }}</h5>
+          <p class="card-text">{{ post.content }}</p>
+          {% if post.author == user %}
+            <form method="post" action="{% url 'delete_post' pk=post.pk %}">
+              {% csrf_token %}
+              <input type="submit" value="Delete">
+            </form>
+          {% endif %}
         </div>
-      {% empty %}
-        <div class="col">
-          <p>No posts found.</p>
-        </div>
-      {% endfor %}
+      </div>
     </div>
+  {% empty %}
+    <div class="col">
+      <p>No posts found.</p>
+    </div>
+  {% endfor %}
+</div>
 
     <!-- Button to display all user's posts -->
     {% if own_profile %}
