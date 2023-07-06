@@ -35,9 +35,9 @@
 
             <p class="mb-2 text-muted">Likes: {{ post.number_of_likes }}</p>
               
-            {% if post.author.profile.profile_photo %}
-              <img class="profile-picture" src="{{ post.author.profile.profile_photo.url }}" alt="Profile Picture">
-            {% endif %}
+            <a href="{% url 'profile' username=post.author.username %}">
+                <img class="profile-picture" src="{{ post.author.profile.profile_photo.url }}" alt="Profile Picture">
+              </a>
 
             {% if post.imagepost %}
               <img class="card-img-top" src="{{ post.imagepost.image.url }}" alt="Image Post">
