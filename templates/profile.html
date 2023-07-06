@@ -31,11 +31,12 @@
                 <div class="card-body">
                     <h5 class="card-title">{{ post.title }}</h5>
                     <p class="card-text">{{ post.content }}</p>
-                    {% if post.author == user %}
+                    {% if user.is_authenticated and own_profile and post.author == user %}
                     <button type="button" class="btn btn-danger" data-bs-toggle="modal"
                         data-bs-target="#deleteConfirmationModal{{ post.id }}">
-                        Delete
+                        Delete Post?
                     </button>
+                    {% endif %}
 
                     <!-- Delete Confirmation Modal -->
                     <div class="modal fade" id="deleteConfirmationModal{{ post.id }}" tabindex="-1"
@@ -61,7 +62,7 @@
                             </div>
                         </div>
                     </div>
-                    {% endif %}
+                    
                 </div>
             </div>
         </div>
