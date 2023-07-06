@@ -122,31 +122,30 @@
     
 
     <!-- Display user's comments -->
-    <h2>Comments:</h2>
-    <ul>
-      {% for comment in comments %}
-        <li>
-          <p>{{ comment.content }}</p>
+<h2>Comments:</h2>
+<div class="row">
+  {% for comment in comments %}
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">
+            <a href="{% url 'post_detail' slug=comment.post.slug %}">
+              {{ comment.author.username }} commented on {{ comment.post.title }}
+            </a>
+          </h5>
+          <p class="card-text">{{ comment.content }}</p>
           {% if own_profile and comment.author == request.user %}
             <a href="{% url 'delete_comment' comment.id %}" class="btn btn-red btn-sm">Delete Comment?</a>
           {% endif %}
-        </li>
-      {% empty %}
-        <li>No comments found.</li>
-      {% endfor %}
-    </ul>
-
-    <!-- Button to display all user's comments -->
-    {% if own_profile %}
-      <a href="{% url 'user-comments' user.username %}" class="btn btn-primary">View All Comments</a>
-    {% endif %}
-
-    <!-- Edit profile button for own profile -->
-    {% if own_profile %}
-      <a href="{% url 'edit_profile' username=user.username %}" class="btn btn-primary">Edit Profile</a>
-      <a href="{% url 'delete_profile' %}" class="btn btn-red">Delete Profile</a>
-    {% endif %}
-  </div>
+        </div>
+      </div>
+    </div>
+  {% empty %}
+    <div class="col">
+      <p>No comments found.</p>
+    </div>
+  {% endfor %}
+</div>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
 </body>
 {% endblock content %}
