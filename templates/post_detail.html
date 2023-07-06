@@ -35,9 +35,10 @@
           </div>
           <button type="submit" class="btn btn-primary mt-3">Submit</button>
         </form>
+      {% else %}
+        <a href="{% url 'account_login' %}?next={{ request.path }}" class="btn btn-primary mt-3">Login to leave a comment</a>
       {% endif %}
     {% endif %}
-
     <h2 class="comments-heading">Comments</h2>
     {% if comments %}
       <div class="comments">
