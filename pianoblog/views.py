@@ -102,14 +102,15 @@ class ProfileView(View):
         user = get_object_or_404(User, username=username)
         profile = get_object_or_404(Profile, owner=user)
         posts = Post.objects.filter(author=user).order_by('-created_on')[:5]
-         # Debug: Print post slugs
-        for post in posts:
-            print(post.slug)
         comments = PostComment.objects.filter(author=user)
+        
+        own_profile = False
+        if request.user.is_authenticated and request.user == user:
+            own_profile = True
         context = {
             'profile': profile,
             'posts': posts,
-            'own_profile': user == request.user,
+            'own_profile': own_profile,
             "user": user,
             "comments": comments,
         }

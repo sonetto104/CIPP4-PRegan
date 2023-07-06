@@ -257,3 +257,51 @@
   div.form-group {
     margin-bottom: 20px;
   }
+
+  body {
+    font-family: Arial, sans-serif;
+    }
+    
+    h1 {
+    color: #333;
+    }
+    
+    h2 {
+    color: #666;
+    }
+    
+    ul {
+    list-style-type: none;
+    padding: 0;
+    }
+    
+    li {
+    margin-bottom: 10px;
+    }
+    
+    .profile-image {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    } 
+    
+    p,
+    a {
+    color: #777;
+    }
+    
+    .card {
+    margin-bottom: 20px;
+    }
+    
+    .btn-red {
+    color: #fff;
+    background-color: #dc3545;
+    border-color: #dc3545;
+    }
+    
+    .btn-red:hover {
+    background-color: #c82333;
+    border-color: #bd2130;
+    }
