@@ -29,40 +29,47 @@
         <div class="col-md-6">
             <div class="card">
                 <div class="card-body">
+                    <a href="{% url 'post_detail' slug=post.slug %}" class="text-decoration-none">
                     <h5 class="card-title">{{ post.title }}</h5>
+                    </a>
                     <p class="card-text">{{ post.content }}</p>
-                    {% if user.is_authenticated and own_profile and post.author == user %}
-                    <button type="button" class="btn btn-danger" data-bs-toggle="modal"
-                        data-bs-target="#deleteConfirmationModal{{ post.id }}">
-                        Delete Post?
-                    </button>
+                    {% if post.post_comments.exists %}
+                      {% with first_comment=post.post_comments.first %}
+                        <p class="mb-2 small text-muted">Comments: <br>
+                          {{ first_comment.author }}: {{ first_comment.content|slice:":20" }}{% if first_comment.content|length > 20 %}...{% endif %}
+                        </p>
+                      {% endwith %}
+
+                      {% if post.post_comments.count > 1 %}
+                        {% with second_comment=post.post_comments.all.1 %}
+                          <p class="mb-2 small text-muted">{{ second_comment.author }}: {{ second_comment.content|slice:":20" }}{% if second_comment.content|length > 20 %}...{% endif %}</p>
+                        {% endwith %}
+                      {% endif %}
+
+                      <p class="mb-2 small text-muted">Number of Comments: {{ post.post_comments.count }}</p>
+                      <a href="{% url 'post_detail' post.slug %}" class="text-decoration-none text-dark underline">View all comments</a>
+
+                    {% else %}
+                      <p class="mb-2 small text-muted">No comments yet.</p>
                     {% endif %}
 
-                    <!-- Delete Confirmation Modal -->
-                    <div class="modal fade" id="deleteConfirmationModal{{ post.id }}" tabindex="-1"
-                        aria-labelledby="deleteConfirmationModalLabel" aria-hidden="true">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="deleteConfirmationModalLabel">Delete Confirmation</h5>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                        aria-label="Close"></button>
-                                </div>
-                                <div class="modal-body">
-                                    <p>Are you sure you want to delete this post?</p>
-                                </div>
-                                <div class="modal-footer">
-                                    <form method="post" action="{% url 'delete_post' pk=post.pk %}">
-                                        {% csrf_token %}
-                                        <button type="submit" class="btn btn-danger">Delete</button>
-                                    </form>
-                                    <button type="button" class="btn btn-secondary"
-                                        data-bs-dismiss="modal">Cancel</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
+                    <p class="mb-2 text-muted">Likes: {{ post.number_of_likes }}</p>
+              
+                    <a href="{% url 'profile' username=post.author.username %}">
+                        <img class="profile-picture" src="{{ post.author.profile.profile_photo.url }}" alt="Profile Picture">
+                    </a>
+
+                    {% if post.imagepost %}
+                      <img class="card-img-top" src="{{ post.imagepost.image.url }}" alt="Image Post">
+                    {% endif %}
+                    {% if post.videopost %}
+                      <div class="card-video-wrapper">
+                        <video class="card-video" controls>
+                          <source src="{{ post.videopost.video.url }}" type="video/mp4">
+                          Your browser does not support the video tag.
+                        </video>
+                      </div>
+                    {% endif %}
                 </div>
             </div>
         </div>

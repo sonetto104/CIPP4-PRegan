@@ -36,7 +36,6 @@ class PostComment(models.Model):
     updated_on = models.DateTimeField(auto_now=True)
     approved = models.BooleanField(default=False)
     
-
     class Meta:
         ordering = ["created_on"]
 
