@@ -22,6 +22,11 @@
         </div>
     </div>
 
+     <!-- Add Edit Profile button -->
+     {% if user.is_authenticated and own_profile %}
+     <a href="{% url 'edit_profile' username=user.username %}" class="btn btn-primary float-end">Edit Profile</a>
+ {% endif %}
+
 
     <h2>Recent Posts:</h2>
     <div class="row">
