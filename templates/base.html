@@ -26,10 +26,11 @@
 
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg bg-white">
-      <div class="container-fluid bg-white">
-          <a class="navbar-brand" href="{% url 'home' %}">
+      <div class="container-fluid bg-white mt-4 align-items-end">
+          <a class="navbar-brand logo d-flex align-items-end p-0" href="{% url 'home' %}">
               <img src="https://res.cloudinary.com/dayngkoud/image/upload/v1688070009/PianoPhiles1_htjbf7.png"
                   alt="Logo" height="100" width="100" class="offset-left">
+                  <span class="tagline ms-5 align-self-end d-none d-lg-inline d-md-inline">For piano freaks and geeks</span>
           </a>
           <div class="collapse navbar-collapse">
               <div class="container">
@@ -39,8 +40,8 @@
                               <a class="nav-link" aria-current="page" href="{% url 'home' %}">Home</a>
                           </div>
                           <div class="col-lg-2 d-flex justify-content-end">
-                              <a class="nav-link" aria-current="page"
-                                  href="{% url 'profile' username=request.user.username %}">My Profile</a>
+                             <span class="text-nowrap"> <a class="nav-link" aria-current="page"
+                                  href="{% url 'profile' username=request.user.username %}">My Profile</a></span>
                           </div>
                           <div class="col-lg-2 d-flex justify-content-center">
                               <a class="nav-link" aria-current="page" href="{% url 'account_logout' %}">Logout</a>
@@ -66,8 +67,7 @@
               <ul class="dropdown-menu dropdown-menu-end w-20 text-center">
                   {% if request.user.is_authenticated %}
                       <li><a class="dropdown-item" href="{% url 'home' %}">Home</a></li>
-                      <li><a class="dropdown-item"
-                              href="{% url 'profile' username=request.user.username %}">My Profile</a></li>
+                      <li><a class="dropdown-item" href="{% url 'profile' username=request.user.username %}">My Profile</a></li>
                       <li><a class="dropdown-item" href="{% url 'account_logout' %}">Logout</a></li>
                   {% else %}
                       <li><a class="dropdown-item" href="{% url 'home' %}">Home</a></li>

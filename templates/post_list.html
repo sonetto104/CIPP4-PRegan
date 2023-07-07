@@ -1,39 +1,39 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<div class="container">
-  <div class="row">
+<div class="container-fluid mt-5 mx-0 width-100">
+  <div class="row ml-0 mr-0">
     {% for post in posts %}
       <div class="col-lg-4 col-md-6 col-sm-12">
         <div class="card mb-4 rounded">
           <div class="card-body">
             <a href="{% url 'post_detail' post.slug %}" class="text-decoration-none text-dark">
-              <h4 class="card-title">{{ post.title }}</h4>
+              <h4 class="card-title text-left">{{ post.title }}</h4>
             </a>
-            <p class="card-text mb-2 small text-muted">Author: {{ post.author }}</p>
-            <p class="card-text mb-2 small text-muted">Created on: {{ post.created_on|date:"F d, Y" }}</p>
+            <p class="card-text mb-2 small text-muted text-left">Author: {{ post.author }}</p>
+            <p class="card-text mb-2 small text-muted text-left">Created on: {{ post.created_on|date:"F d, Y" }}</p>
 
             {% if post.post_comments.exists %}
               {% with first_comment=post.post_comments.first %}
-                <p class="mb-2 small text-muted">Comments: <br>
+                <p class="mb-2 small text-muted text-left">Comments: <br>
                   {{ first_comment.author }}: {{ first_comment.content|slice:":20" }}{% if first_comment.content|length > 20 %}...{% endif %}
                 </p>
               {% endwith %}
 
               {% if post.post_comments.count > 1 %}
                 {% with second_comment=post.post_comments.all.1 %}
-                  <p class="mb-2 small text-muted">{{ second_comment.author }}: {{ second_comment.content|slice:":20" }}{% if second_comment.content|length > 20 %}...{% endif %}</p>
+                  <p class="mb-2 small text-muted text-left">{{ second_comment.author }}: {{ second_comment.content|slice:":20" }}{% if second_comment.content|length > 20 %}...{% endif %}</p>
                 {% endwith %}
               {% endif %}
 
-              <p class="mb-2 small text-muted">Number of Comments: {{ post.post_comments.count }}</p>
+              <p class="mb-2 small text-muted text-left">Number of Comments: {{ post.post_comments.count }}</p>
               <a href="{% url 'post_detail' post.slug %}" class="text-decoration-none text-dark underline">View all comments</a>
 
             {% else %}
-              <p class="mb-2 small text-muted">No comments yet.</p>
+              <p class="mb-2 small text-muted text-left">No comments yet.</p>
             {% endif %}
 
-            <p class="mb-2 text-muted">Likes: {{ post.number_of_likes }}</p>
+            <p class="mb-2 text-muted small text-left">Likes: {{ post.number_of_likes }}</p>
               
             <a href="{% url 'profile' username=post.author.username %}">
                 <img class="profile-picture" src="{{ post.author.profile.profile_photo.url }}" alt="Profile Picture">
