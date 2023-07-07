@@ -33,7 +33,7 @@
               <p class="mb-2 small text-muted text-left">No comments yet.</p>
             {% endif %}
 
-            <p class="mb-2 text-muted small text-left">Likes: {{ post.number_of_likes }}</p>
+            
               
             <a href="{% url 'profile' username=post.author.username %}">
                 <img class="profile-picture" src="{{ post.author.profile.profile_photo.url }}" alt="Profile Picture">
@@ -45,18 +45,22 @@
                     <form class="d-inline" action="{% url 'post_like' post.slug %}" method="POST">
                         {% csrf_token %}
                         {% if liked %}
-                        <button type="submit" name="post_id" value="{{post.slug}}" class="btn-like"><i class="fas fa-heart"></i></button>
+                        <button type="submit" name="blogpost_id" value="{{post.slug}}" class="btn-like"><i class="fas fa-heart"></i><span class="text-secondary">{{ post.number_of_likes }} </span></button>
                         {% else %}
-                        <button type="submit" name="post_id" value="{{post.slug}}" class="btn-like"><i class="far fa-heart"></i></button>
+                        <button type="submit" name="blogpost_id" value="{{post.slug}}" class="btn-like"><i class="far fa-heart"></i><span class="text-secondary">{{ post.number_of_likes }} </span></button>
                         {% endif %}
                     </form>
                     {% else %}
-                    <span class="text-secondary"><i class="far fa-heart"></i></span>
+                    <span class="text-secondary"><i class="far fa-heart"></i>{{ post.number_of_likes }}</span>
                     {% endif %}
-                </strong>
                 <!-- The number of likes goes before the closing strong tag -->
-                <strong class="text-secondary"><i class="far fa-heart"></i> {{ post.number_of_likes }} </strong>
+                <!-- <span class="text-secondary">{{ post.number_of_likes }} </span> -->
+                </strong>
             </div>
+            
+                <!-- The number of likes goes before the closing strong tag -->
+                
+            
 
             {% if post.imagepost %}
               <img class="card-img-top" src="{{ post.imagepost.image.url }}" alt="Image Post">
