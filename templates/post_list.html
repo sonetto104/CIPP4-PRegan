@@ -1,7 +1,5 @@
-
 {% extends 'base.html' %}
-{% load static %}
-{% load crispy_forms_tags %}
+
 {% block content %}
 <div class="container-fluid mt-5 mx-0 width-100">
   <div class="row ml-0 mr-0">
@@ -14,8 +12,6 @@
             </a>
             <p class="card-text mb-2 small text-muted text-left">Author: {{ post.author }}</p>
             <p class="card-text mb-2 small text-muted text-left">Created on: {{ post.created_on|date:"F d, Y" }}</p>
-
-           
 
             {% if post.post_comments.exists %}
               {% with first_comment=post.post_comments.first %}
@@ -38,29 +34,29 @@
             {% endif %}
 
             <p class="mb-2 text-muted small text-left">Likes: {{ post.number_of_likes }}</p>
-
-            <div class="col-1">
-              <strong>
-                  {% if user.is_authenticated %}
-                  <form class="d-inline" action="{% url 'post_like' post.slug %}" method="POST">
-                      {% csrf_token %}
-                      {% if liked %}
-                      <button type="submit" name="post_id" value="{{post.slug}}" class="btn-like"><i class="fas fa-heart"></i></button>
-                      {% else %}
-                      <button type="submit" name="post_id" value="{{post.slug}}" class="btn-like"><i class="far fa-heart"></i></button>
-                      {% endif %}
-                  </form>
-                  {% else %}
-                  <span class="text-secondary"><i class="far fa-heart"></i></span>
-                  {% endif %}
-              </strong>
-              <!-- The number of likes goes before the closing strong tag -->
-              <strong class="text-secondary"><i class="far fa-heart"></i> {{ post.number_of_likes }} </strong>
-          </div>
               
             <a href="{% url 'profile' username=post.author.username %}">
                 <img class="profile-picture" src="{{ post.author.profile.profile_photo.url }}" alt="Profile Picture">
               </a>
+
+              <div class="col-1">
+                <strong>
+                    {% if user.is_authenticated %}
+                    <form class="d-inline" action="{% url 'post_like' post.slug %}" method="POST">
+                        {% csrf_token %}
+                        {% if liked %}
+                        <button type="submit" name="post_id" value="{{post.slug}}" class="btn-like"><i class="fas fa-heart"></i></button>
+                        {% else %}
+                        <button type="submit" name="post_id" value="{{post.slug}}" class="btn-like"><i class="far fa-heart"></i></button>
+                        {% endif %}
+                    </form>
+                    {% else %}
+                    <span class="text-secondary"><i class="far fa-heart"></i></span>
+                    {% endif %}
+                </strong>
+                <!-- The number of likes goes before the closing strong tag -->
+                <strong class="text-secondary"><i class="far fa-heart"></i> {{ post.number_of_likes }} </strong>
+            </div>
 
             {% if post.imagepost %}
               <img class="card-img-top" src="{{ post.imagepost.image.url }}" alt="Image Post">
@@ -93,4 +89,3 @@
   </div>
 </a>
 {% endblock content %}
-<script src="{% static 'js/like.js' %}"></script>

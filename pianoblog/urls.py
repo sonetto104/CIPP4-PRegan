@@ -20,6 +20,5 @@ urlpatterns = [
     path('create-image-post/', views.CreateImagePostView.as_view(), name='create_image_post'),
     path('create-video-post/', views.CreateVideoPostView.as_view(), name='create_video_post'),
     path('like/<slug:slug>', views.PostLike.as_view(), name='post_like'),
-
    
 ]

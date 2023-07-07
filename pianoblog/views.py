@@ -11,7 +11,7 @@ from django.shortcuts import redirect
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy
 from django.contrib.auth import logout
-from django.http import JsonResponse
+from django.utils.text import slugify
 
 # class HomePageView(TemplateView):
 #     """About page view"""
@@ -239,6 +239,7 @@ class CreateTextPostView(LoginRequiredMixin, View):
         if form.is_valid():
             post = form.save(commit=False)
             post.author = request.user
+            post.slug = slugify(form.cleaned_data['title'])
             post.save()
             return redirect('home')
         return render(request, 'create_text_post.html', {'form': form})
@@ -291,9 +292,5 @@ class PostLike(View):
             post.likes.remove(request.user)
         else:
             post.likes.add(request.user)
-        
+
         return HttpResponseRedirect(reverse('post_detail', args=[slug]))
-
-
-
-
