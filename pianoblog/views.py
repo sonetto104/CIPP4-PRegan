@@ -11,6 +11,7 @@ from django.shortcuts import redirect
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy
 from django.contrib.auth import logout
+from django.http import JsonResponse
 
 # class HomePageView(TemplateView):
 #     """About page view"""
@@ -279,5 +280,18 @@ class CreateVideoPostView(LoginRequiredMixin, View):
             post.save()
             return redirect('home')
         return render(request, 'create_video_post.html', {'form': form})
+
+
+class PostLike(View):
+
+    def post(self, request, slug):
+        post = get_object_or_404(Post, slug=slug)
+
+        if post.likes.filter(id=request.user.id).exists():
+            post.likes.remove(request.user)
+        else:
+            post.likes.add(request.user)
+        
+        return HttpResponseRedirect(reverse('home'))
 
 

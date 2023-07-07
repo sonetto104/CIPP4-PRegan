@@ -1,6 +1,6 @@
 from django.urls import path
 from . import views
-from .views import PostListView, PostDetail, CustomSignupView, ProfileView, UserCommentsView, UserPostsView, EditProfileView, DeleteCommentView, DeleteProfileView, DeletePostView
+from .views import PostListView, PostDetail, CustomSignupView, ProfileView, UserCommentsView, UserPostsView, EditProfileView, DeleteCommentView, DeleteProfileView, DeletePostView, PostLike
 
 urlpatterns = [
     # Other URL patterns...
@@ -19,5 +19,7 @@ urlpatterns = [
     path('create-text-post/', views.CreateTextPostView.as_view(), name='create_text_post'),
     path('create-image-post/', views.CreateImagePostView.as_view(), name='create_image_post'),
     path('create-video-post/', views.CreateVideoPostView.as_view(), name='create_video_post'),
+    path('like/<slug:slug>', views.PostLike.as_view(), name='post_like'),
+
    
 ]
