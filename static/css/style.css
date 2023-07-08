@@ -1,22 +1,25 @@
 .bg-red-pianophiles {
     background-color: #ff313c;
   }
+   
 
-  .floating-button {
-    position: fixed;
-    bottom: 30px;
-    right: 30px;
-    width: 50px;
-    height: 50px;
-    background-color: #ff313c;
-    border-radius: 8px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    text-decoration: none;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-    transition: transform 0.3s ease-in-out;
+
+
+.floating-button {
+  position: fixed;
+  bottom: 30px;    
+  right: 30px;
+  width: 50px;
+  height: 50px;
+  background-color: #ff313c;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  text-decoration: none;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease-in-out;
   }
   
   .floating-button:hover {
@@ -73,7 +76,8 @@
 
   .form-group {
     margin-bottom: 80px; /* Increased vertical margin */
-    text-align: center;
+    text-align: left;
+    padding: 0;
   }
   
   
@@ -109,7 +113,7 @@
   }
 
   input[type="submit"]:hover {
-    background-color: 
+    background-color: blue;
   }
 
   .form-container {
@@ -192,10 +196,15 @@
   .form-group input,
   .form-group textarea {
     width: 100%;
-    max-width: 600px;
-    height: 40px;
+    
+    height: 150px;
     padding: 10px;
     font-size: 16px;
+  }
+
+  .form-group textarea #id_content {
+    width: 100%;
+    max-width: 1000px;
   }
 
   .form-group button {

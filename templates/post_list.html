@@ -45,13 +45,19 @@
                     <form class="d-inline" action="{% url 'post_like' post.slug %}" method="POST">
                         {% csrf_token %}
                         {% if liked %}
-                        <button type="submit" name="blogpost_id" value="{{post.slug}}" class="btn-like"><i class="fas fa-heart"></i><span class="text-secondary">{{ post.number_of_likes }} </span></button>
+                        <button type="submit" name="blogpost_id" value="{{post.slug}}" class="btn-unstyled border-0 bg-white d-flex align-items-center">
+                          <i class="fas fa-heart mr-2 text-danger"></i>
+                          <span class="ms-1">{{ post.number_of_likes }}</span>
+                        </button>
                         {% else %}
-                        <button type="submit" name="blogpost_id" value="{{post.slug}}" class="btn-like"><i class="far fa-heart"></i><span class="text-secondary">{{ post.number_of_likes }} </span></button>
+                        <button type="submit" name="blogpost_id" value="{{post.slug}}" class="btn-unstyled border-0 bg-white d-flex align-items-center">
+                          <i class="fas fa-heart mr-2 text-danger"></i>
+                          <span class="ms-1">{{ post.number_of_likes }}</span>
+                        </button>
                         {% endif %}
                     </form>
                     {% else %}
-                    <span class="text-secondary"><i class="far fa-heart"></i>{{ post.number_of_likes }}</span>
+                    <i class="fas fa-heart mr-2"></i><span class="ms-1 text-danger">{{ post.number_of_likes }}</span>
                     {% endif %}
                 <!-- The number of likes goes before the closing strong tag -->
                 <!-- <span class="text-secondary">{{ post.number_of_likes }} </span> -->
@@ -63,7 +69,7 @@
             
 
             {% if post.imagepost %}
-              <img class="card-img-top" src="{{ post.imagepost.image.url }}" alt="Image Post">
+              <img class="card-img mt-3" src="{{ post.imagepost.image.url }}" alt="Image Post">
             {% endif %}
             {% if post.videopost %}
               <div class="card-video-wrapper">
