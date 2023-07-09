@@ -345,3 +345,38 @@
     }
   }
 
+  .pagination {
+    margin-top: 20px;
+  }
+  
+  .pagination-list {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .pagination-item {
+    margin: 0 5px;
+  }
+  
+  .pagination-link {
+    display: inline-block;
+    padding: 5px 10px;
+    color: #333;
+    text-decoration: none;
+    background-color: #f8f9fa;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .pagination-link:hover {
+    background-color: #e9ecef;
+  }
+  
+  .current-page {
+    font-weight: bold;
+  }

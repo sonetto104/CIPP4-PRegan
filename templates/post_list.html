@@ -1,10 +1,12 @@
-{% load simple_pagination %}
+
 {% extends 'base.html' %}
+
 
 {% block content %}
 
 <div class="container-fluid mt-5 mx-0 width-100">
   <div class="row ml-0 mr-0">
+    
     {% for post in posts %}
       <div class="col-lg-4 col-md-6 col-sm-12">
         <div class="card mb-4 rounded">
@@ -77,12 +79,11 @@
         </div>
       </div>
     {% endfor %}
+    
+
   </div>
   
-<div class="pagination">
-  {% get_pages %}
-</div>
-</div>
+
 
 
 
@@ -109,6 +110,32 @@
     <span class="plus-icon"></span>
   </div>
 </a>
+<div class="container-fluid pagination mt-4 justify-content-center text-center mb-5">
+  <ul class="pagination-list">
+    {% if page_obj.has_previous %}
+      <li class="pagination-item">
+        <a class="pagination-link" href="?page=1">&laquo; first</a>
+      </li>
+      <li class="pagination-item">
+        <a class="pagination-link" href="?page={{ page_obj.previous_page_number }}">previous</a>
+      </li>
+    {% endif %}
 
+    <li class="pagination-item">
+      <span class="pagination-link current-page">{{ page_obj.number }}</span>
+    </li>
 
+    {% if page_obj.has_next %}
+      <li class="pagination-item">
+        <a class="pagination-link" href="?page={{ page_obj.next_page_number }}">next</a>
+      </li>
+      <li class="pagination-item">
+        <a class="pagination-link" href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
+      </li>
+    {% endif %}
+  </ul>
+</div>
 {% endblock content %}
+
+
+
