@@ -33,40 +33,32 @@
               <p class="mb-2 small text-muted text-left">No comments yet.</p>
             {% endif %}
 
-            
-              
             <a href="{% url 'profile' username=post.author.username %}">
-                <img class="profile-picture" src="{{ post.author.profile.profile_photo.url }}" alt="Profile Picture">
-              </a>
+              <img class="profile-picture" src="{{ post.author.profile.profile_photo.url }}" alt="Profile Picture">
+            </a>
 
-              <div class="col-1">
-                <strong>
-                    {% if user.is_authenticated %}
-                    <form class="d-inline" action="{% url 'post_like' post.slug %}" method="POST">
-                        {% csrf_token %}
-                        {% if liked %}
-                        <button type="submit" name="blogpost_id" value="{{post.slug}}" class="btn-unstyled border-0 bg-white d-flex align-items-center">
-                          <i class="fas fa-heart mr-2 text-danger"></i>
-                          <span class="ms-1">{{ post.number_of_likes }}</span>
-                        </button>
-                        {% else %}
-                        <button type="submit" name="blogpost_id" value="{{post.slug}}" class="btn-unstyled border-0 bg-white d-flex align-items-center">
-                          <i class="fas fa-heart mr-2 text-danger"></i>
-                          <span class="ms-1">{{ post.number_of_likes }}</span>
-                        </button>
-                        {% endif %}
-                    </form>
+            <div class="col-1">
+              <strong>
+                {% if user.is_authenticated %}
+                  <form class="d-inline" action="{% url 'post_like' post.slug %}" method="POST">
+                    {% csrf_token %}
+                    {% if liked %}
+                      <button type="submit" name="blogpost_id" value="{{post.slug}}" class="btn-unstyled border-0 bg-white d-flex align-items-center">
+                        <i class="fas fa-heart mr-2 text-danger"></i>
+                        <span class="ms-1">{{ post.number_of_likes }}</span>
+                      </button>
                     {% else %}
-                    <i class="fas fa-heart mr-2 text-danger"></i><span class="ms-1">{{ post.number_of_likes }}</span>
+                      <button type="submit" name="blogpost_id" value="{{post.slug}}" class="btn-unstyled border-0 bg-white d-flex align-items-center">
+                        <i class="fas fa-heart mr-2 text-danger"></i>
+                        <span class="ms-1">{{ post.number_of_likes }}</span>
+                      </button>
                     {% endif %}
-                <!-- The number of likes goes before the closing strong tag -->
-                <!-- <span class="text-secondary">{{ post.number_of_likes }} </span> -->
-                </strong>
+                  </form>
+                {% else %}
+                  <i class="fas fa-heart mr-2 text-danger"></i><span class="ms-1">{{ post.number_of_likes }}</span>
+                {% endif %}
+              </strong>
             </div>
-            
-                <!-- The number of likes goes before the closing strong tag -->
-                
-            
 
             {% if post.imagepost %}
               <img class="card-img mt-3" src="{{ post.imagepost.image.url }}" alt="Image Post">
@@ -85,6 +77,17 @@
     {% endfor %}
   </div>
 </div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/masonry/4.2.2/masonry.pkgd.min.js"></script>
+<script>
+  $(document).ready(function() {
+    $('.row').masonry({
+      itemSelector: '.col-lg-4',
+      columnWidth: '.col-lg-4',
+      percentPosition: true
+    });
+  });
+</script>
 
 <a href="{% if user.is_authenticated %}{% url 'create_post' %}{% else %}{% url 'account_login' %}{% endif %}">
   <div class="floating-button">
