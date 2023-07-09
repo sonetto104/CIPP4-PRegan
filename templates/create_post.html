@@ -8,9 +8,11 @@
         <div class="card-body">
           <h2 class="card-title text-center mb-4">Create a Post</h2>
           <div class="text-center">
-            <a class="btn btn-danger" href="{% url 'create_image_post' %}">Create Image Post</a>
-            <a class="btn btn-danger" href="{% url 'create_text_post' %}">Create Text Post</a>
-            <a class="btn btn-danger" href="{% url 'create_video_post' %}">Create Video Post</a>
+            <div class="btn-group-vertical">
+              <a class="btn btn-danger btn-block mb-4" href="{% url 'create_image_post' %}">Create Image Post</a>
+              <a class="btn btn-danger btn-block mb-4" href="{% url 'create_text_post' %}">Create Text Post</a>
+              <a class="btn btn-danger btn-block" href="{% url 'create_video_post' %}">Create Video Post</a>
+            </div>
           </div>
         </div>
       </div>
