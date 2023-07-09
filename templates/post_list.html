@@ -1,6 +1,8 @@
+{% load simple_pagination %}
 {% extends 'base.html' %}
 
 {% block content %}
+
 <div class="container-fluid mt-5 mx-0 width-100">
   <div class="row ml-0 mr-0">
     {% for post in posts %}
@@ -76,7 +78,13 @@
       </div>
     {% endfor %}
   </div>
+  
+<div class="pagination">
+  {% get_pages %}
 </div>
+</div>
+
+
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/masonry/4.2.2/masonry.pkgd.min.js"></script>
 <script>
@@ -101,4 +109,6 @@
     <span class="plus-icon"></span>
   </div>
 </a>
+
+
 {% endblock content %}

@@ -12,6 +12,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy
 from django.contrib.auth import logout
 from django.utils.text import slugify
+from django.core.paginator import Paginator, EmptyPage
 
 # class HomePageView(TemplateView):
 #     """About page view"""
@@ -26,6 +27,29 @@ class PostListView(generic.ListView):
     template_name = 'post_list.html'
     context_object_name = 'posts'
     queryset = Post.objects.filter(status=1) 
+    paginate_by = 10
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        paginator = Paginator(context['posts'], self.paginate_by)
+        page_number = self.request.GET.get('page')
+        page_obj = paginator.get_page(page_number)
+
+        context['page_obj'] = page_obj
+        context['is_paginated'] = page_obj.has_other_pages()
+        return context
+
+
+    # def get_context_data(self, **kwargs):
+    #     context = super().get_context_data(**kwargs)
+    #     posts = context['posts']
+    #     paginator = Paginator(posts, self.paginate_by)
+    #     page_number = self.request.GET.get('page')
+    #     page_obj = paginator.get_page(page_number)
+
+    #     context['page_obj'] = page_obj
+    #     context['is_paginated'] = page_obj.has_other_pages()
+    #     return context
 
 
 class PostDetail(View):
@@ -258,7 +282,7 @@ class CreateImagePostView(LoginRequiredMixin, View):
         if form.is_valid():
             post = form.save(commit=False)
             post.author = request.user
-            post.slug = form.cleaned_data['title']  # Assign slug manually
+            post.slug = slugify(form.cleaned_data['title'])  # Assign slug manually
             post.save()
             return redirect('home')
         return render(request, 'create_image_post.html', {'form': form})
@@ -277,7 +301,7 @@ class CreateVideoPostView(LoginRequiredMixin, View):
         if form.is_valid():
             post = form.save(commit=False)
             post.author = request.user
-            post.slug = form.cleaned_data['title']  # Assign slug manually
+            post.slug = slugify(form.cleaned_data['title'])  # Assign slug manually
             post.save()
             return redirect('home')
         return render(request, 'create_video_post.html', {'form': form})

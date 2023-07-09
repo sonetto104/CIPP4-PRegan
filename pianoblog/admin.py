@@ -7,10 +7,14 @@ from django import forms
 
 @admin.register(Post)
 class PostAdmin(admin.ModelAdmin):
+
+    def approve_posts(modeladmin, request, queryset):
+        queryset.update(status=1)
  
     list_display = ('title', 'slug', 'status', 'created_on')
     list_filter = ("status", "created_on")
     search_fields = ['title']
+    actions = ["approve_posts"]
     
 
 @admin.register(TextPost)
