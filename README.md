@@ -214,6 +214,75 @@ Check if static files are being served properly and if Cloudinary is being used 
 
 ### Technologies Used
 
+- [asgiref](https://pypi.org/project/asgiref/) - Version 3.7.2
+  - ASGI (Asynchronous Server Gateway Interface) implementation for Django, providing compatibility with async frameworks.
+
+- [backports.zoneinfo](https://pypi.org/project/backports.zoneinfo/) - Version 0.2.1 (for Python versions prior to 3.9)
+  - Backport of the "zoneinfo" module introduced in Python 3.9, providing support for IANA time zones.
+
+- [cloudinary](https://cloudinary.com/documentation) - Version 1.33.0
+  - Cloud-based media management platform for storing, managing, and delivering images and videos.
+
+- [crispy-bootstrap5](https://pypi.org/project/crispy-bootstrap5/) - Version 0.7
+  - Integration of Django forms with Bootstrap 5, providing easy form rendering and customization.
+
+- [dj-database-url](https://pypi.org/project/dj-database-url/) - Version 2.0.0
+  - Allows configuring the Django database connection using a URL, simplifying database configuration.
+
+- [dj3-cloudinary-storage](https://pypi.org/project/dj3-cloudinary-storage/) - Version 0.0.6
+  - Provides a storage backend for Django to interact with Cloudinary for file and media storage.
+
+- [Django](https://docs.djangoproject.com/) - Version 3.2.19
+  - A high-level Python web framework for building robust and scalable web applications.
+
+- [django-allauth](https://django-allauth.readthedocs.io/) - Version 0.54.0
+  - Enables user authentication and registration with support for multiple social accounts.
+
+- [django-bootstrap-pagination](https://pypi.org/project/django-bootstrap-pagination/) - Version 1.7.1
+  - Adds pagination support to Django projects, with Bootstrap-themed pagination templates.
+
+- [django-crispy-forms](https://django-crispy-forms.readthedocs.io/) - Version 2.0
+  - Helps in rendering Django forms in a visually appealing way by integrating with Bootstrap.
+
+- [django-pagination](https://pypi.org/project/django-pagination/) - Version 1.0.7
+  - Provides easy pagination of Django querysets with support for various paginators.
+
+- [django-simple-pagination](https://pypi.org/project/django-simple-pagination/) - Version 1.3
+  - Offers simple pagination for Django projects without relying on database-specific functionality.
+
+- [django-summernote](https://django-summernote.readthedocs.io/) - Version 0.8.20.0
+  - Integration of the Summernote WYSIWYG editor with Django for rich text editing capabilities.
+
+- [gunicorn](https://gunicorn.org/) - Version 20.1.0
+  - A Python WSGI HTTP server that acts as a gateway between web applications and HTTP servers.
+
+- [oauthlib](https://oauthlib.readthedocs.io/) - Version 3.2.2
+  - Provides a generic implementation of the OAuth 1.0 and OAuth 2.0 specifications for Python.
+
+- [Pillow](https://pillow.readthedocs.io/) - Version 9.5.0
+  - A powerful Python imaging library for image processing and manipulation.
+
+- [psycopg2](https://pypi.org/project/psycopg2/) - Version 2.9.6
+  - PostgreSQL adapter for Python, allowing Django to interact with PostgreSQL databases.
+
+- [PyJWT](https://pyjwt.readthedocs.io/) - Version 2.7.0
+  - Provides JSON Web Token (JWT) implementation in Python, useful for authentication and authorization.
+
+- [python3-openid](https://pypi.org/project/python3-openid/) - Version 3.2.0
+  - Python library for working with OpenID authentication.
+
+- [pytz](https://pypi.org/project/pytz/) - Version 2023.3
+  - Python library for dealing with time zones, including localization and conversion.
+
+- [requests-oauthlib](https://requests-oauthlib.readthedocs.io/) - Version 1.3.1
+  - Provides OAuth client support for making authenticated requests using the OAuth protocol.
+
+- [sqlparse](https://pypi.org/project/sqlparse/) - Version 0.4.4
+  - A non-validating SQL parser for Python, useful for formatting and analyzing SQL statements.
+
+- [urllib3](https://urllib3.readthedocs.io/) - Version 1.26.16
+  - A powerful HTTP client library for Python, providing connection pooling and request functionality.
+
 
 
 
