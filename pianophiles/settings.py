@@ -44,13 +44,13 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
+    'django.contrib.sites',
     'cloudinary_storage',
     'django.contrib.staticfiles',
-    'django.contrib.sites',
+    'cloudinary',
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
-    'cloudinary',
     'cloudinary.uploader',
     'django_summernote',
     'crispy_forms',
@@ -150,7 +150,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
 STATIC_URL = '/static/'
-SATICFILES_STORAGE = 'cloudinary_storage.storage.StaticHashedCloudinaryStorage'
+STATICFILES_STORAGE = 'cloudinary_storage.storage.StaticHashedCloudinaryStorage'
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static'),]
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
