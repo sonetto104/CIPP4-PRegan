@@ -251,6 +251,32 @@ class CreatePostView(View):
         return render(request, 'create_post.html')
 
 
+# class CreateTextPostView(LoginRequiredMixin, View):
+#     login_url = '/account_login/'
+#     redirect_field_name = 'next'
+
+#     def get(self, request):
+#         form = TextPostForm()
+#         return render(request, 'create_text_post.html', {'form': form})
+
+#     def post(self, request):
+#         form = TextPostForm(request.POST)
+#         if form.is_valid():
+#             post = form.save(commit=False)
+#             post.author = request.user
+#             post.slug = slugify(form.cleaned_data['title'])
+#             post.save()
+#             return redirect('home')
+#         return render(request, 'create_text_post.html', {'form': form})
+
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.shortcuts import redirect, render
+from django.utils.text import slugify
+from django.views import View
+
+from .forms import TextPostForm
+
+
 class CreateTextPostView(LoginRequiredMixin, View):
     login_url = '/account_login/'
     redirect_field_name = 'next'
@@ -264,10 +290,29 @@ class CreateTextPostView(LoginRequiredMixin, View):
         if form.is_valid():
             post = form.save(commit=False)
             post.author = request.user
-            post.slug = slugify(form.cleaned_data['title'])
+
+            title = form.cleaned_data['title']
+            slug = slugify(title)
+            unique_slug = slug
+
+            counter = 1
+            while Post.objects.filter(slug=unique_slug).exists():
+                unique_slug = f"{slug}-{counter}"
+                counter += 1
+
+            post.slug = unique_slug
             post.save()
             return redirect('home')
+
         return render(request, 'create_text_post.html', {'form': form})
+
+
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.shortcuts import redirect, render
+from django.utils.text import slugify
+from django.views import View
+
+from .forms import ImagePostForm
 
 
 class CreateImagePostView(LoginRequiredMixin, View):
@@ -281,12 +326,61 @@ class CreateImagePostView(LoginRequiredMixin, View):
     def post(self, request):
         form = ImagePostForm(request.POST, request.FILES)
         if form.is_valid():
+            image_file = form.cleaned_data['image']
+            allowed_types = ['image/jpeg', 'image/jpg', 'image/png']
+
+            if image_file.content_type not in allowed_types:
+                form.add_error('image', 'Invalid image file format. Image files must be in jpg, jpeg or png format.')
+                return render(request, 'create_image_post.html', {'form': form})
+
             post = form.save(commit=False)
             post.author = request.user
-            post.slug = slugify(form.cleaned_data['title'])  # Assign slug manually
+
+            title = form.cleaned_data['title']
+            slug = slugify(title)
+            unique_slug = slug
+
+            counter = 1
+            while Post.objects.filter(slug=unique_slug).exists():
+                unique_slug = f"{slug}-{counter}"
+                counter += 1
+
+            post.slug = unique_slug
             post.save()
             return redirect('home')
+
         return render(request, 'create_image_post.html', {'form': form})
+
+
+
+# class CreateImagePostView(LoginRequiredMixin, View):
+#     login_url = '/account_login/'
+#     redirect_field_name = 'next'
+
+#     def get(self, request):
+#         form = ImagePostForm()
+#         return render(request, 'create_image_post.html', {'form': form})
+
+#     def post(self, request):
+#         form = ImagePostForm(request.POST, request.FILES)
+#         if form.is_valid():
+#             post = form.save(commit=False)
+#             post.author = request.user
+
+#             title = form.cleaned_data['title']
+#             slug = slugify(title)
+#             unique_slug = slug
+
+#             counter = 1
+#             while Post.objects.filter(slug=unique_slug).exists():
+#                 unique_slug = f"{slug}-{counter}"
+#                 counter += 1
+
+#             post.slug = unique_slug
+#             post.save()
+#             return redirect('home')
+
+#         return render(request, 'create_image_post.html', {'form': form})
 
 
 class CreateVideoPostView(LoginRequiredMixin, View):
@@ -300,12 +394,106 @@ class CreateVideoPostView(LoginRequiredMixin, View):
     def post(self, request):
         form = VideoPostForm(request.POST, request.FILES)
         if form.is_valid():
+            video_file = form.cleaned_data['video']
+            allowed_types = ['video/mp4', 'video/mpeg', 'video/quicktime']
+
+            if video_file.content_type not in allowed_types:
+                form.add_error('video', 'Invalid video file format. Video files must be mp4, mpeg or quicktime files.')
+                return render(request, 'create_video_post.html', {'form': form})
+
             post = form.save(commit=False)
             post.author = request.user
-            post.slug = slugify(form.cleaned_data['title'])  # Assign slug manually
+
+            title = form.cleaned_data['title']
+            slug = slugify(title)
+            unique_slug = slug
+
+            counter = 1
+            while Post.objects.filter(slug=unique_slug).exists():
+                unique_slug = f"{slug}-{counter}"
+                counter += 1
+
+            post.slug = unique_slug
             post.save()
             return redirect('home')
+
         return render(request, 'create_video_post.html', {'form': form})
+
+
+
+
+
+# class CreateVideoPostView(LoginRequiredMixin, View):
+#     login_url = '/account_login/'
+#     redirect_field_name = 'next'
+
+#     def get(self, request):
+#         form = VideoPostForm()
+#         return render(request, 'create_video_post.html', {'form': form})
+
+#     def post(self, request):
+#         form = VideoPostForm(request.POST, request.FILES)
+#         if form.is_valid():
+#             post = form.save(commit=False)
+#             post.author = request.user
+
+#             title = form.cleaned_data['title']
+#             slug = slugify(title)
+#             unique_slug = slug
+
+#             counter = 1
+#             while Post.objects.filter(slug=unique_slug).exists():
+#                 unique_slug = f"{slug}-{counter}"
+#                 counter += 1
+
+#             post.slug = unique_slug
+#             post.save()
+#             return redirect('home')
+
+#         return render(request, 'create_video_post.html', {'form': form})
+
+
+
+
+    
+
+
+# class CreateImagePostView(LoginRequiredMixin, View):
+#     login_url = '/account_login/'
+#     redirect_field_name = 'next'
+
+#     def get(self, request):
+#         form = ImagePostForm()
+#         return render(request, 'create_image_post.html', {'form': form})
+
+#     def post(self, request):
+#         form = ImagePostForm(request.POST, request.FILES)
+#         if form.is_valid():
+#             post = form.save(commit=False)
+#             post.author = request.user
+#             post.slug = slugify(form.cleaned_data['title'])  # Assign slug manually
+#             post.save()
+#             return redirect('home')
+#         return render(request, 'create_image_post.html', {'form': form})
+
+
+# class CreateVideoPostView(LoginRequiredMixin, View):
+#     login_url = '/account_login/'
+#     redirect_field_name = 'next'
+
+#     def get(self, request):
+#         form = VideoPostForm()
+#         return render(request, 'create_video_post.html', {'form': form})
+
+#     def post(self, request):
+#         form = VideoPostForm(request.POST, request.FILES)
+#         if form.is_valid():
+#             post = form.save(commit=False)
+#             post.author = request.user
+#             post.slug = slugify(form.cleaned_data['title'])  # Assign slug manually
+#             post.save()
+#             return redirect('home')
+#         return render(request, 'create_video_post.html', {'form': form})
 
 
 class PostLike(View):

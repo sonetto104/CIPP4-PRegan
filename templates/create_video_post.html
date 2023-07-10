@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+
 {% block content %}
 <div class="container">
   <div class="row justify-content-center align-items-center" style="height: 100vh;">
@@ -6,6 +7,7 @@
       <div class="card">
         <div class="card-body">
           <h2 class="card-title text-center mb-4">Create a Video Post</h2>
+          <p>Video files must be no larger than 100 MB.</p>
           <form method="post" enctype="multipart/form-data">
             {% csrf_token %}
             <div class="form-group text-danger">
@@ -31,10 +33,28 @@
               {% endif %}
             </div>
             <div class="text-center">
-              <button class="btn btn-danger" type="submit">Create Post</button>
+              <button class="btn btn-danger" type="submit" data-bs-toggle="modal" data-bs-target="#successModal">Create Post</button>
             </div>
           </form>
         </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Success Modal -->
+<div class="modal fade" id="successModal" tabindex="-1" aria-labelledby="successModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="successModalLabel">Post Submitted</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>Your video post has been submitted and is awaiting approval.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
       </div>
     </div>
   </div>
