@@ -28,11 +28,11 @@ TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates')
 SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+#DEBUG = True
 
 X_FRAME_OPTIONS = "SAMEORIGIN"
 
-ALLOWED_HOSTS = ['8000-sonetto104-cipp4pregan-f7zpi5tmdlz.ws-eu100.gitpod.io', 'localhost', 'pianophiles.herokuapp.com', 'pianophiles-cbf072093775.herokuapp.com', '8000-sonetto104-cipp4pregan-f7zpi5tmdlz.ws-eu101.gitpod.io', '8000-sonetto104-cipp4pregan-li7a6uz4b53.ws-eu101.gitpod.io']
+ALLOWED_HOSTS = ['8000-sonetto104-cipp4pregan-f7zpi5tmdlz.ws-eu100.gitpod.io','localhost', 'pianophiles.herokuapp.com', 'pianophiles-cbf072093775.herokuapp.com', '8000-sonetto104-cipp4pregan-f7zpi5tmdlz.ws-eu101.gitpod.io', '8000-sonetto104-cipp4pregan-li7a6uz4b53.ws-eu101.gitpod.io',"*"]
 
 CSRF_TRUSTED_ORIGINS = ['https://8000-sonetto104-cipp4pregan-f7zpi5tmdlz.ws-eu101.gitpod.io', 'https://8000-sonetto104-cipp4pregan-li7a6uz4b53.ws-eu101.gitpod.io']
 
@@ -150,7 +150,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
-STATIC_URL = '/static/'
+STATIC_URL = 'static/'
 SATICFILES_STORAGE = 'cloudinary_storage.storage.StaticHashedCloudinaryStorage'
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
