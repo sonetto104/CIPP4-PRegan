@@ -3,7 +3,7 @@
 
 PianoPhiles is a blog site for piano lovers where they can share clips of their favourite performances, post questions about technique or interpretation, or share pictures of their fun piano moments. As well as being able to share content in text, image and video format, users can discuss the material with other likeminded keyboard enthusiasts through comments, show their appreciation with likes and add a personal touch to their own profile page with a short bio and profile photo. Let's get tinkling those keys!
 
-![S]()
+
 
 - User Stories
   1. As a user I want to create my own profile, so I have a familiar and comfortable place where I can share my enthusiasm for piano and keep track of discussions.
@@ -78,7 +78,28 @@ Most of the site should flow centrally from the home page. I used Figma to make 
 
 #### Database Schema
 
-The database technologies used in this project are ElephantSQL
+The project utilizes PostgreSQL as the database technology of choice. This is evident from the inclusion of the psycopg2 package in the requirements file, which serves as the PostgreSQL adapter for Python. PostgreSQL is a powerful and feature-rich open-source relational database management system known for its reliability, scalability, and extensive support for advanced data types and SQL features. Additionally, the project leverages the dj-database-url package, which facilitates the handling and parsing of database URLs. This allows for seamless configuration of the database connection using a URL format specified by the PostgreSQL provider. By utilizing these database technologies, the project ensures efficient and secure data storage and retrieval, enabling robust and scalable web application functionality.
+
+Here is an overview of the most important data relationships in the project.
+
+## ERD Diagram
+
+| Model        | Fields                                         | Relationships                            |
+|--------------|------------------------------------------------|------------------------------------------|
+| User         | id, username, email, password, ...              |                                          |
+| Profile      | id, owner_id, created_on, updated_on, bio, ...  | owner (OneToOne with User)                |
+| Post         | id, title, slug, author_id, created_on, ...     | author (ForeignKey to User)               |
+|              |                                                | likes (ManyToMany with User)              |
+| TextPost     | content                                        | parent: Post                             |
+| ImagePost    | image                                          | parent: Post                             |
+| VideoPost    | video                                          | parent: Post                             |
+| PostComment  | id, post_id, author_id, content, ...            | post (ForeignKey to Post)                |
+|              |                                                | author (ForeignKey to User)               |
+
+
+
+
+
 
 #### Wireframes
 @@ -361,4 +378,4 @@ Congratualations, you've deployed your site!
