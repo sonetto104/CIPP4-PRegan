@@ -391,3 +391,8 @@
 #profile-container2 {
   max-width: 100vw;
 }
+
+.comment-actions {
+  max-width: 50px; /* Adjust the width value as needed */
+  margin-top: 10px;
+}
