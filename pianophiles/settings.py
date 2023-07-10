@@ -30,7 +30,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-X_FRAME_OPTIONS = "SAMEORIGIN"
+# X_FRAME_OPTIONS = "SAMEORIGIN"
 
 ALLOWED_HOSTS = ['8000-sonetto104-cipp4pregan-f7zpi5tmdlz.ws-eu100.gitpod.io', 'localhost', 'pianophiles.herokuapp.com', 'pianophiles-cbf072093775.herokuapp.com', '8000-sonetto104-cipp4pregan-f7zpi5tmdlz.ws-eu101.gitpod.io', '8000-sonetto104-cipp4pregan-li7a6uz4b53.ws-eu101.gitpod.io']
 
