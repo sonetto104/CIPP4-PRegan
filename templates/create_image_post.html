@@ -10,6 +10,7 @@
             {% csrf_token %}
             <div class="form-group text-danger">
               <h4>Title:</h4>
+              
               <input type="text" name="{{ form.title.name }}" id="{{ form.title.id_for_label }}" class="form-control">
               {% if form.title.errors %}
                 <div class="text-danger">
@@ -21,6 +22,7 @@
             </div>
             <div class="form-group text-danger">
               <h4>Image:</h4>
+              <p>Image file size must be less than 10 MB.</p>
               <input type="file" name="{{ form.image.name }}" id="{{ form.image.id_for_label }}" class="form-control-file">
               {% if form.image.errors %}
                 <div class="text-danger">
