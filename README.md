@@ -71,7 +71,7 @@ D - Users can delete their past comments, posts and their profile.
 
 #### Site Flow
 
-Most of the site should flow centrally from the home page. I used Figma to make a diagram with a rough outline of how the site should flow.
+Most of the site should flow centrally from the home page. I used Lucid Chart to make a diagram with a rough outline of how the site should flow.
 
 ![Site Flow Diagram](static/assets/img/pianophiles-siteflow.jpg)
 
@@ -98,11 +98,35 @@ Here is an overview of the most important data relationships in the project.
 
 
 
-
-
-
 #### Wireframes
-@@ -361,4 +378,4 @@ Congratualations, you've deployed your site!
+
+I used Figma to make these basic wireframes for how I imagined the website would look.
+
+![Sample Profile Layout](static/assets/img/android-small.jpg)
+
+![Sample Login Page Layout](static/assets/img/android-small-page-1.jpg)
+
+![Sample Post Page Layou](static/assets/img/android-small-page-2.jpg)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   - Django docs
   - Bootstrap Docs
   - W3Schools
