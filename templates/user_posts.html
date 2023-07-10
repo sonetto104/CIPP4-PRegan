@@ -1,20 +1,133 @@
 {% extends 'base.html' %}
 
 {% block content %}
-  <h1>User Posts</h1>
+<div class="container-fluid mt-5 mx-0 width-100">
+  <h1 class="card-title mb-4">User Posts</h1>
+  <h2 class="mt-4 mb-4">{{ user.username }}'s posts</h2>
+  <div class="row ml-0 mr-0">
+    
+    {% for post in posts %}
+      <div class="col-lg-4 col-md-6 col-sm-12">
+        <div class="card mb-4 rounded">
+          <div class="card-body">
+            <a href="{% url 'post_detail' post.slug %}" class="text-decoration-none text-dark">
+              <h4 class="card-title text-left">{{ post.title }}</h4>
+            </a>
+            <p class="card-text mb-2 small text-muted text-left">Author: {{ post.author }}</p>
+            <p class="card-text mb-2 small text-muted text-left">Created on: {{ post.created_on|date:"F d, Y" }}</p>
 
-  <h2>{{ user.username }}'s Posts</h2>
-  {% if posts %}
-    <ul>
-      {% for post in posts %}
-        <li>{{ post.title }}</li>
-      {% empty %}
-        <li>No posts found.</li>
-      {% endfor %}
-    </ul>
-  {% else %}
-    <p>No posts found.</p>
-  {% endif %}
+            {% if post.post_comments.exists %}
+              {% with first_comment=post.post_comments.first %}
+                <p class="mb-2 small text-muted text-left">Comments: <br>
+                  {{ first_comment.author }}: {{ first_comment.content|slice:":20" }}{% if first_comment.content|length > 20 %}...{% endif %}
+                </p>
+              {% endwith %}
+
+              {% if post.post_comments.count > 1 %}
+                {% with second_comment=post.post_comments.all.1 %}
+                  <p class="mb-2 small text-muted text-left">{{ second_comment.author }}: {{ second_comment.content|slice:":20" }}{% if second_comment.content|length > 20 %}...{% endif %}</p>
+                {% endwith %}
+              {% endif %}
+            {% else %}
+              <p class="mb-2 small text-muted text-left">No comments yet.</p>
+            {% endif %}
+
+            <a href="{% url 'profile' username=post.author.username %}">
+              <img class="profile-picture" src="{{ post.author.profile.profile_photo.url }}" alt="Profile Picture">
+            </a>
+
+            <div class="col-1">
+              <strong>
+                {% if user.is_authenticated %}
+                  <form class="d-inline" action="{% url 'post_like' post.slug %}" method="POST">
+                    {% csrf_token %}
+                    {% if liked %}
+                      <button type="submit" name="blogpost_id" value="{{post.slug}}" class="btn-unstyled border-0 bg-white d-flex align-items-center">
+                        <i class="fas fa-heart mr-2 text-danger"></i>
+                        <span class="ms-1">{{ post.number_of_likes }}</span>
+                      </button>
+                    {% else %}
+                      <button type="submit" name="blogpost_id" value="{{post.slug}}" class="btn-unstyled border-0 bg-white d-flex align-items-center">
+                        <i class="fas fa-heart mr-2 text-danger"></i>
+                        <span class="ms-1">{{ post.number_of_likes }}</span>
+                      </button>
+                    {% endif %}
+                  </form>
+                {% else %}
+                  <i class="fas fa-heart mr-2 text-danger"></i><span class="ms-1">{{ post.number_of_likes }}</span>
+                {% endif %}
+              </strong>
+            </div>
+
+            {% if post.imagepost %}
+              <img class="card-img mt-3 videocard" src="{{ post.imagepost.image.url }}" alt="Image Post">
+            {% endif %}
+            {% if post.videopost %}
+              <div class="card-video-wrapper">
+                <video class="card-video" controls>
+                  <source src="{{ post.videopost.video.url }}" type="video/mp4">
+                  Your browser does not support the video tag.
+                </video>
+              </div>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+    
+
+  </div>
   
-{% endblock %}
 
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/masonry/4.2.2/masonry.pkgd.min.js"></script>
+<script>
+  $(document).ready(function() {
+    $('.row').masonry({
+      itemSelector: '.col-lg-4',
+      columnWidth: '.col-lg-4',
+      percentPosition: true
+    });
+  });
+</script>
+
+<a href="{% if user.is_authenticated %}{% url 'create_post' %}{% else %}{% url 'account_login' %}{% endif %}">
+  <div class="floating-button">
+    <div class="message">
+      {% if user.is_authenticated %}
+        Add a post
+      {% else %}
+        Login or sign up to add a post
+      {% endif %}
+    </div>
+    <span class="plus-icon"></span>
+  </div>
+</a>
+<div class="container-fluid pagination mt-4 justify-content-center text-center mb-5">
+  <ul class="pagination-list">
+    {% if page_obj.has_previous %}
+      <li class="pagination-item">
+        <a class="pagination-link" href="?page=1">&laquo; first</a>
+      </li>
+      <li class="pagination-item">
+        <a class="pagination-link" href="?page={{ page_obj.previous_page_number }}">previous</a>
+      </li>
+    {% endif %}
+
+    <li class="pagination-item">
+      <span class="pagination-link current-page">{{ page_obj.number }}</span>
+    </li>
+
+    {% if page_obj.has_next %}
+      <li class="pagination-item">
+        <a class="pagination-link" href="?page={{ page_obj.next_page_number }}">next</a>
+      </li>
+      <li class="pagination-item">
+        <a class="pagination-link" href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
+      </li>
+    {% endif %}
+  </ul>
+</div>
+{% endblock content %}
