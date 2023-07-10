@@ -53,6 +53,9 @@ The project must have:
 
 - Could Have
     - Live chat feature.
+    - Different genres for classical, jazz and pop.
+    - Search functionality.
+    - Tag functionality so users can search by tags, keywords or genre.
 
 ### Structure Plane
 
@@ -68,9 +71,14 @@ D - Users can delete their past comments, posts and their profile.
 
 #### Site Flow
 
+Most of the site should flow centrally from the home page. I used Figma to make a diagram with a rough outline of how the site should flow.
+
+![Site Flow Diagram](static/assets/img/pianophiles-siteflow.jpg)
 
 
 #### Database Schema
+
+The database technologies used in this project are ElephantSQL
 
 #### Wireframes
 @@ -361,4 +378,4 @@ Congratualations, you've deployed your site!
