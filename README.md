@@ -40,35 +40,31 @@ The project must have:
     - Login/logout functionality allowing users to maintain anonymity if they so choose.
     - Commenting functinonality so that users can discuss their views.
     - A database that stores user data securely.
+    - Video hosting capability.
+    - Text hosting capability.
+    - Image hosting capability.
 
 - Should Have
 
     - Profile functionality where users can choose whether or not to share information about themselves, and where they can access their history of activity,     
     notifications etc.
 - Ability to like posts.
-- 
+- Dynamic like button.
 
 - Could Have
     - Live chat feature.
 
 ### Structure Plane
 
-#### User Stories
-
-- Recent Veteran
-  - As recent veteran, I can... so that I can...
-  - As recent veteran, I can use VeteranTalk to chat with likeminded veterans so that we can share tips about how to build new routines that facilitate mental   
-    wellbeing.
-- Navy Veteran
-  - As a navy veteran, I can... so that I can...
-  - As a navy veteran, I can use VeteranTalk to connect with others so that we can form a community in case we are struggling with loneliness after leaving our tight
-    knit way of living on a ship or in barracks.
-- Army Veteran
-  - As an army veteran, I can... so that I can...
-  - As an army veteran, I can use VeteranTalk to open up anonymously if I am struggling with mental health issues after leaving service. This way I can learn about how 
-    common such issues are and be encouraged to find help without fear of being stigmatised.
 
 ### Skeleton Plane
+
+As per the requirements of Code Institute's Portfolio Project 4 assignment, this functions at the most basic level as a CRUD application.
+
+C - Users can create profiles, comments and posts.
+R - Users can read the profiles, comments and posts of other users. They can read their own comments and posts.
+U - Users can edit their profiles.
+D - Users can delete their past comments, posts and their profile.
 
 #### Site Flow
 
