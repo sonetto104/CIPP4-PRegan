@@ -212,6 +212,25 @@ Check if static files are being served properly and if Cloudinary is being used 
 - Your Django app should now be deployed and running on Heroku, with static files being served from Cloudinary. 
 
 
+### Technologies Used
+
+
+
+
+### Acknowledgements
+
+Several of the Class based models and their associated functions were taken directly from or modeled on the code used in Code Institute's Codestar Blog project.
+
+Tips on pagination came from this website: https://realpython.com/django-pagination/#using-the-django-paginator-in-views
+
+Advice on having issues with getting Cloudinary to serve static files correctly to Heroku were taken from several Stack Overflow posts - https://stackoverflow.com/questions/72837010/cannot-push-to-heroku-with-cloudinary-storing-my-staticfiles
+
+https://stackoverflow.com/questions/70231804/how-can-i-upload-all-types-of-files-videos-audios-pdfs-zip-in-cloudinary-in
+
+YouTube tutorials on Cloudinary and Django: https://www.youtube.com/watch?v=fQo9ivqX4xs
+https://www.youtube.com/watch?v=i0ar7W98Osc
+
+Article on editing the Summernote editor: https://djangocentral.com/integrating-summernote-in-django/
 
 
 
@@ -228,12 +247,8 @@ Check if static files are being served properly and if Cloudinary is being used 
 
 
 
-  - Django docs
-  - Bootstrap Docs
-  - W3Schools
 
-Yes! We'd strongly encourage you to look at the source code of the `uptime.sh` file so that you know what it's doing. As future software developers, it will be great practice to see how these shell scripts work.
 
----
 
-Happy coding!
+  
+
