@@ -12,7 +12,6 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 
 from pathlib import Path
 import os
-import mimetypes
 import dj_database_url
 if os.path.isfile('env.py'):
     import env
@@ -33,7 +32,7 @@ DEBUG = False
 
 X_FRAME_OPTIONS = "SAMEORIGIN"
 
-ALLOWED_HOSTS = ['8000-sonetto104-cipp4pregan-f7zpi5tmdlz.ws-eu100.gitpod.io','localhost', 'pianophiles.herokuapp.com', 'pianophiles-cbf072093775.herokuapp.com', '8000-sonetto104-cipp4pregan-f7zpi5tmdlz.ws-eu101.gitpod.io', '8000-sonetto104-cipp4pregan-li7a6uz4b53.ws-eu101.gitpod.io',"*"]
+ALLOWED_HOSTS = ['8000-sonetto104-cipp4pregan-f7zpi5tmdlz.ws-eu100.gitpod.io', 'localhost', 'pianophiles.herokuapp.com', 'pianophiles-cbf072093775.herokuapp.com', '8000-sonetto104-cipp4pregan-f7zpi5tmdlz.ws-eu101.gitpod.io', '8000-sonetto104-cipp4pregan-li7a6uz4b53.ws-eu101.gitpod.io']
 
 CSRF_TRUSTED_ORIGINS = ['https://8000-sonetto104-cipp4pregan-f7zpi5tmdlz.ws-eu101.gitpod.io', 'https://8000-sonetto104-cipp4pregan-li7a6uz4b53.ws-eu101.gitpod.io']
 
@@ -78,7 +77,6 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 ROOT_URLCONF = 'pianophiles.urls'
@@ -146,17 +144,18 @@ TIME_ZONE = 'UTC'
 USE_I18N = True
 
 USE_TZ = True
-mimetypes.add_type("text/css",".css",True)
+
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
-STATIC_URL = '/static/'
+STATIC_URL = 'static/'
 SATICFILES_STORAGE = 'cloudinary_storage.storage.StaticHashedCloudinaryStorage'
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 MEDIA_URL = '/media/'
+STATIC_URL = '/static'
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 CLOUDINARY_URL = os.environ.get('CLOUDINARY_URL')
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
