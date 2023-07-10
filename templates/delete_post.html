@@ -1,3 +1,4 @@
+{% load static %}
 <h1>Delete Post Confirmation</h1>
 <p>Are you sure you want to delete this post?</p>
 <form method="post" action="{% url 'delete_post' pk=post.pk %}">
