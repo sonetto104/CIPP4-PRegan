@@ -1,7 +1,9 @@
-{% load static %}
 <!DOCTYPE html>
-<html class="h-100 bg-white" lang="en">
+<html lang="en">
 <head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PianoPhiles</title>
     <link rel="shortcut icon" href="{% static 'assets/favicon/favicon.ico' %}" type="image/x-icon">
     <!-- <link rel="preconnect" href="https://fonts.gstatic.com"> FONT CHOICE -->
@@ -72,9 +74,10 @@
                     {% endif %}
                 </ul>
             </div>
-            </div>
+        </div>
         </div>
     </nav>
     {% block content %}{% endblock %}
 </body>
+
 </html>

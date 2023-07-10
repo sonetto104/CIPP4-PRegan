@@ -109,6 +109,107 @@ I used Figma to make these basic wireframes for how I imagined the website would
 ![Sample Post Page Layou](static/assets/img/android-small-page-2.jpg)
 
 
+### Manual Testing
+
+| Test Case                         | Description                                                                                                                   | Expected Outcome                                   | Pass/Fail |
+|----------------------------------|-------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------|-----------|
+| User Registration                | Test the registration process by creating a new user profile.                                                                 | User is able to successfully register and is redirected to the home page.                          |  Pass         |
+| User Login                       | Test the login functionality by logging in with a registered user account.                                                    | User is able to log in and is redirected to the home page.                                          | Pass   |
+| Create a Post                    | Test the ability to create a new post by a logged-in user.                                                                     | Post is successfully created and displayed on the home page.                                       |    Pass       |
+| View Recent Posts                | Test the display of recent posts on the home page.                                                                             | Recent posts are displayed correctly on the home page.                                              |    Pass       |
+| Comment on a Post                | Test the ability to add a comment on a post.                                                                                   | Comment is successfully added to the post and displayed.                                           |    Pass       |
+| View User's Profile              | Test the display of a user's profile page.                                                                                    | User's profile page is displayed correctly with the relevant information.                          |    Pass       |
+| Edit User's Profile              | Test the ability to edit the user's profile information.                                                                      | User's profile information is successfully updated.                                               |  Pass         |
+| Delete a Post                    | Test the ability to delete a post created by the user.                                                                         | Post is successfully deleted and no longer displayed on the site.                                  |      Pass     |
+| Delete a Comment                 | Test the ability to delete a comment made by the user.                                                                         | Comment is successfully deleted and no longer displayed on the post.                               |      Pass     |
+| Like a Post                      | Test the ability to like a post.                                                                                              | Post is successfully liked by the user.                                                            |     Pass - can be improved      |
+| Logout                           | Test the logout functionality by logging out from a user account.                                                            | User is logged out and redirected to the login page.                                               |      Pass     |
+| View Posts of Other Users        | Test the ability to view posts made by other users.                                                                            | Posts made by other users are displayed correctly.                                                 |  Pass         |
+| Delete User's Profile            | Test the ability to delete the user's profile.                                                                                 | User's profile is successfully deleted, and all associated data is removed.                        |    Pass       |
+| View the Site without Logging In | Test the ability to access the site and view content without logging in.                                                      | User can access and view the site's content without logging in.                                   |     Pass      |
+| Dynamic Like Button              | Test the behavior of the dynamic like button on a post.                                                                        | Like button updates and reflects the user's liking/unliking of a post.                            |    Pass - can be improved - not fully dynamic as it acts as a redirect.       |
+| Search Functionality             | Test the search functionality to search for posts based on keywords or tags.                                                  | Search results display relevant posts based on the search query.                                  |    Fail       |
+| Tag Functionality                | Test the ability to assign tags to posts and filter posts by tags.                                                            | Posts can be assigned tags, and filtering by tags displays relevant posts.                        |     Fail      |
+| Live Chat Feature                | Test the functionality of the live chat feature, if implemented.                                                              | Live chat feature functions as expected, allowing real-time communication between users.          |    Fail       |
+| Ability to Delete Previous Posts and Comments | Test the ability to delete previous posts and comments made by the user.                                               | User's previous posts and comments are successfully deleted.                                       |  Pass         |
+
+
+### Deployment
+
+1. Set up a Heroku account:
+
+- Go to the Heroku website (https://www.heroku.com/) and sign up for a new account if you don't have one already.
+Install the Heroku CLI:
+
+- Download and install the Heroku CLI (Command Line Interface) based on your operating system. You can find the installation instructions on the Heroku website.
+
+2. Set up your Django project on GitHub:
+
+- Make sure your Django project is hosted on a GitHub repository. If not, create a new repository for your project and push your code to it.
+
+3. Create a new Heroku app:
+
+- Log in to your Heroku account.
+From the Heroku dashboard, click on the "New" button and select "Create new app".
+Give your app a unique name, choose the region, and click on the "Create app" button.
+Connect your GitHub repository to Heroku:
+
+4. In the "Deployment method" section of your Heroku app dashboard, select the "GitHub" option.
+Search for your repository name and click on the "Connect" button to connect your GitHub repository to Heroku.
+Configure environment variables:
+
+5. In the "Settings" tab of your Heroku app dashboard, click on the "Reveal Config Vars" button.
+Add any necessary environment variables your Django project requires (e.g., SECRET_KEY, DATABASE_URL, etc.).
+If using Cloudinary for hosting static files, include the necessary Cloudinary environment variables (e.g., CLOUDINARY_URL, CLOUDINARY_API_KEY, CLOUDINARY_API_SECRET, etc.).
+Set up the PostgreSQL database:
+
+6. In the "Resources" tab of your Heroku app dashboard, search for "Heroku Postgres" in the "Add-ons" section and select the plan that suits your needs.
+Once the Postgres add-on is provisioned, you can access the database credentials in the "Settings" tab under the "Config Vars" section.
+
+7. Create a Procfile:
+
+- In your Django project's root directory, create a file named "Procfile" (without any file extension) and add the following line:
+
+"web: gunicorn your_project_name.wsgi --log-file"
+
+8. Replace "your_project_name" with the actual name of your Django project.
+Install necessary dependencies:
+
+- Make sure your Django project's dependencies are listed in a requirements.txt file. You can generate this file using the command pip freeze > requirements.txt in your project's virtual environment.
+
+9. Configure static files and Cloudinary:
+
+- Install the necessary packages for Cloudinary integration, such as cloudinary and dj3-cloudinary-storage.
+In your Django project's settings.py file:
+
+10. Set STATIC_URL = '/static/' to define the URL for serving static files.
+- Set STATICFILES_STORAGE to use Cloudinary for storing static files. Use the value 'cloudinary_storage.storage.StaticHashedCloudinaryStorage'.
+- Set DEFAULT_FILE_STORAGE to use Cloudinary for storing uploaded media files. Use the value 'cloudinary_storage.storage.MediaCloudinaryStorage'.
+- Make sure CLOUDINARY_URL, CLOUDINARY_API_KEY, CLOUDINARY_API_SECRET, and other necessary Cloudinary environment variables are correctly configured.
+
+11. Configure Debug and static file collection settings:
+
+- In your Django project's settings.py file:
+- Set DEBUG = False to disable debug mode in production.
+- Set DISABLE_COLLECTSTATIC = 1 to prevent Heroku from running the collectstatic command during deployment. This is  important because static files are already being handled by Cloudinary and don't need to be collected.
+
+12. Commit and push changes:
+
+- Make sure all your changes, including the Procfile, requirements.txt, and updated settings.py file, are committed and pushed to your GitHub repository.
+Deploy your app on Heroku:
+
+13. In the "Deploy" tab of your Heroku app dashboard, scroll down to the "Manual deploy" section. You can enable automatic deployments for every time you push your code.
+- Click on the "Deploy Branch" button to deploy your app from the GitHub repository.
+Monitor the deployment:
+
+- Once the deployment is initiated, you can monitor the build progress in the "Activity" tab of your Heroku app dashboard.
+- If the build process encounters any errors, you can check the logs by clicking on the "View Logs" button.
+Verify your deployed app:
+
+14. After a successful deployment, Heroku will provide you with the URL of your app.
+Open the URL in your browser to verify that your Django app is running correctly on Heroku.
+Check if static files are being served properly and if Cloudinary is being used for hosting and retrieving static files.
+- Your Django app should now be deployed and running on Heroku, with static files being served from Cloudinary. 
 
 
 
