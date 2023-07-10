@@ -269,12 +269,6 @@ class CreatePostView(View):
 #             return redirect('home')
 #         return render(request, 'create_text_post.html', {'form': form})
 
-from django.contrib.auth.mixins import LoginRequiredMixin
-from django.shortcuts import redirect, render
-from django.utils.text import slugify
-from django.views import View
-
-from .forms import TextPostForm
 
 
 class CreateTextPostView(LoginRequiredMixin, View):
@@ -307,12 +301,6 @@ class CreateTextPostView(LoginRequiredMixin, View):
         return render(request, 'create_text_post.html', {'form': form})
 
 
-from django.contrib.auth.mixins import LoginRequiredMixin
-from django.shortcuts import redirect, render
-from django.utils.text import slugify
-from django.views import View
-
-from .forms import ImagePostForm
 
 
 class CreateImagePostView(LoginRequiredMixin, View):

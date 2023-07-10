@@ -81,4 +81,16 @@
       <span class="plus-icon"></span>
     </div>
   </a>
+  <a href="{% if user.is_authenticated %}{% url 'create_post' %}{% else %}{% url 'account_login' %}{% endif %}">
+    <div class="floating-button">
+      <div class="message">
+        {% if user.is_authenticated %}
+          Add a post
+        {% else %}
+          Login or sign up to add a post
+        {% endif %}
+      </div>
+      <span class="plus-icon"></span>
+    </div>
+  </a>
 {% endblock content %}
