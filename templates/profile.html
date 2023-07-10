@@ -173,5 +173,11 @@
 <div class="d-flex justify-content-end mt-4 mb-4">
   <a href="{% url 'user-comments' username=user.username %}" class="btn btn-primary">View Comments</a>
 </div>
+
+{% if own_profile %}
+<div class="d-flex justify-content-end mb-4">
+  <a href="{% url 'delete_profile' %}" class="btn btn-warning text-dark">Delete Profile</a>
+</div>
+{% endif %}
 </div>
 {% endblock content %}

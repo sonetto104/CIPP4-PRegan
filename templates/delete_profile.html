@@ -1,7 +1,29 @@
-<h1>Delete Profile</h1>
-<p>Are you sure you want to delete your profile?</p>
-<form method="post" action="{% url 'delete_profile' %}">
-  {% csrf_token %}
-  <input type="submit" value="Delete">
-  <a href="{% url 'profile' username=request.user.username %}">Cancel</a>
-</form>
+{% extends "base.html" %}
+
+{% load i18n %}
+
+{% block head_title %}{% trans "Delete Profile" %}{% endblock %}
+
+{% block content %}
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <div class="card border-dark mt-5">
+        <div class="card-header bg-yellow text-black">
+          <h1 class="card-title">{% trans "Delete Profile" %}</h1>
+        </div>
+        <div class="card-body">
+          <h2 class="text-center mb-4">{% trans 'Are you sure you want to delete your profile? This action is irreversible.' %}</h2>
+          <form method="post" action="{% url 'delete_profile' %}">
+            {% csrf_token %}
+            <div class="text-center">
+              <button class="btn btn-warning text-dark" type="submit">{% trans 'Delete' %}</button>
+              <a href="{% url 'profile' username=request.user.username %}" class="btn btn-secondary">{% trans 'Cancel' %}</a>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
