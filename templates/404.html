@@ -1,5 +1,21 @@
+
+
 {% extends 'base.html' %}
 
 {% block content %}
- <a href="{% url 'home' %}"><h1>BIG ERROR GO HOME</h1></a>
+  <div class="container mt-5">
+    <div class="row">
+      <div class="col-md-6">
+        <div class="error-text">
+          <h1>Oops - Error 404 - Looks Like We Played a Few Wrong Notes</h1>
+          <p>The page you are looking for does not exist. It might have been removed, had its name changed, or is temporarily unavailable.</p>
+          <a href="{% url 'home' %}" class="btn btn-primary">Click here to get back home.</a>
+        </div>
+        
+      </div>
+      <div class="col-md-6">
+        <img src="https://res.cloudinary.com/dayngkoud/image/upload/v1693135126/Keyboard_cat_ouvbg1.jpg">
+      </div>
+    </div>
+  </div>
 {% endblock content %}
