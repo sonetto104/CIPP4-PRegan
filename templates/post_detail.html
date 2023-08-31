@@ -21,7 +21,11 @@
           </div>
         {% endif %}
 
-        <p class="card-text">{{ post.content }}</p>
+        
+        {% if post.textpost %}
+        <p class="card-text">{{ post.textpost.content }}</p>
+        {% endif %}
+        
 
         {% if commented %}
           <div class="alert alert-success" role="alert">
