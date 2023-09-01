@@ -18,16 +18,22 @@
 
             
             {% if post.post_comments.exists %}
-              {% for comment in post.post_comments.all %}
-                {% if comment.approved %}
+            {% for comment in post.post_comments.all %}
+              {% if comment.approved %}
+                {% if forloop.counter <= 2 %}
                   <p class="mb-2 small text-muted text-left">{{ comment.author }}: {{ comment.content|slice:":20" }}{% if comment.content|length > 20 %}...{% endif %}</p>
                 {% endif %}
-              {% endfor %}
+              {% endif %}
+            {% endfor %}
+            
+            {% if post.post_comments.count > 2 %}
               <p class="mb-2 small text-muted text-left">Number of Comments: {{ post.post_comments.count }}</p>
               <a href="{% url 'post_detail' post.slug %}" class="text-decoration-none text-dark underline">View all comments</a>
-            {% else %}
-              <p class="mb-2 small text-muted text-left">No comments yet.</p>
             {% endif %}
+            
+          {% else %}
+            <p class="mb-2 small text-muted text-left">No comments yet.</p>
+          {% endif %}
 
             <a href="{% url 'profile' username=post.author.username %}">
               <img class="profile-picture" src="{{ post.author.profile.profile_photo.url }}" alt="Profile Picture">
