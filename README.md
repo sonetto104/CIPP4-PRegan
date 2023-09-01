@@ -37,13 +37,13 @@ The site was built in fulfilment of the requirements for Portfolio Project 4 of 
   13. As a user I want to be able to view the site without having to sign up for a profile if I think I would enjoy a more passive rolw on the site.
   14. As a user I want to be able to log in or out of my profile if I feel like "laying low". 
 
-# Site Goal
+## Site Goal
 
-  - The goal of the site is to create a place where piano lovers can really sink their teeth into their favourite arguments about the art. Spaces like pianostreet used to thrive in the early days of popular widespread internet, but due to their lack of design and ui development, that community has fizzled out and is nowhere near as active as it used to be. It would be nice to resurrect that fun community online where people had ridiculous arguments about interpreting Chopin.
+  The goal of the site is to create a place where piano lovers can really sink their teeth into their favourite arguments about the art. Spaces like pianostreet used to thrive in the early days of popular widespread internet, but due to their lack of design and ui development, that community has fizzled out and is nowhere near as active as it used to be. It would be nice to resurrect that fun community online where people had ridiculous arguments about interpreting Chopin.
 
 - Target Audience
 
-  -Users of the site are likely to be advanced second level and conservatoire level student pianists and retired amateur pianists; a reflection of the real life piano recital going audience.
+  Users of the site are likely to be advanced second level and conservatoire level student pianists and retired amateur pianists; a reflection of the real life piano recital going audience.
 
 
 - Is the content relevant?
@@ -64,8 +64,8 @@ The project must have:
 
     - Profile functionality where users can choose whether or not to share information about themselves, and where they can access their history of activity,     
     notifications etc.
-- Ability to like posts.
-- Dynamic like button.
+    - Ability to like posts.
+    - Dynamic like button.
 
 - Could Have
     - Live chat feature.
