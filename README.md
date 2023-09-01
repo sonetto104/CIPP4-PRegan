@@ -3,11 +3,25 @@
 
 ![Preview of PianoPhiles](/static/assets/img/amiresponsive-mockup.png)
 
+**Live Site:**
+
+[Live webpage](https://pianophiles-cbf072093775.herokuapp.com/)
+
+**Link to Repository:**
+
+[Repository](https://github.com/sonetto104/CIPP4-PRegan)
+
+**Developed by: Peter Regan**
+
+## Table of Content TO GO HERE
+
+## Introduction
+
 PianoPhiles is a blog site for piano lovers where they can share clips of their favourite performances, post questions about technique or interpretation, or share pictures of their fun piano moments. As well as being able to share content in text, image and video format, users can discuss the material with other likeminded keyboard enthusiasts through comments, show their appreciation with likes and add a personal touch to their own profile page with a short bio and profile photo. Let's get tinkling those keys!
 
+The site was built in fulfilment of the requirements for Portfolio Project 4 of Code Institute's Diploma in Full Stack Software Development. It was built using Django, Python, JS, CSS, and HTML. The site data is stored in a PostgreSQL database.
 
-
-- User Stories
+## User Stories
   1. As a user I want to create my own profile, so I have a familiar and comfortable place where I can share my enthusiasm for piano and keep track of discussions.
   2. As a user I want to be able to view all the most recent posts on the site so I can keep my interest fresh and novel.
   3. As a user I want to be able to view all my past posts so I can keep track of my public correspondences.
@@ -23,7 +37,7 @@ PianoPhiles is a blog site for piano lovers where they can share clips of their 
   13. As a user I want to be able to view the site without having to sign up for a profile if I think I would enjoy a more passive rolw on the site.
   14. As a user I want to be able to log in or out of my profile if I feel like "laying low". 
 
-- Site Goal
+# Site Goal
 
   - The goal of the site is to create a place where piano lovers can really sink their teeth into their favourite arguments about the art. Spaces like pianostreet used to thrive in the early days of popular widespread internet, but due to their lack of design and ui development, that community has fizzled out and is nowhere near as active as it used to be. It would be nice to resurrect that fun community online where people had ridiculous arguments about interpreting Chopin.
 
@@ -34,7 +48,7 @@ PianoPhiles is a blog site for piano lovers where they can share clips of their 
 
 - Is the content relevant?
 
-This content is ultimately frivolous, but there I do believe there is a genuine desire for discussion among musicians, and in the Instagram age, what's not to enjoy about the press campaigns of our favourite stars?
+This content is ultimately frivolous, but I do believe there is a genuine desire for discussion among musicians, and in the Instagram age, what's not to enjoy about the press campaigns of our favourite stars?
 
 - Must Have
 The project must have:
