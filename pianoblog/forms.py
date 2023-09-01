@@ -13,7 +13,14 @@ class CommentForm(forms.ModelForm):
 
 class CustomSignupForm(SignupForm):
     def clean_email(self):
+        # Get the email value from the form
         email = self.cleaned_data.get('email')
+
+        # Check if email is empty or None, and if so, return an empty string
+        if not email:
+            return ''
+        
+        # If the email is not empty, return it
         return email
 
     def save(self, request):
