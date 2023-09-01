@@ -2,7 +2,9 @@
     background-color: #ff313c;
   }
    
-
+.post-title {
+  max-width: 75%;
+}
 
 
 .floating-button {

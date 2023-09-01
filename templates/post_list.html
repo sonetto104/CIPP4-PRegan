@@ -10,9 +10,11 @@
       <div class="col-lg-4 col-md-6 col-sm-12">
         <div class="card mb-4 rounded">
           <div class="card-body">
+            <div class="post-title">
             <a href="{% url 'post_detail' post.slug %}" class="text-decoration-none text-dark">
               <h4 class="card-title text-left">{{ post.title }}</h4>
             </a>
+          </div>
             <p class="card-text mb-2 small text-muted text-left">Author: {{ post.author }}</p>
             <p class="card-text mb-2 small text-muted text-left">Created on: {{ post.created_on|date:"F d, Y" }}</p>
 
