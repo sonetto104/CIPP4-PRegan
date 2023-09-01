@@ -1,6 +1,8 @@
 
 # PianoPhiles
 
+![Preview of PianoPhiles](/static/assets/img/amiresponsive-mockup.png)
+
 PianoPhiles is a blog site for piano lovers where they can share clips of their favourite performances, post questions about technique or interpretation, or share pictures of their fun piano moments. As well as being able to share content in text, image and video format, users can discuss the material with other likeminded keyboard enthusiasts through comments, show their appreciation with likes and add a personal touch to their own profile page with a short bio and profile photo. Let's get tinkling those keys!
 
 
