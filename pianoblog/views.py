@@ -13,6 +13,7 @@ from django.urls import reverse_lazy
 from django.contrib.auth import logout
 from django.utils.text import slugify
 from django.core.paginator import Paginator, EmptyPage
+from django.http import HttpResponseForbidden
 
 # class HomePageView(TemplateView):
 #     """About page view"""
@@ -133,12 +134,15 @@ class ProfileView(View):
         own_profile = False
         if request.user.is_authenticated and request.user == user:
             own_profile = True
+        elif request.user.is_authenticated:
+            own_profile = False
         context = {
             'profile': profile,
             'posts': posts,
             'own_profile': own_profile,
             "user": user,
             "comments": comments,
+            
         }
         return render(request, 'profile.html', context)
 
@@ -165,7 +169,19 @@ class UserPostsView(View):
         return render(request, 'user_posts.html', context)
 
 
-class EditProfileView(UpdateView):
+# class EditProfileView(UpdateView):
+#     model = Profile
+#     form_class = ProfileForm
+#     template_name = 'edit_profile.html'
+    
+#     def get_object(self, queryset=None):
+#         username = self.kwargs['username']
+#         return get_object_or_404(Profile, owner__username=username)
+
+#     def get_success_url(self):
+#         return reverse('profile', kwargs={'username': self.object.owner.username})
+
+class EditProfileView(LoginRequiredMixin, UpdateView):
     model = Profile
     form_class = ProfileForm
     template_name = 'edit_profile.html'
@@ -173,6 +189,12 @@ class EditProfileView(UpdateView):
     def get_object(self, queryset=None):
         username = self.kwargs['username']
         return get_object_or_404(Profile, owner__username=username)
+
+    def get(self, request, *args, **kwargs):
+        profile = self.get_object()
+        if request.user != profile.owner:
+            return HttpResponseForbidden("You are not authorized to edit this profile.")
+        return super().get(request, *args, **kwargs)
 
     def get_success_url(self):
         return reverse('profile', kwargs={'username': self.object.owner.username})

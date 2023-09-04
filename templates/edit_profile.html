@@ -1,6 +1,5 @@
 {% extends 'base.html' %}
 
-
 {% block content %}
 <div class="container">
   <div class="row d-flex justify-content-center align-items-center vh-100 mt-5">
@@ -8,6 +7,8 @@
       <div class="card mx-auto" style="width: 400px;">
         <div class="card-body">
           <h2 class="card-title text-center mb-4">Edit Profile</h2>
+          {% if user.is_authenticated and user == request.user %}
+          <!-- Check if the user is logged in and is the owner of the profile -->
           <form method="post" enctype="multipart/form-data">
             {% csrf_token %}
             
@@ -37,6 +38,9 @@
               <button class="btn btn-primary" type="submit">Save Changes</button>
             </div>
           </form>
+          {% else %}
+          <p>You are not authorized to edit this profile.</p>
+          {% endif %}
         </div>
       </div>
     </div>
