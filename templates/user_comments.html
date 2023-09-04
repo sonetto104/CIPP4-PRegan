@@ -14,7 +14,7 @@
           <h6 class="card-subtitle mb-2 text-muted">{{ comment.post.author.username }}</h6>
           <p class="card-text">{{ comment.content }}</p>
           <a href="{% url 'post_detail' slug=comment.post.slug %}" class="card-link">View Post</a>
-          {% if user.is_authenticated and comment.author == user %}
+          {% if user.is_authenticated and comment.author == request.user %}
           <button type="button" class="btn btn-danger" data-bs-toggle="modal"
             data-bs-target="#deleteCommentConfirmation{{ comment.id }}">
             Delete Comment
