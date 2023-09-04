@@ -21,34 +21,72 @@ PianoPhiles is a blog site for piano lovers where they can share clips of their 
 
 The site was built in fulfilment of the requirements for Portfolio Project 4 of Code Institute's Diploma in Full Stack Software Development. It was built using Django, Python, JS, CSS, and HTML. The site data is stored in a PostgreSQL database.
 
-## User Stories
-  1. As a user I want to create my own profile, so I have a familiar and comfortable place where I can share my enthusiasm for piano and keep track of discussions.
-  2. As a user I want to be able to view all the most recent posts on the site so I can keep my interest fresh and novel.
-  3. As a user I want to be able to view all my past posts so I can keep track of my public correspondences.
-  4. As a user I want to be able to view all past posts of other users so I can develop understanding and see how other people's opinions develop too.
-  5.  As a user I want to be able to comment on posts to allow for interaction and community.
-  6.  As a user I want to be able to view all my past comments so I have a written record of my interactions.
-  7.  As a user I want to be able to view the comments of other users so I can see how opinions and understanding develop and change.
-  8.  As a user I want to be able to edit my profile so that it reflects me as I change.
-  9.  As a user I want to be able to delete previous posts I made if I feel they no longer reflect my opinions
-  10. As a user I want to be able to delete previous comments I made if I feel they no longer reflect my opinions.
-  11. As a user I want to be able to like posts to show appreciation.
-  12. As a user I want to be able to delete my profile if I don't feel the community reflects my values any more.
-  13. As a user I want to be able to view the site without having to sign up for a profile if I think I would enjoy a more passive rolw on the site.
-  14. As a user I want to be able to log in or out of my profile if I feel like "laying low". 
+#### Database Schema
 
-## Site Goal
+The project utilizes PostgreSQL as the database technology of choice with psycopg2 as the PostgreSQL adapter for Python. Additionally, the project leverages the dj-database-url package, which facilitates the handling and parsing of database URLs. This allows for seamless configuration of the database connection using a URL format specified by the PostgreSQL provider. By utilizing these database technologies, the project ensures efficient and secure data storage and retrieval, enabling robust and scalable web application functionality.
 
-  The goal of the site is to create a place where piano lovers can really sink their teeth into their favourite arguments about the art. Spaces like pianostreet used to thrive in the early days of popular widespread internet, but due to their lack of design and ui development, that community has fizzled out and is nowhere near as active as it used to be. It would be nice to resurrect that fun community online where people had ridiculous arguments about interpreting Chopin.
+Here is an overview of the most important data relationships in the project.
 
-- Target Audience
+## ERD Diagram
 
-  Users of the site are likely to be advanced second level and conservatoire level student pianists and retired amateur pianists; a reflection of the real life piano recital going audience.
+| Model        | Fields                                         | Relationships                            |
+|--------------|------------------------------------------------|------------------------------------------|
+| User         | id, username, email, password, ...              |                                          |
+| Profile      | id, owner_id, created_on, updated_on, bio, ...  | owner (OneToOne with User)                |
+| Post         | id, title, slug, author_id, created_on, ...     | author (ForeignKey to User)               |
+|              |                                                | likes (ManyToMany with User)              |
+| TextPost     | content                                        | parent: Post                             |
+| ImagePost    | image                                          | parent: Post                             |
+| VideoPost    | video                                          | parent: Post                             |
+| PostComment  | id, post_id, author_id, content, ...            | post (ForeignKey to Post)                |
+|              |                                                | author (ForeignKey to User)               |
 
+## User Experience - UX
 
-- Is the content relevant?
+The project was developed considering the Five Planes of User Experience: Strategy, Scope, Structure, Skeleton and Surface.
 
-This content is ultimately frivolous, but I do believe there is a genuine desire for discussion among musicians, and in the Instagram age, what's not to enjoy about the press campaigns of our favourite stars?
+### Strategy
+
+| EPIC                       | ID  | User Story                                                                                                                                                                               |
+| -------------------------- | --- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **CONTENT AND NAVIGATION** |     |                                                                                                                                                                                          |
+|                            | 1A  | As a user, I want to be able to easily navigate through the content available on the site.                                                                                                        |
+|                            | 1B  | As a user, I want to see relevant information about the site and its content easily so I can decide if I want to register an account                                                     |
+|                            | 1C  | As a user, I want the design of the site to be simple, intuitive and appealing.                                                                               |
+|                            | 1D  | As a user, I want to be able to access different areas of the site e.g. detailed blog posts, or user profiles with ease so that I may easily enjoy the feautures the site has to offer.                                                          |
+| **REGISTRATION AND USER INFORMATION**  |     |                                                                                                                                                                                          |
+|                            | 2A  | As a user, I want to create my own profile, so I have a familiar and comfortable place where I can share my enthusiasm for piano and keep track of discussions, as well as accessing all the functionality the site has to offer.                                             |
+|                            | 2B  |  As a user, I want to be able to edit my profile so that it reflects me as I change.                                                                                           |
+|                            | 2C | As a user, I want to be able to log into my account easily, so I can access my account information.                                                                                      |
+|                            | 2D  | As a user, I want to be able to log out of my account with ease to protect my account information.                                                                                       |
+|                            | 2E  | As a user, I want to be able to delete my account information/profile if I feel the site community no longer reflects my values.                                                                      |
+|                            | 2F | As a user, I also want the option of being able to use the site passively without registering an account, even if this means I can't access some site functionality like making posts or comments.                                                                             |
+| **MANAGING POSTS AND COMMENTS**   |     |                                                                                                                                                                                          |
+|                            | 3A  | As an authenticated user, I want to be able to create text posts so that I can share my enthusiasm with my online community.     |
+|                            | 3B   | As an authenticated user, I want to be able to create image posts so that I can share my enthusiasm with my online community.     |
+|                            | 3C  | As an authenticated user, I want to be able to create video posts so that I can share my enthusiasm with my online community.     |
+|                            | 3D  | As an authenticated user, I want to be able to delete my posts if I feel they no longer reflect my opinions.                                                                 |
+|                            | 3E  | As an authenticated user, I want to be able to comment on other users' posts in order to encourage discussion and a sense of community.                                     |
+|                            | 3F  | As an authenticated user, I want to be able to delete my past comments if I feel they no longer reflect my opinions.   |
+|                            | 3G  | As an authenticated user, I want to be able to "like" posts in order to show appreciation.   |
+| **USER VIEWS**             |     |                                                                                                                                                                                          |
+|                            | 4A  | As a user, I want to be able to see all publicly available posts so that I can browse through them.                                                                              |
+|                            | 4B  | As a user, I want to be able to view the detail of all publicly available posts, so I can read the full content associated with them, including comments.                             |
+|                            | 4C  | As a user, I want to be able to view the record of a given user's publicly available posts and comments.                                   |
+|                            | 4D  | As an authenticated user, I want to be able to view a record of all my publicly available posts.  |
+|                            | 4E  | As an authenticated user, I want to be able to view a record of all my publicly available comments. |
+
+**Site Goal**
+
+  The goal of the site is to create a place where piano lovers can really sink their teeth into their favourite arguments about the art. Spaces like pianostreet and pianoworld have continued to be steadily active throughout the lifespan of widespread popular internet usage, but their UX and site design has hardly changed at all over more than 20 years. It would be nice to host these discussions somewhere with a much more appealing, simple and intuitive interface.
+
+**Target Audience**
+
+  Users of the site are likely to be advanced second level and conservatoire level student pianists, and enthusiastic amateur pianists; a reflection of the real life piano recital going audience.
+
+### Scope
+
+**Simple User Experience**
 
 - Must Have
 The project must have:
@@ -62,8 +100,7 @@ The project must have:
 
 - Should Have
 
-    - Profile functionality where users can choose whether or not to share information about themselves, and where they can access their history of activity,     
-    notifications etc.
+    - Profile functionality where users can choose whether or not to share information about themselves, and where they can access their history of activity notifications etc.
     - Ability to like posts.
     - Dynamic like button.
 
@@ -73,7 +110,14 @@ The project must have:
     - Search functionality.
     - Tag functionality so users can search by tags, keywords or genre.
 
-### Structure Plane
+**Relevant Content**
+
+- Concise information should be visible immediately making the site's purpose clear.
+- User generated content should be the primary focus of the site and should be immediately visible on landing, further enhancing the user's understanding of the site's purpose in an intuitive way.
+
+### Structure
+
+
 
 
 ### Skeleton Plane
