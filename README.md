@@ -167,33 +167,47 @@ D - Users can delete their past comments, posts and their profile.
 
 Most of the site should flow centrally from the home page. I used Lucid Chart to make a diagram with a rough outline of how the site should flow.
 
-![Site Flow Diagram](static/assets/img/pianophiles-siteflow.jpg)
-<br><br><br><br><br><br><br>
+**Site Flow**
+
+<details>
+<summary>Site Flow Diagram</summary>
+<img src="https://res.cloudinary.com/dayngkoud/image/upload/v1688981726/static/assets/img/pianophiles-siteflow.d43094cb9385.jpg" width="80%">
+</details>
+
 
 #### Wireframes
 
 I used Figma to make these basic wireframes for how I imagined the website would look.
-<br><br><br><br><br><br><br><br>
-
-
-
 
 #### Sample Home Page Layout
 
-![Sample Home Page Layout](static/assets/img/pianophiles-homepage.jpg)
-<br><br><br><br><br><br><br><br><br>
+<details>
+<summary>Sample Home Page Layout</summary>
+<img src="https://res.cloudinary.com/dayngkoud/image/upload/v1693998827/static/assets/img/pianophiles-homepage.42d9905736ef.jpg" width="80%">
+</details>
+
 #### Sample Profile Layout
 
-![Sample Profile Layout](static/assets/img/android-small.jpg)
-<br><br><br><br><br><br><br><br><br>
+<details>
+<summary>Sample Profile Layout</summary>
+<img src="https://res.cloudinary.com/dayngkoud/image/upload/v1688982739/static/assets/img/android-small.ff428050db13.jpg" width="80%">
+</details>
+
 #### Sample Login Page Layout
+<details>
+<summary>Sample Login Page Layout</summary>
+<img src="https://res.cloudinary.com/dayngkoud/image/upload/v1688982739/static/assets/img/android-small-page-1.b5234329fa21.jpg" width="80%">
+</details>
 
-![Sample Login Page Layout](static/assets/img/android-small-page-1.jpg)
-<br><br><br><br><br><br><br><br>
+
 #### Sample Post Page Layout
+<details>
+<summary>Sample Post Page Layout</summary>
+<img src="https://res.cloudinary.com/dayngkoud/image/upload/v1688982740/static/assets/img/android-small-page-2.04e4f7e2bdba.jpg" width="80%">
+</details>
 
-![Sample Post Page Layout](static/assets/img/android-small-page-2.jpg)
-<br><br><br><br><br><br><br><br><br>
+
+
 ### Manual Testing
 
 | Test Case                         | Description                                                                                                                   | Expected Outcome                                   | Pass/Fail |
