@@ -174,16 +174,32 @@ Most of the site should flow centrally from the home page. I used Lucid Chart to
 
 I used Figma to make these basic wireframes for how I imagined the website would look.
 
+
+
+
+
 #### Sample Home Page Layout
+
 ![Sample Home Page Layout](static/assets/img/pianophiles-homepage.jpg)
 
+
+
+
 #### Sample Profile Layout
+
 ![Sample Profile Layout](static/assets/img/android-small.jpg)
 
+
+
+
 #### Sample Login Page Layout
+
 ![Sample Login Page Layout](static/assets/img/android-small-page-1.jpg)
 
+
+
 #### Sample Post Page Layout
+
 ![Sample Post Page Layout](static/assets/img/android-small-page-2.jpg)
 
 
