@@ -168,12 +168,12 @@ D - Users can delete their past comments, posts and their profile.
 Most of the site should flow centrally from the home page. I used Lucid Chart to make a diagram with a rough outline of how the site should flow.
 
 ![Site Flow Diagram](static/assets/img/pianophiles-siteflow.jpg)
-<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+<br><br><br><br><br><br><br>
 
 #### Wireframes
 
 I used Figma to make these basic wireframes for how I imagined the website would look.
-
+<br><br><br><br><br><br><br><br>
 
 
 
@@ -181,19 +181,19 @@ I used Figma to make these basic wireframes for how I imagined the website would
 #### Sample Home Page Layout
 
 ![Sample Home Page Layout](static/assets/img/pianophiles-homepage.jpg)
-<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>       
+<br><br><br><br><br><br><br><br><br>
 #### Sample Profile Layout
 
 ![Sample Profile Layout](static/assets/img/android-small.jpg)
-<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+<br><br><br><br><br><br><br><br><br>
 #### Sample Login Page Layout
 
 ![Sample Login Page Layout](static/assets/img/android-small-page-1.jpg)
-<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+<br><br><br><br><br><br><br><br>
 #### Sample Post Page Layout
 
 ![Sample Post Page Layout](static/assets/img/android-small-page-2.jpg)
-<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+<br><br><br><br><br><br><br><br><br>
 ### Manual Testing
 
 | Test Case                         | Description                                                                                                                   | Expected Outcome                                   | Pass/Fail |
