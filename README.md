@@ -205,6 +205,18 @@ I used Figma to make these basic wireframes for how I imagined the website would
 </details>
 
 
+### Surface
+
+#### Colour Scheme
+
+The colours used in the site are primarily white, red and black. These colours were chosen in the interest of legibility, and not to distract from or contrast too strongly with the content of image and video posts. There are some instances of blue where buttons are responsible for CRUD operations related to authenticated user information. The "delete profile" button is the only other outlier in the whole site - it is yellow and black. It is designed to stand out as it is responsible for a significant irreversible action.
+
+From a creative perspective, whiite and black are reminiscent of piano keys and create a visually cohesive and elegant design, immediately conveying the central theme of the blog. The addition of red infuses energy and accentuates key elements, such as buttons, providing a subtle but effective visual contrast. 
+
+Overall, this colour scheme not only pays homage to the piano's iconic palette but also ensures a user-friendly and aesthetically pleasing reading experience for visitors interested in piano-related content.
+
+![PianoPhiles Colour Scheme](/static/assets/img/pianophiles-scheme.png)
+
 
 ### Manual Testing
 
