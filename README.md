@@ -168,7 +168,7 @@ D - Users can delete their past comments, posts and their profile.
 Most of the site should flow centrally from the home page. I used Lucid Chart to make a diagram with a rough outline of how the site should flow.
 
 ![Site Flow Diagram](static/assets/img/pianophiles-siteflow.jpg)
-
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 
 #### Wireframes
 
