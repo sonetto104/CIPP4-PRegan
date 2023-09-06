@@ -170,37 +170,21 @@ Most of the site should flow centrally from the home page. I used Lucid Chart to
 ![Site Flow Diagram](static/assets/img/pianophiles-siteflow.jpg)
 
 
-#### Database Schema
-
-The project utilizes PostgreSQL as the database technology of choice. This is evident from the inclusion of the psycopg2 package in the requirements file, which serves as the PostgreSQL adapter for Python. PostgreSQL is a powerful and feature-rich open-source relational database management system known for its reliability, scalability, and extensive support for advanced data types and SQL features. Additionally, the project leverages the dj-database-url package, which facilitates the handling and parsing of database URLs. This allows for seamless configuration of the database connection using a URL format specified by the PostgreSQL provider. By utilizing these database technologies, the project ensures efficient and secure data storage and retrieval, enabling robust and scalable web application functionality.
-
-Here is an overview of the most important data relationships in the project.
-
-## ERD Diagram
-
-| Model        | Fields                                         | Relationships                            |
-|--------------|------------------------------------------------|------------------------------------------|
-| User         | id, username, email, password, ...              |                                          |
-| Profile      | id, owner_id, created_on, updated_on, bio, ...  | owner (OneToOne with User)                |
-| Post         | id, title, slug, author_id, created_on, ...     | author (ForeignKey to User)               |
-|              |                                                | likes (ManyToMany with User)              |
-| TextPost     | content                                        | parent: Post                             |
-| ImagePost    | image                                          | parent: Post                             |
-| VideoPost    | video                                          | parent: Post                             |
-| PostComment  | id, post_id, author_id, content, ...            | post (ForeignKey to Post)                |
-|              |                                                | author (ForeignKey to User)               |
-
-
-
 #### Wireframes
 
 I used Figma to make these basic wireframes for how I imagined the website would look.
 
+#### Sample Home Page Layout
+![Sample Home Page Layout](static/assets/img/pianophiles-homepage.jpg)
+
+#### Sample Profile Layout
 ![Sample Profile Layout](static/assets/img/android-small.jpg)
 
+#### Sample Login Page Layout
 ![Sample Login Page Layout](static/assets/img/android-small-page-1.jpg)
 
-![Sample Post Page Layou](static/assets/img/android-small-page-2.jpg)
+#### Sample Post Page Layout
+![Sample Post Page Layout](static/assets/img/android-small-page-2.jpg)
 
 
 ### Manual Testing
