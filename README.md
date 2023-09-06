@@ -117,7 +117,41 @@ The project must have:
 
 ### Structure
 
+The site has 16 pages depending on whether the user is authenticated/logged-in or not.
 
+  - **Home** This is the landing page. Here the user can see the site's most recently posted content. It indicates the site's purpose as a piano lover's blog and allows the user to visit the login or registration page.
+
+  - **Post Detail** Each post has its own page displaying the full content of the post (as opposed to the post preview on the home page which displays only the title, image/video if applicable, and the first two comments).
+
+  - **Profile** Every authenticated user has a profile page displaying their username, date of joining, short biography section and a profile picture. It also displays their most recent posts and comments. All users who do not wish to upload a profile photo are given an automatic sample profile photo.
+
+  - **Edit Profile** A logged in authenticated user can edit/update their previously exisiting profile information and profile photo using the "Edit Profile" form.
+
+  - **View All User Posts Page** When visiting a user's profile, there is the option to view all the publicly available posts of that user, whether the visitor is an authenticated user or not.
+
+  - **View All Comments** Similarly to being able to view all of a user's posts, one can view all of a user's publicly available comments in one page.
+
+  - **Delete Post** A logged in authenticated user can delete posts belonging to them.
+
+  - **Delete Comment** A logged in authenticated user can delete comments belonging to them.
+
+  - **Delete Profile** All logged in authenticated users have the option to fully delete their profile and information, including associated posts and comments.
+
+  - **Create Post** The create post page brings users to a page with links to forms allowing them to create either image, video or text posts.
+
+  - **Create Image Post** This is a form allowing a logged in authenticated user to create a post specifically centered around an image.
+
+  - **Create Video Post** This is a form allowing a logged in authenticated user to create a post specifically centered around a video clip.
+
+  - **Create Text Post** This is a form allowing a logged in authenticated user to create a post containing only text.
+
+  - **Sign In** There is a sign in page allowing authenticated users to log in and access the CRUD functionality associated with their profile.
+
+  - **Sign Out** Logged in authenticated users can log out of their account to protect their information on foreign devices.
+
+  - **Register** Non authenticated users can create an account through the registration form.
+
+  - **Custom 404 Page** If a user tries to access a url path that doesn't exist, a custom 404 error page is provided.
 
 
 ### Skeleton Plane
