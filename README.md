@@ -181,31 +181,19 @@ I used Figma to make these basic wireframes for how I imagined the website would
 #### Sample Home Page Layout
 
 ![Sample Home Page Layout](static/assets/img/pianophiles-homepage.jpg)
-<br>
-<br>
-<br>
-<br>         
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>       
 #### Sample Profile Layout
 
 ![Sample Profile Layout](static/assets/img/android-small.jpg)
-<br>
-<br>
-<br>
-<br>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 #### Sample Login Page Layout
 
 ![Sample Login Page Layout](static/assets/img/android-small-page-1.jpg)
-<br>
-<br>
-<br>
-<br>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 #### Sample Post Page Layout
 
 ![Sample Post Page Layout](static/assets/img/android-small-page-2.jpg)
-<br>
-<br>
-<br>
-<br>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 ### Manual Testing
 
 | Test Case                         | Description                                                                                                                   | Expected Outcome                                   | Pass/Fail |
