@@ -396,6 +396,44 @@ The site's full CRUD operations are only available to authenticated logged in us
 ![Sign Up/Register](/static/assets/img/signup.png)
 
 
+## Testing
+
+### Performance
+
+- **Lighthouse Report**
+
+Google Lighthouse was used to test the performance of this site. Overall performance is affected by the dominance of large images and video files on the site, however it is still relatively strong. 
+
+While the score of 83 suggests room for further improvement in best practices, most of the logged issues tend to be related to serving the images from Cloudinary, something that is unlikely to change currently given the scope and purpose of this project.
+
+SEO and Accessability scores were favourable.
+
+![Lighthouse Report](/static/assets/img/lighthouse-report-pianophiles.png)
+
+- **WAVE Report**
+
+The web accessibility evaluation tool WAVE by WebAIM was used to ensure the site meets high accessibility standards.
+
+![Wave Report](/static/assets/img/wave-report.png)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 ### Manual Testing
 
