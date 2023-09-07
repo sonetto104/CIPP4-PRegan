@@ -218,6 +218,19 @@ Overall, this colour scheme not only pays homage to the piano's iconic palette b
 ![PianoPhiles Colour Scheme](/static/assets/img/pianophiles-scheme.png)
 
 
+#### Font
+
+I decided not to customise font for PianoPhiles and chose to stick with Bootstrap's standard typography. It is easily legible and light, allowing the user's focus to be primarily on the content of posts rather than design elements.
+
+![Fonts in Action](/static/assets/img/fonts-sample.png)
+
+
+#### Logo
+
+The logo and favicon were created using Figma. It is minimal, reflecting the simplicity of the site, using a splash of red to embody the sense of engagement I hope the site can spark, and plays on the heart shape of a grand piano. This ties into the site name, PianoPhiles, which not only means "piano lovers", but also plays on the idea of "piano files" suggesting a store where one can find all sorts of documents relating to the subject.
+
+![PianoPhiles Logo](/static/assets/img/piano-philes-logo.png)
+
 ### Manual Testing
 
 | Test Case                         | Description                                                                                                                   | Expected Outcome                                   | Pass/Fail |
