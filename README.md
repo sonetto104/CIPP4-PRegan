@@ -233,7 +233,59 @@ The logo and favicon were created using Figma. It is minimal, reflecting the sim
 
 ### Views
 
-## Home Page View
+<br><br><br><br>
+
+#### Home Page View
+
+The home page view displays the site logo, nav bar and the site's most recently published posts. If the user is not logged in the nav bar offers the option to visit the homepage, register an account or sign in, and if the user is logged in, it offers the option to visit the home page, visit your own profile or logout.
+
+<br><br><br><br>
+
+- **Home Page Not Logged In**
+<br><br>
+
+![Home Page View Not Logged In](/static/assets/img/homepage-view-not-logged-in.png)
+
+<br><br><br><br>
+
+- **Home Page Logged In**
+<br><br>
+
+![Home Page View Logged In](/static/assets/img/home-page-logged-in.png)
+
+<br><br><br><br>
+
+#### Profile View
+
+All users' profiles can be viewed on the site, whether the user viewing the profile is logged in or not. If a logged in user is viewing their own profile, they have the option to edit their profile or to delete their past posts or comments.
+
+<br><br>
+
+- **Profile Page Not Logged In**
+
+![Profile View Not Logged In One](/static/assets/img/profile-view-not-logged-in.png)
+
+<br><br><br><br>
+
+![Profile View Not Logged In Two](/static/assets/img/profile-view-not-logged-in-two.png)
+
+<br><br><br><br>
+
+![Profile View Not Logged In Three](/static/assets/img/profile-view-not-logged-in-three.png)
+
+<br><br><br><br>
+
+- **Profile Page Logged In**
+
+![Profile View Logged In One](/static/assets/img/my-profile-view.png)
+
+<br><br><br><br>
+
+![Profile View Logged In Two](/static/assets/img/profile-view-logged-in.png)
+
+<br><br><br><br>
+
+![Profile View Logged In Three](/static/assets/img/profile-view-logged-in-delete-button.png)
 
 
 
