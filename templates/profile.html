@@ -29,7 +29,7 @@
   <div class="row mt-4">
     {% for post in posts %}
     <div class="col-md-6">
-      <div class="card">
+      <div class="card post-title-div">
         <div class="card-body">
           <a href="{% url 'post_detail' slug=post.slug %}" class="text-decoration-none">
             <h5 class="card-title">{{ post.title }}</h5>

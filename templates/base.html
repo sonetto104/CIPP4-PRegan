@@ -30,10 +30,10 @@
                 <div class="container">
                     <div class="row justify-content-end">
                         {% if request.user.is_authenticated %}
-                        <div class="col-lg-2 d-flex justify-content-end">
+                        <div class="col-lg-2 d-flex justify-content-center">
                             <a class="nav-link" aria-current="page" href="{% url 'home' %}">Home</a>
                         </div>
-                        <div class="col-lg-2 d-flex justify-content-end">
+                        <div class="col-lg-2 d-flex justify-content-center">
                             <span class="text-nowrap"> <a class="nav-link" aria-current="page"
                                     href="{% url 'profile' username=request.user.username %}">My Profile</a></span>
                         </div>
@@ -41,13 +41,13 @@
                             <a class="nav-link" aria-current="page" href="{% url 'account_logout' %}">Logout</a>
                         </div>
                         {% else %}
-                        <div class="col-lg-2 d-flex justify-content-end">
+                        <div class="col-lg-2 d-flex justify-content-center">
                             <a class="nav-link" aria-current="page" href="{% url 'home' %}">Home</a>
                         </div>
-                        <div class="col-lg-2 d-flex justify-content-end">
+                        <div class="col-lg-2 d-flex justify-content-center">
                             <a class="nav-link" aria-current="page" href="{% url 'account_signup' %}">Register</a>
                         </div>
-                        <div class="col-lg-2 d-flex justify-content-end">
+                        <div class="col-lg-2 d-flex justify-content-center">
                             <a class="nav-link" aria-current="page" href="{% url 'account_login' %}">Login</a>
                         </div>
                         {% endif %}

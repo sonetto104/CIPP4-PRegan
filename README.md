@@ -231,6 +231,12 @@ The logo and favicon were created using Figma. It is minimal, reflecting the sim
 
 ![PianoPhiles Logo](/static/assets/img/piano-philes-logo.png)
 
+### Views
+
+## Home Page View
+
+
+
 ### Manual Testing
 
 | Test Case                         | Description                                                                                                                   | Expected Outcome                                   | Pass/Fail |
