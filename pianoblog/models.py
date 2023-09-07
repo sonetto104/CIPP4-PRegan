@@ -1,15 +1,17 @@
 from django.db import models
 from django.contrib.auth.models import User
 from cloudinary.models import CloudinaryField
-from django.contrib.contenttypes.fields import GenericForeignKey
+from django.contrib.contenttypes.fields import GenericForeignKey, GenericRelation
 from django.contrib.contenttypes.models import ContentType
-from django.contrib.contenttypes.fields import GenericRelation
 from django.utils.text import slugify
 
 STATUS = ((0, "Draft"), (1, "Published"))
 
 
 class Post(models.Model):
+    """
+    Define data/attributes associated with a given post.
+    """
     title = models.CharField(max_length=200)
     slug = models.SlugField(max_length=200, unique=True)
     author = models.ForeignKey(User, on_delete=models.CASCADE, related_name='posts')
@@ -29,6 +31,9 @@ class Post(models.Model):
 
 
 class PostComment(models.Model):
+    """
+    Define data/attributes associated with a given comment on a post.
+    """
     post = models.ForeignKey(Post, on_delete=models.CASCADE, related_name="post_comments")
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     content = models.TextField()
@@ -44,10 +49,19 @@ class PostComment(models.Model):
 
 
 class TextPost(Post):
+    """
+    Define data/attributes specific to a text post. All other attributes 
+    associated with general post model are inherited.
+    """
     content = models.TextField(default='')
 
 
 class ImagePost(Post):
+    """
+    Define data/attributes specific to an image post. All other attributes 
+    associated with general post model are inherited. Image is called from
+    Cloudinary where it is hosted.
+    """
     image = CloudinaryField(
         'image',
         format='jpg',
@@ -58,6 +72,11 @@ class ImagePost(Post):
 
 
 class VideoPost(Post):
+    """
+    Define data/attributes specific to a video post. All other attributes 
+    associated with general post model are inherited. Video is called from
+    Cloudinary where it is hosted.
+    """
     video = CloudinaryField(
         'video',
         resource_type="video",
@@ -69,6 +88,10 @@ class VideoPost(Post):
 
 
 class Profile(models.Model):
+    """
+    Define data/attributes that will be associated with all given instances
+    of a user profile.
+    """
     owner = models.OneToOneField(User, on_delete=models.CASCADE)
     created_on = models.DateTimeField(auto_now_add=True)
     updated_on = models.DateTimeField(auto_now=True)
