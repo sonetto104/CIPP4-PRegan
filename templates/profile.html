@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
-{% block content %}
 <title>{{ user.username }}</title>
+{% block content %}
+
 
 <div class="container">
   <div class="card mb-4 mt-4">
@@ -138,8 +139,7 @@
           </button>
           {% endif %}
         <!-- Delete Comment Modal -->
-        <div class="modal fade" id="deleteCommentConfirmation{{ comment.id }}" tabindex="-1"
-          aria-labelledby="deleteCommentConfirmationLabel" aria-hidden="true">
+        <div class="modal fade" id="deleteCommentConfirmation{{ comment.id }}" tabindex="-1" aria-hidden="true">
           <div class="modal-dialog">
             <div class="modal-content">
               <div class="modal-header">
