@@ -21,7 +21,7 @@ class PostListView(generic.ListView):
     model = Post
     template_name = 'post_list.html'
     context_object_name = 'posts'
-    queryset = Post.objects.filter(status=1) 
+    queryset = Post.objects.filter(status=1)
     paginate_by = 10  # Set the number of posts per page
 
     def get_context_data(self, **kwargs):
@@ -118,7 +118,7 @@ class ProfileView(View):
         profile = get_object_or_404(Profile, owner=user)
         posts = Post.objects.filter(author=user).order_by('-created_on')[:5]
         comments = PostComment.objects.filter(author=user)
-        
+
         own_profile = False
         if request.user.is_authenticated and request.user == user:
             own_profile = True
@@ -130,14 +130,13 @@ class ProfileView(View):
             'own_profile': own_profile,
             "user": user,
             "comments": comments,
-            
-        }
+            }
         return render(request, 'profile.html', context)
 
 
 class UserCommentsView(LoginRequiredMixin, View):
     """
-    Define objects required to render comments associated 
+    Define objects required to render comments associated
     with a particular user.
     """
     def get(self, request, username):
@@ -152,7 +151,7 @@ class UserCommentsView(LoginRequiredMixin, View):
 
 class UserPostsView(View):
     """
-    Define objects required to render all posts associated 
+    Define objects required to render all posts associated
     with a particular user.
     """
     def get(self, request, username):
@@ -167,13 +166,13 @@ class UserPostsView(View):
 
 class EditProfileView(LoginRequiredMixin, UpdateView):
     """
-    Define how to call data required to render form 
+    Define how to call data required to render form
     editing data within a user's previously existing profile.
     """
     model = Profile
     form_class = ProfileForm
     template_name = 'edit_profile.html'
-    
+
     def get_object(self, queryset=None):
         username = self.kwargs['username']
         return get_object_or_404(Profile, owner__username=username)
