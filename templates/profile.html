@@ -90,7 +90,7 @@
             <div class="modal-dialog">
               <div class="modal-content">
                 <div class="modal-header">
-                  <h5 class="modal-title" id="deletePostConfirmationLabel">Delete Confirmation</h5>
+                  <h5 class="modal-title">Delete Confirmation</h5>
                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
@@ -135,7 +135,7 @@
           <p class="card-text">{{ comment.content }}</p>
           {% if own_profile and comment.author == request.user %}
           <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal"
-            data-bs-target="#deleteCommentConfirmation{{ comment.id }}">
+            data-bs-target="deleteCommentConfirmation{{ comment.id }}">
             Delete Comment?
           </button>
           {% endif %}
@@ -145,7 +145,7 @@
           <div class="modal-dialog">
             <div class="modal-content">
               <div class="modal-header">
-                <h5 class="modal-title" id="deleteCommentConfirmationLabel">Delete Confirmation</h5>
+                <h5 class="modal-title">Delete Confirmation</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
               </div>
               <div class="modal-body">
