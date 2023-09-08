@@ -17,7 +17,7 @@ class PostAdmin(admin.ModelAdmin):
     list_filter = ("status", "created_on")
     search_fields = ['title']
     actions = ["approve_posts"]
-    
+
 
 @admin.register(TextPost)
 class TextPostAdmin(SummernoteModelAdmin):

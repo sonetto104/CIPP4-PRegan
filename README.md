@@ -484,7 +484,7 @@ W3C's HTML validator was used to validate the HTML for all of the site pages.
 W3C's CSS validator was used to validate the CSS for this site.
 
 <details>
-<summary>User Posts Page</summary>
+<summary>CSS Validation</summary>
 <img src="/static/assets/img/css-validation.png">
 </details>
 

@@ -25,7 +25,7 @@ class CustomSignupForm(SignupForm):
         # Check if email is empty or None, and if so, return an empty string
         if not email:
             return ''
-        
+
         # If the email is not empty, return it
         return email
 
@@ -72,4 +72,3 @@ class VideoPostForm(forms.ModelForm):
     class Meta:
         model = VideoPost
         fields = ['title', 'video']
-        

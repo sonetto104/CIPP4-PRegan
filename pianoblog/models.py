@@ -40,7 +40,7 @@ class PostComment(models.Model):
     created_on = models.DateTimeField(auto_now_add=True)
     updated_on = models.DateTimeField(auto_now=True)
     approved = models.BooleanField(default=False)
-    
+
     class Meta:
         ordering = ["created_on"]
 
@@ -50,7 +50,7 @@ class PostComment(models.Model):
 
 class TextPost(Post):
     """
-    Define data/attributes specific to a text post. All other attributes 
+    Define data/attributes specific to a text post. All other attributes
     associated with general post model are inherited.
     """
     content = models.TextField(default='')
@@ -58,7 +58,7 @@ class TextPost(Post):
 
 class ImagePost(Post):
     """
-    Define data/attributes specific to an image post. All other attributes 
+    Define data/attributes specific to an image post. All other attributes
     associated with general post model are inherited. Image is called from
     Cloudinary where it is hosted.
     """
@@ -73,7 +73,7 @@ class ImagePost(Post):
 
 class VideoPost(Post):
     """
-    Define data/attributes specific to a video post. All other attributes 
+    Define data/attributes specific to a video post. All other attributes
     associated with general post model are inherited. Video is called from
     Cloudinary where it is hosted.
     """
