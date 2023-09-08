@@ -479,6 +479,35 @@ W3C's HTML validator was used to validate the HTML for all of the site pages.
 </details>
 
 
+- **CSS Validation**
+
+W3C's CSS validator was used to validate the CSS for this site.
+
+<details>
+<summary>User Posts Page</summary>
+<img src="/static/assets/img/css-validation.png">
+</details>
+
+- **JSHint**
+
+JSHint was used to validate the very few pieces of JavaScript in this project.
+
+<details>
+<summary>Floating Button JS Script</summary>
+<img src="/static/assets/img/floating-button-validation.png">
+</details>
+
+
+<details>
+<summary>Masonry Styling JS Script</summary>
+<img src="/static/assets/img/masonry-js-validation.png">
+</details>
+
+
+<details>
+<summary>Create Post JS Script</summary>
+<img src="/static/assets/img/create-post-js-validation.png">
+</details>
 
 
 
