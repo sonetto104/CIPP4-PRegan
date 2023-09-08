@@ -439,7 +439,7 @@ W3C's HTML validator was used to validate the HTML for all of the site pages.
 </details>
 <details>
 <summary>Create Video Post Page</summary>
-<img src="/static/assets/img/create-video-post.png">
+<img src="/static/assets/img/create-video-post-test.png">
 </details>
 <details>
 <summary>Delete Profile Page</summary>
