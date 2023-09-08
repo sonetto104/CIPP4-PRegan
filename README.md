@@ -417,6 +417,67 @@ The web accessibility evaluation tool WAVE by WebAIM was used to ensure the site
 ![Wave Report](/static/assets/img/wave-report.png)
 
 
+- **HTML Validation**
+
+W3C's HTML validator was used to validate the HTML for all of the site pages.
+
+<details>
+<summary>Home Page</summary>
+<img src="/static/assets/img/homepage-html-test.png">
+</details>
+<details>
+<summary>Create Post Page</summary>
+<img src="/static/assets/img/create-post-html-test.png">
+</details>
+<details>
+<summary>Create Text Post Page</summary>
+<img src="/static/assets/img/create-text-post-html-test.png">
+</details>
+<details>
+<summary>Create Image Post Page</summary>
+<img src="/static/assets/img/create-image-post-test.png">
+</details>
+<details>
+<summary>Create Video Post Page</summary>
+<img src="static/docs/html_test_logout.png">
+</details>
+<details>
+<summary>Delete Profile Page</summary>
+<img src="/static/assets/img/delete-profile-test.png">
+</details>
+<details>
+<summary>Edit Profile Page</summary>
+<img src="/static/assets/img/edit-profile-html-test.png">
+</details>
+<details>
+<summary>Login Page</summary>
+<img src="/static/assets/img/login-html-test.png">
+</details>
+<details>
+<summary>Logout Page</summary>
+<img src="/static/assets/img/logout-html-test.png">
+</details>
+<details>
+<summary>Post Detail Page</summary>
+<img src="/static/assets/img/post-detail-test.png">
+</details>
+<details>
+<summary>Profile Page</summary>
+<img src="/static/assets/img/profile-html-test.png">
+</details>
+<details>
+<summary>Signup Page</summary>
+<img src="/static/assets/img/signup-test.png">
+</details>
+<details>
+<summary>User Comments Page</summary>
+<img src="/static/assets/img/user-comments-html-test.png">
+</details>
+<details>
+<summary>User Posts Page</summary>
+<img src="/static/assets/img/user-posts-html-test.png">
+</details>
+
 
 
 
