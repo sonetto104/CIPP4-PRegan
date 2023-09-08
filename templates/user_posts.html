@@ -37,7 +37,7 @@
             </a>
 
             <div class="col-1">
-              <strong>
+              
                 {% if user.is_authenticated %}
                   <form class="d-inline" action="{% url 'post_like' post.slug %}" method="POST">
                     {% csrf_token %}
@@ -56,7 +56,7 @@
                 {% else %}
                   <i class="fas fa-heart mr-2 text-danger"></i><span class="ms-1">{{ post.number_of_likes }}</span>
                 {% endif %}
-              </strong>
+              
             </div>
 
             {% if post.imagepost %}
@@ -79,7 +79,7 @@
   </div>
   
 
-
+</div>
 
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/masonry/4.2.2/masonry.pkgd.min.js"></script>
