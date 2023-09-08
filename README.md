@@ -515,9 +515,54 @@ JSHint was used to validate the very few pieces of JavaScript in this project.
 Code Institute's Python Linter was used to validate the Python code in this project. While there are some lines that are deemed "too long", the linter did not detect any other kinds of errors.
 
 <details>
-<summary>admin.py Test</summary>
+<summary>admin.py</summary>
 <img src="/static/assets/img/admin.py-test.png">
 </details>
+
+<details>
+<summary>apps.py</summary>
+<img src="/static/assets/img/app.py-test.png">
+</details>
+
+<details>
+<summary>forms.py</summary>
+<img src="/static/assets/img/forms.py-test.png">
+</details>
+
+<details>
+<summary>models.py</summary>
+<img src="/static/assets/img/models.py-test.png">
+</details>
+
+<details>
+<summary>views.py</summary>
+<img src="/assets/img/views.py-test.png">
+</details>
+
+<details>
+<summary>urls.py</summary>
+<img src="/static/assets/img/urls.py-test.png">
+</details>
+
+<details>
+<summary>urls.py (project level)</summary>
+<img src="/static/assets/img/urls.py-project-test.png">
+</details>
+
+<details>
+<summary>settings.py</summary>
+<img src="/static/assets/img/settings.py-test.png">
+</details>
+
+<details>
+<summary>views.py (project level)</summary>
+<img src="/static/assets/img/views.py-project-level.png">
+</details>
+
+
+
+
+
 
 
 
