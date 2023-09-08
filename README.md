@@ -510,9 +510,14 @@ JSHint was used to validate the very few pieces of JavaScript in this project.
 </details>
 
 
+- **Python Validation**
 
+Code Institute's Python Linter was used to validate the Python code in this project. While there are some lines that are deemed "too long", the linter did not detect any other kinds of errors.
 
-
+<details>
+<summary>admin.py Test</summary>
+<img src="/static/assets/img/admin.py-test.png">
+</details>
 
 
 
