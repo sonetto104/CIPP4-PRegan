@@ -77,3 +77,35 @@ class ModelCreationTest(TestCase):
         self.assertEqual(saved_video_post.status, 0)
         self.assertEqual(saved_video_post.author, self.user)
 
+
+class TextPostModelTest(TestCase):
+
+    def setUp(self):
+        self.user = User.objects.create_user(
+            username='testuser', password='testpassword')
+        self.text_post = TextPost.objects.create(
+            title='Test Text Post',
+            slug='test-text-post',
+            content='This is a test text post content.',
+            author=self.user
+        )
+
+    def test_text_post_creation(self):
+        self.assertEqual(TextPost.objects.count(), 1)
+
+    def test_text_post_str_representation(self):
+        self.assertEqual(str(self.text_post), 'Test Text Post')
+
+    def test_text_post_ordering(self):
+        text_post2 = TextPost.objects.create(
+            title='Second Text Post',
+            slug='second-text-post',
+            content='This is the second text post content.',
+            author=self.user
+        )
+        text_posts = TextPost.objects.all()
+        self.assertEqual(text_posts[0], text_post2)  # Check the most recent post
+        self.assertEqual(text_posts[1], self.text_post)  # Check the older post
+
+    def test_text_post_number_of_likes(self):
+        self.assertEqual(self.text_post.number_of_likes(), 0)
