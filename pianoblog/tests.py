@@ -109,3 +109,39 @@ class TextPostModelTest(TestCase):
 
     def test_text_post_number_of_likes(self):
         self.assertEqual(self.text_post.number_of_likes(), 0)
+
+
+class ImagePostModelTest(TestCase):
+
+    def setUp(self):
+        # Create a user for testing purposes
+        self.user = User.objects.create_user(
+            username='testuser', password='testpassword')
+
+        # Create an ImagePost instance
+        self.image_post = ImagePost.objects.create(
+            title='Test Image Post',
+            slug='test-image-post',
+            image='Keyboard_cat_ouvbg1.jpg',  # Cloudinary public ID for 404 image
+            status=0,  # Assuming 0 is the default status
+            author=self.user,  # Set the author
+        )
+
+    def test_image_post_creation(self):
+        self.assertEqual(ImagePost.objects.count(), 1)
+
+    def test_image_post_str_representation(self):
+        self.assertEqual(str(self.image_post), 'Test Image Post')
+
+    def test_image_post_ordering(self):
+        image_post2 = ImagePost.objects.create(
+            title='Second Image Post',
+            slug='second-image-post',
+            image='fonts-sample.b0408df3a403',  # Using screenshot of site as second test image
+            status=1,  # Assuming 1 is the published status
+            author=self.user,
+        )
+        image_posts = ImagePost.objects.all()
+        self.assertEqual(image_posts[0], image_post2)
+        self.assertEqual(image_posts[1], self.image_post)
+        
