@@ -179,4 +179,3 @@ class VideoPostModelTest(TestCase):
         video_posts = VideoPost.objects.all()
         self.assertEqual(video_posts[0], video_post2)
         self.assertEqual(video_posts[1], self.video_post)
-        
