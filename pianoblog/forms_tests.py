@@ -1,5 +1,5 @@
 from django.test import TestCase
-from .forms import CommentForm, CustomSignupForm
+from .forms import CommentForm, CustomSignupForm, ProfileForm
 
 
 class CommentFormTest(TestCase):
@@ -26,3 +26,14 @@ class CustomSignupFormTest(TestCase):
         self.assertEqual(form.errors['username'], ['This field is required.'])
         self.assertEqual(form.errors['password1'], ['This field is required.'])
         self.assertEqual(form.errors['password2'], ['This field is required.'])
+
+
+class ProfileFormTest(TestCase):
+
+    def test_profile_form_valid_data(self):
+        form = ProfileForm(data={'bio': 'This is a test bio.'})
+        self.assertTrue(form.is_valid())
+
+    def test_profile_form_blank_data(self):
+        form = ProfileForm(data={})
+        self.assertTrue(form.is_valid())  # The form allows blank fields
