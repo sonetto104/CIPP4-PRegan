@@ -122,7 +122,7 @@ class ImagePostModelTest(TestCase):
         self.image_post = ImagePost.objects.create(
             title='Test Image Post',
             slug='test-image-post',
-            image='Keyboard_cat_ouvbg1.jpg',  # Cloudinary public ID for 404 image
+            image='Keyboard_cat_ouvbg1',  # Cloudinary public ID for 404 image
             status=0,  # Assuming 0 is the default status
             author=self.user,  # Set the author
         )
