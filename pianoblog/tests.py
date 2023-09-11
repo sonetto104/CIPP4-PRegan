@@ -144,4 +144,39 @@ class ImagePostModelTest(TestCase):
         image_posts = ImagePost.objects.all()
         self.assertEqual(image_posts[0], image_post2)
         self.assertEqual(image_posts[1], self.image_post)
+
+
+class VideoPostModelTest(TestCase):
+
+    def setUp(self):
+        # Create a user for testing purposes
+        self.user = User.objects.create_user(
+            username='testuser', password='testpassword')
+
+        # Create a VideoPost instance
+        self.video_post = VideoPost.objects.create(
+            title='Test Video Post',
+            slug='test-video-post',
+            video='prqqyzygdtxy0uf1tyap',  # Cloudinary public ID for rossina clip
+            status=0,  # Assuming 0 is the default status
+            author=self.user,  # Set the author
+        )
+
+    def test_video_post_creation(self):
+        self.assertEqual(VideoPost.objects.count(), 1)
+
+    def test_video_post_str_representation(self):
+        self.assertEqual(str(self.video_post), 'Test Video Post')
+
+    def test_video_post_ordering(self):
+        video_post2 = VideoPost.objects.create(
+            title='Second Video Post',
+            slug='second-video-post',
+            video='kfcpsz4moszcgiytjwmj',
+            status=1,  # Assuming 1 is the published status
+            author=self.user,
+        )
+        video_posts = VideoPost.objects.all()
+        self.assertEqual(video_posts[0], video_post2)
+        self.assertEqual(video_posts[1], self.video_post)
         
