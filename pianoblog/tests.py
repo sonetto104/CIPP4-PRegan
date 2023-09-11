@@ -30,7 +30,7 @@ class ModelCreationTest(TestCase):
         self.assertEqual(saved_text_post.author, self.user)
 
     def test_create_image_post(self):
-        image_id = 'Keyboard_cat_ouvbg1' #Using 404 image stored in Cloudinary as test image
+        image_id = 'Keyboard_cat_ouvbg1'  #Using 404 image stored in Cloudinary as test image
 
         # Create an ImagePost instance with the Cloudinary ID
         image_post = ImagePost.objects.create(
@@ -52,4 +52,28 @@ class ModelCreationTest(TestCase):
         self.assertEqual(saved_image_post.image.public_id, image_id)
         self.assertEqual(saved_image_post.status, 0)
         self.assertEqual(saved_image_post.author, self.user)
+
+    def test_create_video_post(self):
+        video_public_id = 'prqqyzygdtxy0uf1tyap'
+
+        # Create a VideoPost instance with the Cloudinary public ID
+        video_post = VideoPost.objects.create(
+            title='Test Video Post',
+            slug='test-video-post',
+            video=video_public_id,  # Set the Cloudinary public ID for the video
+            status=0,  # Assuming 0 is the default status
+            author=self.user,  # Set the author
+        )
+
+        # Retrieve the created VideoPost from the database
+        saved_video_post = VideoPost.objects.get(pk=video_post.pk)
+
+        # Assert that the retrieved VideoPost matches the created one
+        self.assertEqual(saved_video_post.title, 'Test Video Post')
+        self.assertEqual(saved_video_post.slug, 'test-video-post')
+
+        # Compare the video field with the expected public ID
+        self.assertEqual(saved_video_post.video.public_id, video_public_id)
+        self.assertEqual(saved_video_post.status, 0)
+        self.assertEqual(saved_video_post.author, self.user)
 
