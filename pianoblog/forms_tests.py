@@ -1,5 +1,5 @@
 from django.test import TestCase
-from .forms import CommentForm, CustomSignupForm, ProfileForm
+from .forms import CommentForm, CustomSignupForm, ProfileForm, TextPostForm
 
 
 class CommentFormTest(TestCase):
@@ -37,3 +37,15 @@ class ProfileFormTest(TestCase):
     def test_profile_form_blank_data(self):
         form = ProfileForm(data={})
         self.assertTrue(form.is_valid())  # The form allows blank fields
+
+
+class TextPostFormTest(TestCase):
+
+    def test_text_post_form_valid_data(self):
+        form = TextPostForm(data={'title': 'Test Title', 'content': 'This is a test content.'})
+        self.assertTrue(form.is_valid())
+
+    def test_text_post_form_blank_data(self):
+        form = TextPostForm(data={})
+        self.assertFalse(form.is_valid())
+        self.assertEqual(form.errors['title'], ['This field is required.'])
