@@ -1,5 +1,5 @@
 from django.test import TestCase
-from .forms import CommentForm, CustomSignupForm, ProfileForm, TextPostForm, ImagePostForm
+from .forms import CommentForm, CustomSignupForm, ProfileForm, TextPostForm, ImagePostForm, VideoPostForm
 from django.core.files.uploadedfile import SimpleUploadedFile
 
 
@@ -85,3 +85,37 @@ class ImagePostFormTest(TestCase):
         # Assert that the 'image' field has an error message
         self.assertIn('image', form.errors)
         self.assertEqual(form.errors['image'], ['No file selected!'])
+
+
+class VideoPostFormTest(TestCase):
+    def test_video_post_form_valid_data(self):
+        with open('./media/images/miriam clip.mp4', 'rb') as f:
+            video_content = f.read()
+
+        # Create a temporary video file
+        video_file = SimpleUploadedFile("test_video.mp4", video_content, content_type="video/mp4")
+
+        form_data = {
+            'title': 'Test Video Post',
+            'video': video_file,
+        }
+
+        # Pass the form data to the form
+        form = VideoPostForm(data=form_data, files={'video': video_file})
+
+        # Assert that the form is valid
+        self.assertTrue(form.is_valid())
+
+    def test_video_post_form_blank_data(self):
+        # Create a dictionary with blank form data
+        form_data = {
+            'title': 'Blank Video Post',
+            'video': None
+        }
+        form = VideoPostForm(data=form_data)
+
+        # Assert that the form is not valid
+        self.assertFalse(form.is_valid())
+        # Assert that the 'video' field has an error message
+        self.assertIn('video', form.errors)
+        self.assertEqual(form.errors['video'], ['No file selected!'])
