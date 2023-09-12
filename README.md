@@ -600,6 +600,39 @@ Code Institute's Python Linter was used to validate the Python code in this proj
 | 4D | As an authenticated user, I want to be able to view a record of all my publicly available posts. | All authenticated logged in users can view a list of all their published posts by visiting their profile and pressing the "View All Posts" button. | Pass |
 | 4E | As an authenticated user, I want to be able to view a record of all my publicly available comments. | All logged in authenticated users can view a list of all their published comments by clicking the "View All Comments" button on their profile. | Pass |
 
+### Automated Testing
+
+Automated tests were written using help from Code Institute's instructional videos as part of their "Hello Django" walkthrough project. Different aspects of the models, forms and views were tested. Due to time constraints, further learning required and given that automated testing was not required as part of the rubric for this project, these tests are not fully comprehensive but were written to demonstrate a basic understanding of automated tests.
+
+I also took guidance from reading previous questions in Code Institute's Slack Channel, Ulrike Riemenschneider's project, [World Travel Log](https://github.com/URiem/worldtravellog) and [Mozilla's documentation on Django testing.](https://developer.mozilla.org/en-US/docs/Learn/Server-side/Django/Testing)
+
+#### Views Tests (views_tests.py)
+<br><br>
+
+![Screenshot to show successful running of views_tests.py](/static/assets/img/views_tests_screenshot.png)
+<br><br>
+
+#### Views Tests (forms_tests.py)
+<br><br>
+
+![Screenshot to show successful running of forms_tests.py](/static/assets/img/forms_test_screenshot.png)
+<br><br>
+
+#### Views Tests (models_tests.py)
+<br><br>
+
+![Screenshot to show successful running of models_tests.py](/static/assets/img/models_tests_screenshot.png)
+
+<br><br>
+
+#### Coverage Report
+
+This coverage report was generated using the coverage package. As you can see there is room for further exploration in automated testing to achieve greater coverage.
+<br><br>
+
+![Coverage Report](/static/assets/img/coverage_report_screenshot.png)
+
+
 
 ### Deployment
 
