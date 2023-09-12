@@ -563,7 +563,7 @@ Code Institute's Python Linter was used to validate the Python code in this proj
 ### Manual Testing
 
 **EPIC: CONTENT AND NAVIGATION**
-| ID | User Story | Action/Expected Results | Pass |
+| ID | User Story | Action/Expected Results | Pass/Fail |
 | -- | ---------- | ----------------------- | ---- |
 | 1A | 	As a user, I want to be able to easily navigate through the content available on the site. | A nav bar with links to the main pages of the site is always available to any user using the site, whether logged in or not. When the screen size becomes smaller, the nav links collapse into a hamburger menu. | Pass |
 | 1B | As a user, I want to see relevant information about the site and its content easily so I can decide if I want to register an account. | Any user who accesses the site will see the PianoPhiles logo and tag line "For piano freaks and geeks". While this doesn't explicitly say "this is a blog post website for piano enthusiasts", I do think this in combination with the immediately visible list of posts on the homepage make the site's purpose obvious. | Pass |
@@ -571,7 +571,7 @@ Code Institute's Python Linter was used to validate the Python code in this proj
 | 1D | As a user, I want to be able to access different areas of the site e.g. detailed blog posts, or user profiles with ease so that I may easily enjoy the feautures the site has to offer. | Any user can access the site's most basic functions from the nav bar. Any user can easily access profiles by clicking on user profile photos in the post list view. Posts are easily explored by clicking the preview. | Pass |
 
 **EPIC: REGISTRATION AND USER INFORMATION**
-| ID | User Story | Action/Expected Results | Pass |
+| ID | User Story | Action/Expected Results | Pass/Fail |
 | -- | ---------- | ----------------------- | ---- |
 | 2A | As a user, I want to create my own profile, so I have a familiar and comfortable place where I can share my enthusiasm for piano and keep track of discussions, as well as accessing all the functionality the site has to offer.| An unregistered user will see a 'Register' link in the navig bar upon accessing the site, and this will always be available as long as they are not logged in. Clicking on this brings the user to the account registration page. | Pass |
 | 2B | As a user, I want to be able to edit my profile so that it reflects me as I change. | An "Edit Profile" is available to all logged in users when they visit their own profile. This allows them to update their bio section and profile photo.  | Pass |
@@ -581,7 +581,7 @@ Code Institute's Python Linter was used to validate the Python code in this proj
 | 2F |  | Any user with an account is free to delete it any time by pressing the "Delete Profile" button available from their profile page. | Pass |
 
 **EPIC: MANAGING POST AND COMMENTS**
-| ID | User Story | Action/Expected Results | Pass |
+| ID | User Story | Action/Expected Results | Pass/Fail |
 | -- | ---------- | ----------------------- | ---- |
 | 3A | As an authenticated user, I want to be able to create text posts so that I can share my enthusiasm with my online community. | All authenticated logged in users can create posts by clicking on the red and white 'plus' button at the bottom right hand corner of every page. | Pass |
 | 3B | As an authenticated user, I want to be able to create image posts so that I can share my enthusiasm with my online community. | After clicking the 'add a post'/'plus' button, all authenticated logged in users will be brought to the general "create post" page where they have the option of opening a form specifically for creating image posts. It allows them to upload image files given a specified file size and format as well as title information. The image file is hosted from Cloudinary. | Pass |
@@ -592,7 +592,7 @@ Code Institute's Python Linter was used to validate the Python code in this proj
 | 3G | 	As an authenticated user, I want to be able to delete my past comments if I feel they no longer reflect my opinions.| All logged in authenticated users are able to delete their comments by pressing the "Delete Comment" button that is available on all of their own comments when using the Profile view or UserComments view. | Pass |
 
 **EPIC: USER VIEWS**
-| ID | User Story | Action/Expected Results | Pass |
+| ID | User Story | Action/Expected Results | Pass/Fail |
 | -- | ---------- | ----------------------- | ---- |
 | 4A | 	As a user, I want to be able to see all publicly available posts so that I can browse through them. | All users can view all published posts arranged in chronological order on the homepage. This page is paginated to prevent the browser from having to load too much data all at the same time when loading the site. | Pass |
 | 4B | As a user, I want to be able to view the detail of all publicly available posts, so I can read the full content associated with them, including comments. | All users can access full posts details by clicking on their previews from the PostList (homepage) view. | Pass |
