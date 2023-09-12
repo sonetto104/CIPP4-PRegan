@@ -560,44 +560,45 @@ Code Institute's Python Linter was used to validate the Python code in this proj
 </details>
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 ### Manual Testing
 
-| Test Case                         | Description                                                                                                                   | Expected Outcome                                   | Pass/Fail |
-|----------------------------------|-------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------|-----------|
-| User Registration                | Test the registration process by creating a new user profile.                                                                 | User is able to successfully register and is redirected to the home page.                          |  Pass         |
-| User Login                       | Test the login functionality by logging in with a registered user account.                                                    | User is able to log in and is redirected to the home page.                                          | Pass   |
-| Create a Post                    | Test the ability to create a new post by a logged-in user.                                                                     | Post is successfully created and displayed on the home page.                                       |    Pass       |
-| View Recent Posts                | Test the display of recent posts on the home page.                                                                             | Recent posts are displayed correctly on the home page.                                              |    Pass       |
-| Comment on a Post                | Test the ability to add a comment on a post.                                                                                   | Comment is successfully added to the post and displayed.                                           |    Pass       |
-| View User's Profile              | Test the display of a user's profile page.                                                                                    | User's profile page is displayed correctly with the relevant information.                          |    Pass       |
-| Edit User's Profile              | Test the ability to edit the user's profile information.                                                                      | User's profile information is successfully updated.                                               |  Pass         |
-| Delete a Post                    | Test the ability to delete a post created by the user.                                                                         | Post is successfully deleted and no longer displayed on the site.                                  |      Pass     |
-| Delete a Comment                 | Test the ability to delete a comment made by the user.                                                                         | Comment is successfully deleted and no longer displayed on the post.                               |      Pass     |
-| Like a Post                      | Test the ability to like a post.                                                                                              | Post is successfully liked by the user.                                                            |     Pass - can be improved      |
-| Logout                           | Test the logout functionality by logging out from a user account.                                                            | User is logged out and redirected to the login page.                                               |      Pass     |
-| View Posts of Other Users        | Test the ability to view posts made by other users.                                                                            | Posts made by other users are displayed correctly.                                                 |  Pass         |
-| Delete User's Profile            | Test the ability to delete the user's profile.                                                                                 | User's profile is successfully deleted, and all associated data is removed.                        |    Pass       |
-| View the Site without Logging In | Test the ability to access the site and view content without logging in.                                                      | User can access and view the site's content without logging in.                                   |     Pass      |
-| Dynamic Like Button              | Test the behavior of the dynamic like button on a post.                                                                        | Like button updates and reflects the user's liking/unliking of a post.                            |    Pass - can be improved - not fully dynamic as it acts as a redirect.       |
-| Search Functionality             | Test the search functionality to search for posts based on keywords or tags.                                                  | Search results display relevant posts based on the search query.                                  |    Fail       |
-| Tag Functionality                | Test the ability to assign tags to posts and filter posts by tags.                                                            | Posts can be assigned tags, and filtering by tags displays relevant posts.                        |     Fail      |
-| Live Chat Feature                | Test the functionality of the live chat feature, if implemented.                                                              | Live chat feature functions as expected, allowing real-time communication between users.          |    Fail       |
-| Ability to Delete Previous Posts and Comments | Test the ability to delete previous posts and comments made by the user.                                               | User's previous posts and comments are successfully deleted.                                       |  Pass         |
+**EPIC: CONTENT AND NAVIGATION**
+| ID | User Story | Action/Expected Results | Pass |
+| -- | ---------- | ----------------------- | ---- |
+| 1A | 	As a user, I want to be able to easily navigate through the content available on the site. | A nav bar with links to the main pages of the site is always available to any user using the site, whether logged in or not. When the screen size becomes smaller, the nav links collapse into a hamburger menu. | Pass |
+| 1B | As a user, I want to see relevant information about the site and its content easily so I can decide if I want to register an account. | Any user who accesses the site will see the PianoPhiles logo and tag line "For piano freaks and geeks". While this doesn't explicitly say "this is a blog post website for piano enthusiasts", I do think this in combination with the immediately visible list of posts on the homepage make the site's purpose obvious. | Pass |
+| 1C | As a user, I want the design of the site to be simple, intuitive and appealing. | The minimal styling of the site combined with the masonry effect used make the information on the site easy to delineate and interpret. | Pass |
+| 1D | As a user, I want to be able to access different areas of the site e.g. detailed blog posts, or user profiles with ease so that I may easily enjoy the feautures the site has to offer. | Any user can access the site's most basic functions from the nav bar. Any user can easily access profiles by clicking on user profile photos in the post list view. Posts are easily explored by clicking the preview. | Pass |
+
+**EPIC: REGISTRATION AND USER INFORMATION**
+| ID | User Story | Action/Expected Results | Pass |
+| -- | ---------- | ----------------------- | ---- |
+| 2A | As a user, I want to create my own profile, so I have a familiar and comfortable place where I can share my enthusiasm for piano and keep track of discussions, as well as accessing all the functionality the site has to offer.| An unregistered user will see a 'Register' link in the navig bar upon accessing the site, and this will always be available as long as they are not logged in. Clicking on this brings the user to the account registration page. | Pass |
+| 2B | As a user, I want to be able to edit my profile so that it reflects me as I change. | An "Edit Profile" is available to all logged in users when they visit their own profile. This allows them to update their bio section and profile photo.  | Pass |
+| 2C | As a user, I want to be able to log into my account easily, so I can access my account information. | Any user not logged into the site can do so by clicking the "Login" link in the nav bar. | Pass |
+| 2D | As a user, I want to be able to log out of my account with ease to protect my account information. | Any logged in user can log out by pressing the "Logout" button in the nav bar. | Pass |
+| 2E | As a user, I want to be able to delete my account information/profile if I feel the site community no longer reflects my values. | Any user with an account is free to delete it any time by pressing the "Delete Profile" button available from their profile page. | Pass |
+| 2F |  | Any user with an account is free to delete it any time by pressing the "Delete Profile" button available from their profile page. | Pass |
+
+**EPIC: MANAGING POST AND COMMENTS**
+| ID | User Story | Action/Expected Results | Pass |
+| -- | ---------- | ----------------------- | ---- |
+| 3A | As an authenticated user, I want to be able to create text posts so that I can share my enthusiasm with my online community. | All authenticated logged in users can create posts by clicking on the red and white 'plus' button at the bottom right hand corner of every page. | Pass |
+| 3B | As an authenticated user, I want to be able to create image posts so that I can share my enthusiasm with my online community. | After clicking the 'add a post'/'plus' button, all authenticated logged in users will be brought to the general "create post" page where they have the option of opening a form specifically for creating image posts. It allows them to upload image files given a specified file size and format as well as title information. The image file is hosted from Cloudinary. | Pass |
+| 3C | As an authenticated user, I want to be able to create video posts so that I can share my enthusiasm with my online community. | After clicking the 'add a post'/'plus' button, all authenticated logged in users will be brought to the general "create post" page where they have the option of opening a form specifically for creating video posts. It allows them to upload video files given a specified file size and format as well as title information. The video file is hosted from Cloudinary. | Pass |
+| 3D | 	As an authenticated user, I want to be able to delete my posts if I feel they no longer reflect my opinions. | A "Delete Post" button is available to all logged in authenticated users when viewing their posts from the PostList or Profile views. | Pass |
+| 3E | 	As an authenticated user, I want to be able to comment on other users' posts in order to encourage discussion and a sense of community. | All logged in authenticated users are able to comment on published posts by entering their comments into the comment form from the PostDetail view. | Pass |
+| 3F | 	As an authenticated user, I want to be able to delete my past comments if I feel they no longer reflect my opinions.| All logged in authenticated users are able to delete their comments by pressing the "Delete Comment" button that is available on all of their own comments when using the Profile view or UserComments view. | Pass |
+| 3G | 	As an authenticated user, I want to be able to delete my past comments if I feel they no longer reflect my opinions.| All logged in authenticated users are able to delete their comments by pressing the "Delete Comment" button that is available on all of their own comments when using the Profile view or UserComments view. | Pass |
+
+**EPIC: USER VIEWS**
+| ID | User Story | Action/Expected Results | Pass |
+| -- | ---------- | ----------------------- | ---- |
+| 4A | 	As a user, I want to be able to see all publicly available posts so that I can browse through them. | All users can view all published posts arranged in chronological order on the homepage. This page is paginated to prevent the browser from having to load too much data all at the same time when loading the site. | Pass |
+| 4B | As a user, I want to be able to view the detail of all publicly available posts, so I can read the full content associated with them, including comments. | All users can access full posts details by clicking on their previews from the PostList (homepage) view. | Pass |
+| 4C | As a user, I want to be able to view the record of a given user's publicly available posts and comments. | Any user can view all of the published posts associated with a given user by visiting their profile. They can access their most recenty published comments too, but only a logged in authenticated user can access the full list of published comments. | Pass |
+| 4D | As an authenticated user, I want to be able to view a record of all my publicly available posts. | All authenticated logged in users can view a list of all their published posts by visiting their profile and pressing the "View All Posts" button. | Pass |
+| 4E | As an authenticated user, I want to be able to view a record of all my publicly available comments. | All logged in authenticated users can view a list of all their published comments by clicking the "View All Comments" button on their profile. | Pass |
 
 
 ### Deployment
