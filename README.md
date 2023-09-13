@@ -395,6 +395,72 @@ The site's full CRUD operations are only available to authenticated logged in us
 
 ![Sign Up/Register](/static/assets/img/signup.png)
 
+### Agile Development for PianoPhiles
+
+PianoPhiles was developed using an Agile-inspired approach, emphasizing iterative development and incremental improvements. Here's how the project progressed through sprints and milestones:
+
+#### Sprint 1: Project Initiation
+
+- Project Setup:
+  - Create basic ERD, site flow logic diagram and wireframes as basis for project.
+  - Create the Django project, app and superuser.
+  - Install essential packages like Django, dj_database_url, psycopg2, and cloudinary-storage.
+  - Update project files, including settings.py, env.py, and the Procfile for deployment.
+  - Initiate database setup and perform migrations.
+  - Develop a base.html for the site's layout.
+
+
+#### Sprint 2: Basic Model and View Development
+
+- Main Model Development:
+  - Set up database models and decide necessary attributes required for Post, TexPost, VideoPost, ImagePost and PostComment     
+    models.
+  - Add basic sign up, sign in, sign out pages using allauth packaged.
+  - Integrated crispy-forms and crispy-bootstrap5 for form rendering.
+  - Create Profile model.
+  - Link data from allauth forms to Profile model.
+  - Create basic views and url paths to check that models are actually rendering.
+  - Created a README with an initial project layout.
+
+#### Sprint 3: Customise Views and Content 
+
+- Enhancements and Features:
+  - Add more specific CSS stylings in addition to Bootstrap to customise views.
+  - Implement forms and views for uploading post (image, text, video) to database.
+  - Add forms and views for updating and deleting profile.
+  - Develop supplementary views such as user comments and user posts views.
+  - Add Masonry to better style post list view.
+
+#### Sprint 4: Refining CSS and Adding Functionality
+
+- CSS and Styling:
+  - Enhance CSS styles for the banner.
+  - Refine the styling of the post previews in post list view and add floating style to "add post" button.
+
+- Additional Features:
+  - Add filtering differentiating which information is available to authenticated and non-authenticated users.
+  - Add status messages so users know their comments are pending approval.
+  - Set up automated tests.
+
+#### Sprint 5: Testing, Revisions, and Documentation 
+
+- Testing and Quality Assurance:
+ - Conducted thorough testing, including HTML, CSS, and Python testing.
+ - Utilise the coverage package to generate a coverage report.
+ - Address HTML and CSS testing errors and warnings.
+ - Remove commented-out code and perform code cleanup.
+
+- Documentation and Finalization:
+  - Compile test results and include images in the README.md file.
+  - Enrich the README with detailed information about features.
+  - Ensure DEBUG is set to False before deployment.
+  - Conduct final code and documentation proofreading.
+
+- Deployment:
+ - Finalise the README.
+ - Prepare the project for the final deployment.
+
+By following this Agile-inspired approach with well-defined sprints, PianoPhiles was able to evolve incrementally, ensuring a user-friendly and feature-rich platform for piano enthusiasts. Continuous testing, feedback, and iterative development contributed to the project's success.
 
 ## Testing
 
