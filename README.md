@@ -457,8 +457,8 @@ PianoPhiles was developed using an Agile-inspired approach, emphasizing iterativ
   - Conduct final code and documentation proofreading.
 
 - Deployment:
- - Finalise the README.
- - Prepare the project for the final deployment.
+  - Finalise the README.
+  - Prepare the project for the final deployment.
 
 By following this Agile-inspired approach with well-defined sprints, PianoPhiles was able to evolve incrementally, ensuring a user-friendly and feature-rich platform for piano enthusiasts. Continuous testing, feedback, and iterative development contributed to the project's success.
 
