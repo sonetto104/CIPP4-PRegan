@@ -445,10 +445,10 @@ PianoPhiles was developed using an Agile-inspired approach, emphasizing iterativ
 #### Sprint 5: Testing, Revisions, and Documentation 
 
 - Testing and Quality Assurance:
- - Conducted thorough testing, including HTML, CSS, and Python testing.
- - Utilise the coverage package to generate a coverage report.
- - Address HTML and CSS testing errors and warnings.
- - Remove commented-out code and perform code cleanup.
+  - Conducted thorough testing, including HTML, CSS, and Python testing.
+  - Utilise the coverage package to generate a coverage report.
+  - Address HTML and CSS testing errors and warnings.
+  - Remove commented-out code and perform code cleanup.
 
 - Documentation and Finalization:
   - Compile test results and include images in the README.md file.
