@@ -679,7 +679,7 @@ Code Institute's Python Linter was used to validate the Python code in this proj
 
 <details>
 <summary>views.py</summary>
-<img src="/assets/img/views.py-test.png">
+<img src="/static/assets/img/views.py-test.png">
 </details>
 
 <details>
