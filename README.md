@@ -937,7 +937,13 @@ Now, you have successfully deployed your Django project locally by forking the r
 
 
 
-### Technologies Used
+## Technologies Used
+
+ - Languages Used:
+    - HTML
+    - CSS
+    - JS
+    - Python
 
 - [asgiref](https://pypi.org/project/asgiref/) - Version 3.7.2
   - ASGI (Asynchronous Server Gateway Interface) implementation for Django, providing compatibility with async frameworks.
