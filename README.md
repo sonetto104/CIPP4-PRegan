@@ -215,6 +215,8 @@ From a creative perspective, whiite and black are reminiscent of piano keys and 
 
 Overall, this colour scheme not only pays homage to the piano's iconic palette but also ensures a user-friendly and aesthetically pleasing reading experience for visitors interested in piano-related content.
 
+<br><br>
+
 ![PianoPhiles Colour Scheme](/static/assets/img/pianophiles-scheme.png)
 
 
@@ -222,8 +224,11 @@ Overall, this colour scheme not only pays homage to the piano's iconic palette b
 
 I decided not to customise font for PianoPhiles and chose to stick with Bootstrap's standard typography. It is easily legible and light, allowing the user's focus to be primarily on the content of posts rather than design elements.
 
+<br><br>
+
 ![Fonts in Action](/static/assets/img/fonts-sample.png)
 
+<br><br>
 
 #### Logo
 
@@ -233,7 +238,7 @@ The logo and favicon were created using Figma. It is minimal, reflecting the sim
 
 ### Views
 
-<br><br><br><br>
+<br><br>
 
 #### Home Page View
 
@@ -273,7 +278,7 @@ All users' profiles can be viewed on the site, whether the user viewing the prof
 
 ![Profile View Not Logged In Three](/static/assets/img/profile-view-not-logged-in-three.png)
 
-<br><br><br><br>
+<br><br>
 
 - **Profile Page Logged In**
 
@@ -294,7 +299,7 @@ All users' profiles can be viewed on the site, whether the user viewing the prof
 
 Upon clicking any post, a user will be redirected to a more detailed version of the post, displaying the date of its publication, its author, the full post content (which is not available in previews of text posts) and all its associated comments. Only slices of the first two comments are available in post previews.
 
-<br><br><br><br>
+<br><br>
 
 - **Post Detail View and Comments**
 
@@ -304,7 +309,7 @@ Upon clicking any post, a user will be redirected to a more detailed version of 
 
 ![Post Detail View With Comments](/static/assets/img/comments-post-view-not-logged-in.png)
 
-<br><br><br><br>
+<br><br>
 
 #### Sign In and Sign Out Pages
 
