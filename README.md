@@ -13,7 +13,24 @@
 
 **Developed by: Peter Regan**
 
-## Table of Content TO GO HERE
+## Table of Contents
+
+- [PianoPhiles](#pianophiles)
+  - [Table of Contents](#table-of-contents)
+  - [Introduction](#introduction)
+    - [Database Schema](#database-schema)
+  - [ERD Diagram](#erd-diagram)
+  - [User Experience - UX](#user-experience---ux)
+    - [Strategy](#strategy)
+    - [Scope](#scope)
+    - [Structure](#structure)
+    - [Skeleton](#skeleton)
+    - [Surface](#surface)
+  - [Agile Development](#agile-development)
+  - [Testing and Validation](#testing-and-validation)
+  - [Deployment](#deployment)
+  - [Technologies Used](#technologies-used)
+  - [Acknowledgements](#acknowledgements)
 
 ## Introduction
 
@@ -467,7 +484,7 @@ PianoPhiles was developed using an Agile-inspired approach, emphasizing iterativ
 
 By following this Agile-inspired approach with well-defined sprints, PianoPhiles was able to evolve incrementally, ensuring a user-friendly and feature-rich platform for piano enthusiasts. Continuous testing, feedback, and iterative development contributed to the project's success.
 
-## Testing
+## Testing and Validation
 
 ### Performance
 
