@@ -219,6 +219,7 @@ Overall, this colour scheme not only pays homage to the piano's iconic palette b
 
 ![PianoPhiles Colour Scheme](/static/assets/img/pianophiles-scheme.png)
 
+<br><br>
 
 #### Font
 
@@ -238,7 +239,6 @@ The logo and favicon were created using Figma. It is minimal, reflecting the sim
 
 ### Views
 
-<br><br>
 
 #### Home Page View
 
