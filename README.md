@@ -625,6 +625,21 @@ Code Institute's Python Linter was used to validate the Python code in this proj
 <img src="/static/assets/img/views.py-project-level.png">
 </details>
 
+<details>
+<summary>models_tests.py</summary>
+<img src="/static/assets/img/models_tests_validation.png">
+</details>
+
+<details>
+<summary>forms_tests.py</summary>
+<img src="/static/assets/img/forms_tests_validation.png">
+</details>
+
+<details>
+<summary>views_tests.py</summary>
+<img src="/static/assets/img/views_tests_validation.png">
+</details>
+
 
 ### Manual Testing
 
