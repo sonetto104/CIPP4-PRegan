@@ -258,7 +258,7 @@ The home page view displays the site logo, nav bar and the site's most recently 
 
 ![Home Page View Logged In](/static/assets/img/home-page-logged-in.png)
 
-<br><br><br><br>
+<br><br>
 
 #### Profile View
 
