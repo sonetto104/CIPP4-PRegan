@@ -171,7 +171,7 @@ The site has 16 pages depending on whether the user is authenticated/logged-in o
   - **Custom 404 Page** If a user tries to access a url path that doesn't exist, a custom 404 error page is provided.
 
 
-### Skeleton Plane
+### Skeleton
 
 As per the requirements of Code Institute's Portfolio Project 4 assignment, this functions at the most basic level as a CRUD application.
 
