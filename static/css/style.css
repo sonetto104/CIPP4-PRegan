@@ -73,7 +73,7 @@
   }
 
   .floating-button .message {
-    left: -200px;
+    right: -300px;
   }
 
   .form-group {
@@ -133,6 +133,7 @@
     height: 50px;
     overflow: hidden;
     border-radius: 50%;
+    object-fit: cover;
   }
   
   .profile-picture img {
