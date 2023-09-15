@@ -30,7 +30,7 @@ class ModelCreationTest(TestCase):
         self.assertEqual(saved_text_post.author, self.user)
 
     def test_create_image_post(self):
-        image_id = 'Keyboard_cat_ouvbg1'  #Using 404 image stored in Cloudinary as test image
+        image_id = 'Keyboard_cat_ouvbg1'  # Using 404 image stored in Cloudinary as test image
 
         # Create an ImagePost instance with the Cloudinary ID
         image_post = ImagePost.objects.create(
