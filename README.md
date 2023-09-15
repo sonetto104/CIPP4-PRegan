@@ -270,11 +270,11 @@ All users' profiles can be viewed on the site, whether the user viewing the prof
 
 ![Profile View Not Logged In One](/static/assets/img/profile-view-not-logged-in.png)
 
-<br><br><br><br>
+<br><br>
 
 ![Profile View Not Logged In Two](/static/assets/img/profile-view-not-logged-in-two.png)
 
-<br><br><br><br>
+<br><br>
 
 ![Profile View Not Logged In Three](/static/assets/img/profile-view-not-logged-in-three.png)
 
@@ -284,15 +284,15 @@ All users' profiles can be viewed on the site, whether the user viewing the prof
 
 ![Profile View Logged In One](/static/assets/img/my-profile-view.png)
 
-<br><br><br><br>
+<br><br>
 
 ![Profile View Logged In Two](/static/assets/img/profile-view-logged-in.png)
 
-<br><br><br><br>
+<br><br>
 
 ![Profile View Logged In Three](/static/assets/img/profile-view-logged-in-delete-button.png)
 
-<br><br><br><br>
+<br><br>
 
 
 #### Post Detail View
@@ -305,7 +305,7 @@ Upon clicking any post, a user will be redirected to a more detailed version of 
 
 ![Post Detail View](/static/assets/img/post-detail-view-not-logged-in.png)
 
-<br><br><br><br>
+<br><br>
 
 ![Post Detail View With Comments](/static/assets/img/comments-post-view-not-logged-in.png)
 
@@ -319,7 +319,7 @@ Some light customisation was added to allauth's generic sign in and sign out tem
 
 ![Sign In](/static/assets/img/sign-in.png)
 
-<br><br><br><br>
+<br><br>
 
 - **Sign Out**
 
@@ -340,41 +340,41 @@ The site's full CRUD operations are only available to authenticated logged in us
 10. Reading all published comments of a given user.
 11. Reading all published posts available on the site arranged chronologically.
 
-<br><br><br><br>
+<br><br>
 
 - **Create Image Post**
 ![Create Image Post](/static/assets/img/create-image-post.png)
 
-<br><br><br><br>
+<br><br>
 
 - **Create Post View (General)**
 ![Create Post View](/static/assets/img/create-post-view.png)
 
-<br><br><br><br>
+<br><br>
 
 - **Create Text Post**
 
 ![Create Text Post](/static/assets/img/create-text-post.png)
 
-<br><br><br><br>
+<br><br>
 
 - **Create Video Post**
 
 ![Create Video Post](/static/assets/img/create-video-post.png)
 
-<br><br><br><br>
+<br><br>
 
 - **Delete Post Button**
 
 ![Delete Post](/static/assets/img/delete-post-button.png)
 
-<br><br><br><br>
+<br><br>
 
 - **Delete Profile**
 
 ![Delete Profile](/static/assets/img/delete-profile-view.png)
 
-<br><br><br><br>
+<br><br>
 
 - **Edit Profile**
 
@@ -382,19 +382,19 @@ The site's full CRUD operations are only available to authenticated logged in us
 
 ![Edit Profile Two](/static/assets/img/edit-profile-two.png)
 
-<br><br><br><br>
+<br><br>
 
 - **View User Comments/Delete Comment**
 
 ![View and Delete Comments](/static/assets/img/view-own-comments-logged-in.png)
 
-<br><br><br><br>
+<br><br>
 
 - **View User Posts**
 
 ![View User Posts](/static/assets/img/view-user-posts.png)
 
-<br><br><br><br>
+<br><br>
 
 - **Sign Up/Register an Account**
 
