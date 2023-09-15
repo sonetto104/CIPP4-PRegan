@@ -418,7 +418,7 @@ The site's full CRUD operations are only available to authenticated logged in us
 
 ![Sign Up/Register](/static/assets/img/signup.png)
 
-### Agile Development for PianoPhiles
+## Agile Development for PianoPhiles
 
 PianoPhiles was developed using an Agile-inspired approach, emphasizing iterative development and incremental improvements. Here's how the project progressed through sprints and milestones:
 
@@ -482,6 +482,60 @@ PianoPhiles was developed using an Agile-inspired approach, emphasizing iterativ
 - Deployment:
   - Finalise the README.
   - Prepare the project for the final deployment.
+
+In order to keep track of progress through these sprints, I used [Notion's](www.notion.so) Kanban capabilities. Being a Notion user already, the interface is comfortable and intuitive to me.
+
+As you can see from the following screenshots, I grouped tasks defined by user stories according to epics.
+
+
+<details>
+<summary>General View of Epics in Notion Kanban</summary>
+<img src="/static/assets/img/notion_pianophiles_kanban_1.png">
+</details>
+
+<details>
+<summary>Further General View of Epics in Notion Kanban</summary>
+<img src="/static/assets/img/notion_pianophiles_kanban_2.png">
+</details>
+
+<details>
+<summary>Further General View of Epics in Notion Kanban</summary>
+<img src="/static/assets/img/notion_pianophiles_kanban_3.png">
+</details>
+
+<details>
+<summary>View of Tasks in Content and Navigation Epic</summary>
+<img src="/static/assets/img/notion_pianophiles_kanban_4.png">
+</details>
+
+<details>
+<summary>View of Tasks in Registration and User Information Epic</summary>
+<img src="/static/assets/img/notion_pianophiles_kanban_5.png">
+</details>
+
+<details>
+<summary>View of Tasks in Managing Posts and Comments Epic</summary>
+<img src="/static/assets/img/notion_pianophiles_kanban_6.png">
+</details>
+
+<details>
+<summary>View of Tasks in User Views Epic</summary>
+<img src="/static/assets/img/notion_pianophiles_kanban_7.png">
+</details>
+
+<details>
+<summary>View of Tasks in Styling Epic</summary>
+<img src="/static/assets/img/notion_pianophiles_kanban_8.png">
+</details>
+
+<details>
+<summary>View of Tasks and Future Features to be Added in Future Development of PianoPhiles</summary>
+<img src="/static/assets/img/notion_pianophiles_kanban_9.png">
+</details>
+
+
+
+
 
 By following this Agile-inspired approach with well-defined sprints, PianoPhiles was able to evolve incrementally, ensuring a user-friendly and feature-rich platform for piano enthusiasts. Continuous testing, feedback, and iterative development contributed to the project's success.
 
@@ -738,7 +792,7 @@ This coverage report was generated using the coverage package. As you can see th
 
 
 
-### Deployment
+## Deployment
 
 1. Set up a Heroku account:
 
@@ -814,6 +868,73 @@ Verify your deployed app:
 Open the URL in your browser to verify that your Django app is running correctly on Heroku.
 Check if static files are being served properly and if Cloudinary is being used for hosting and retrieving static files.
 - Your Django app should now be deployed and running on Heroku, with static files being served from Cloudinary. 
+
+## Deploying the Project by Forking and Cloning
+
+1. **Fork the Repository**:
+   - Go to your Django project's GitHub repository.
+   - Click the "Fork" button in the upper right corner of the repository page. This will create a copy of the repository under your GitHub account.
+
+2. **Clone the Forked Repository**:
+   - Open your terminal or command prompt.
+   - Change your working directory to where you want to store the project:
+     ```bash
+     cd /path/to/your/local/folder
+     ```
+   - Clone the forked repository to your local machine. Replace `<your_username>` with your GitHub username and `<repository_name>` with the name of your repository:
+     ```bash
+     git clone https://github.com/<your_username>/<repository_name>.git
+     ```
+
+3. **Navigate to the Project Directory**:
+   - Change your working directory to the project's directory:
+     ```bash
+     cd <repository_name>
+     ```
+
+4. **Install Dependencies**:
+   - Create a virtual environment for your project (if you haven't already) and activate it:
+     ```bash
+     python -m venv venv
+     source venv/bin/activate  # On Windows: venv\Scripts\activate
+     ```
+   - Install the project's dependencies from the `requirements.txt` file:
+     ```bash
+     pip install -r requirements.txt
+     ```
+
+5. **Configure Environment Variables**:
+   - Create a `.env` file in your project directory and set the necessary environment variables, such as `SECRET_KEY`, `DATABASE_URL`, and any others required by your Django project.
+
+6. **Run Migrations**:
+   - Apply database migrations to create the database schema:
+     ```bash
+     python manage.py migrate
+     ```
+
+7. **Start the Development Server**:
+   - Run the Django development server to test your project locally:
+     ```bash
+     python manage.py runserver
+     ```
+   - Your Django app should now be running locally. Open your web browser and access it at `http://localhost:8000`.
+
+8. **Test the App Locally**:
+   - Interact with your app to ensure it's functioning correctly in the local development environment.
+
+9. **Development and Testing**:
+   - Make any necessary changes and test your app locally to ensure it works as expected.
+
+10. **Push Changes to GitHub**:
+    - Once you are satisfied with your changes, commit them locally and push them to your forked GitHub repository:
+      ```bash
+      git add .
+      git commit -m "Add local development changes"
+      git push origin master
+      ```
+
+Now, you have successfully deployed your Django project locally by forking the repository, cloning it, and running it on your machine. You can continue to develop and test your project locally before deploying it to Heroku using the steps mentioned in the earlier section.
+
 
 
 ### Technologies Used
