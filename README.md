@@ -26,7 +26,7 @@
     - [Structure](#structure)
     - [Skeleton](#skeleton)
     - [Surface](#surface)
-  - [Agile Development](#agile-development)
+  - [Agile Development](#agile-development-for-pianophiles)
   - [Testing and Validation](#testing-and-validation)
   - [Deployment](#deployment)
   - [Technologies Used](#technologies-used)
