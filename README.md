@@ -228,7 +228,7 @@ I used Figma to make these basic wireframes for how I imagined the website would
 
 The colours used in the site are primarily white, red and black. These colours were chosen in the interest of legibility, and not to distract from or contrast too strongly with the content of image and video posts. There are some instances of blue where buttons are responsible for CRUD operations related to authenticated user information. The "delete profile" button is the only other outlier in the whole site - it is yellow and black. It is designed to stand out as it is responsible for a significant irreversible action.
 
-From a creative perspective, whiite and black are reminiscent of piano keys and create a visually cohesive and elegant design, immediately conveying the central theme of the blog. The addition of red infuses energy and accentuates key elements, such as buttons, providing a subtle but effective visual contrast. 
+From a creative perspective, white and black are reminiscent of piano keys and create a visually cohesive and elegant design, immediately conveying the central theme of the blog. The addition of red infuses energy and accentuates key elements, such as buttons, providing a subtle but effective visual contrast. 
 
 Overall, this colour scheme not only pays homage to the piano's iconic palette but also ensures a user-friendly and aesthetically pleasing reading experience for visitors interested in piano-related content.
 
@@ -261,14 +261,14 @@ The logo and favicon were created using Figma. It is minimal, reflecting the sim
 
 The home page view displays the site logo, nav bar and the site's most recently published posts. If the user is not logged in the nav bar offers the option to visit the homepage, register an account or sign in, and if the user is logged in, it offers the option to visit the home page, visit your own profile or logout.
 
-<br><br><br><br>
+<br><br>
 
 - **Home Page Not Logged In**
 <br><br>
 
 ![Home Page View Not Logged In](/static/assets/img/homepage-view-not-logged-in.png)
 
-<br><br><br><br>
+<br><br>
 
 - **Home Page Logged In**
 <br><br>
@@ -681,7 +681,7 @@ Code Institute's Python Linter was used to validate the Python code in this proj
 | 2C | As a user, I want to be able to log into my account easily, so I can access my account information. | Any user not logged into the site can do so by clicking the "Login" link in the nav bar. | Pass |
 | 2D | As a user, I want to be able to log out of my account with ease to protect my account information. | Any logged in user can log out by pressing the "Logout" button in the nav bar. | Pass |
 | 2E | As a user, I want to be able to delete my account information/profile if I feel the site community no longer reflects my values. | Any user with an account is free to delete it any time by pressing the "Delete Profile" button available from their profile page. | Pass |
-| 2F |  | Any user with an account is free to delete it any time by pressing the "Delete Profile" button available from their profile page. | Pass |
+| 2F | As a user, I also want the option of being able to use the site passively without registering an account, even if this means I can't access some site functionality like making posts or comments. | Account registration is not required to read the published content on the site. | Pass |
 
 **EPIC: MANAGING POST AND COMMENTS**
 | ID | User Story | Action/Expected Results | Pass/Fail |
@@ -886,7 +886,11 @@ Check if static files are being served properly and if Cloudinary is being used 
 - [urllib3](https://urllib3.readthedocs.io/) - Version 1.26.16
   - A powerful HTTP client library for Python, providing connection pooling and request functionality.
 
+- [coverage](https://pypi.org/project/coverage/) - Version 7.3.1
+  - A tool for measuring code coverage of Python programs. Useful for ensuring that your tests are thorough.
 
+- [pytest](https://docs.pytest.org/en/latest/) - Version 7.4.2
+  - A popular testing framework for Python that makes it easy to write simple and scalable test cases for your code.
 
 
 ### Acknowledgements
@@ -903,6 +907,12 @@ YouTube tutorials on Cloudinary and Django: https://www.youtube.com/watch?v=fQo9
 https://www.youtube.com/watch?v=i0ar7W98Osc
 
 Article on editing the Summernote editor: https://djangocentral.com/integrating-summernote-in-django/
+
+In addition to guidance from Code Institute's "Hello Django" walkthrough project, further advice on implementing automated testing was taken from [Mozilla's documentation on Django testing.](https://developer.mozilla.org/en-US/docs/Learn/Server-side/Django/Testing).
+
+The layout of this README document is heavily influenced by Ulrike Riemenschneider's project, [World Travel Log](https://github.com/URiem/worldtravellog). 
+
+
 
 
 
