@@ -897,8 +897,8 @@ Check if static files are being served properly and if Cloudinary is being used 
 ### Bugs and Future Features
 
  - Immediate Issues: 
-  -There are remaining issues in the application to be addressed. For example, the floating modal that appears when hovering over the "add post" button appears too far away from the actual button. Design throughout the site is quite general and relies too much on Bootstrap's default styles. The use of space in forms could be more balanced and made more attractive. Different font sizes used do not always highlight the hierarchy of content with great specificity. The profile picture icons sometimes distort the profile images slightly. The colouring of the comments section in PostDetail views is not particularly attractive.
-  There are even more issues that could be listed but these would be a good place to begin with for immediate future development.
+    -There are remaining issues in the application to be addressed. For example, the floating modal that appears when hovering over the "add post" button appears too far away from the actual button. Design throughout the site is quite general and relies too much on Bootstrap's default styles. The use of space in forms could be more balanced and made more attractive. Different font sizes used do not always highlight the hierarchy of content with great specificity. The profile picture icons sometimes distort the profile images slightly. The colouring of the comments section in PostDetail views is not particularly attractive.
+    There are even more issues that could be listed but these would be a good place to begin with for immediate future development.
 
 - Future Features:
   As I continue to develop the project over the coming months I would like to implement:
