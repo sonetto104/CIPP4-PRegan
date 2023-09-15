@@ -30,6 +30,7 @@
   - [Testing and Validation](#testing-and-validation)
   - [Deployment](#deployment)
   - [Technologies Used](#technologies-used)
+  - [Bugs and Future Features](#bugs-and-future-features)
   - [Acknowledgements](#acknowledgements)
 
 ## Introduction
@@ -891,6 +892,22 @@ Check if static files are being served properly and if Cloudinary is being used 
 
 - [pytest](https://docs.pytest.org/en/latest/) - Version 7.4.2
   - A popular testing framework for Python that makes it easy to write simple and scalable test cases for your code.
+
+
+### Bugs and Future Features
+
+ - Immediate Issues: 
+ There are remaining issues in the application to be addressed. For example, the floating modal that appears when hovering over the "add post" button appears too far away from the actual button. Design throughout the site is quite general and relies too much on Bootstrap's default styles. The use of space in forms could be more balanced and made more attractive. Different font sizes used do not always highlight the hierarchy of content with great specificity. The profile picture icons sometimes distort the profile images slightly. The colouring of the comments section in PostDetail views is not particularly attractive.
+
+ There are even more issues that could be listed but these would be a good place to begin with for immediate future development.
+
+- Future Features:
+  As I continue to develop the project over the coming months I would like to implement:
+  - Search function allowing users to search by keyword for particular posts or posts relating to a specific subject.
+  - Tag function allowing posts to be categorised with hastags.
+  - Reply function allowing users to reply to specific comments as opposed to all comments being listed only in a chronlogical chain.
+  - Private messaging feature allowing users to correspond with others directly.
+  - Site categorisation. This is a more large scale general goal. I imagine the site having three separate wings where users can investigate content relating to classical piano, jazz piano or contemporary/pop piano in their own dedicated spaces.
 
 
 ### Acknowledgements
